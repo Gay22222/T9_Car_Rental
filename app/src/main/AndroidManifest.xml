@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.carrenting">
+    package="com.uit.carrental">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
 
+
     <queries>
         <package android:name="vn.com.vng.zalopay" />
         <package android:name="vn.com.vng.zalopay.sbmc" />
@@ -20,7 +21,7 @@
 
     <application
         android:usesCleartextTraffic="true"
-        android:name=".Model.UserClient"
+        android:name="com.uit.carrental.Model.UserClient"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -32,79 +33,83 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarRenting"
         tools:ignore="Instantiatable"
-        tools:replace="android:theme"
+        tools:replace="android:fullBackupContent, android:theme"
         tools:targetApi="31">
         <activity
-            android:name=".Service.UserAuthentication.GGVerrifyPhone"
+            android:name="com.uit.carrental.Service.UserAuthentication.GGVerrifyPhone"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Service.UserAuthentication.UpdatePassword"
+            android:name="com.uit.carrental.Service.UserAuthentication.UpdatePassword"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Service.Vehicle.UpdateVehicle"
+            android:name="com.uit.carrental.Service.Vehicle.UpdateVehicle"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Service.UserAuthentication.CCCDActivity"
+            android:name="com.uit.carrental.Service.UserAuthentication.CCCDActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Service.UserAuthentication.UserProfile"
+            android:name="com.uit.carrental.Service.UserAuthentication.UserProfile"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Service.UserAuthentication.ProfileManagement"
+            android:name="com.uit.carrental.Service.UserAuthentication.ProfileManagement"
             android:exported="false" />
         <activity
-            android:name=".Service.UserAuthentication.ForgotPasswordActivity"
+            android:name="com.uit.carrental.Service.UserAuthentication.ForgotPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ActivityPages.OwnerMainActivity"
+            android:name="com.uit.carrental.ActivityPages.OwnerMainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Service.Vehicle.VehicleCardActivity"
+            android:name="com.uit.carrental.Service.Vehicle.VehicleCardActivity"
             android:exported="false" />
         <activity
-            android:name=".Service.Vehicle.VehicleDetailActivity"
+            android:name="com.uit.carrental.Service.Vehicle.VehicleDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".Service.Activity.CustomerActivityDetail"
-            android:exported="false">
+            android:name="com.uit.carrental.Service.Activity.CustomerActivityDetail"
+            android:exported="true"
+            android:label="Merchant Demo"
+            android:launchMode="singleTask">
             <intent-filter>
-                <data
-                    android:host="app"
-                    android:scheme="demozpdk" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="demozpdk"
+                    android:host="app" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Service.Activity.OwnerActivityDetail"
+            android:name="com.uit.carrental.Service.Activity.OwnerActivityDetail"
             android:exported="false" />
         <activity
-            android:name=".Service.Vehicle.AddVehicleActivity"
+            android:name="com.uit.carrental.Service.Vehicle.AddVehicleActivity"
             android:exported="false" />
         <activity
-            android:name=".ActivityPages.StartAppActivity"
+            android:name="com.uit.carrental.ActivityPages.StartAppActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:theme="@style/Theme.CarRenting.NoActionBar">
@@ -125,27 +130,27 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Service.UserAuthentication.ValidatePhoneActivity"
+            android:name="com.uit.carrental.Service.UserAuthentication.ValidatePhoneActivity"
             android:exported="false"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
-            android:name=".Service.UserAuthentication.LoginActivity"
+            android:name="com.uit.carrental.Service.UserAuthentication.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
-            android:name=".Service.UserAuthentication.RegisterActivity"
+            android:name="com.uit.carrental.Service.UserAuthentication.RegisterActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
         <activity
-            android:name=".Service.Booking.RequestSuccessActivity"
+            android:name="com.uit.carrental.Service.Booking.RequestSuccessActivity"
             android:exported="false" />
         <activity
-            android:name=".Service.Booking.ScheduleSelect"
+            android:name="com.uit.carrental.Service.Booking.ScheduleSelect"
             android:exported="false" />
         <activity
-            android:name=".ActivityPages.CustomerMainActivity"
+            android:name="com.uit.carrental.ActivityPages.CustomerMainActivity"
             android:theme="@style/Theme.CarRenting.NoActionBar" />
 
-        <activity android:name=".Service.Booking.CarDetailActivity" />
+        <activity android:name="com.uit.carrental.Service.Booking.CarDetailActivity" />
 
 
 

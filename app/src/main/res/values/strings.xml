@@ -36,4 +36,6 @@
     <string name="action_leave_chatroom">Leave chatroom</string>
     <string name="action_chatroom_user_list">User list</string>
     <string name="action_profile">Profile</string>
+    <string name="default_web_client_id">fake-client-id.apps.googleusercontent.com</string>
+
 </resources>

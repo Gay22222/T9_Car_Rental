@@ -21,6 +21,6 @@
     <color name="darkGrey">#a6a6a6 </color>
     <color name="Grey">#c3c3c3 </color>
     <color name="Black">#000 </color>
-
+    <color name="transparent">#00000000</color>
 
 </resources>
