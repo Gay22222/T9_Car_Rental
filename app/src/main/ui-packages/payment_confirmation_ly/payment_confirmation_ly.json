@@ -1,0 +1,2288 @@
+{
+  "name": "payment_confirmation_ly",
+  "version": 33,
+  "source-key": {
+    "type": "figma",
+    "file": "MRoLQWAqZ10TRTFz8Qqo0a",
+    "node": "33604:1361",
+    "version": "2221106998698532008",
+    "component-id": "6d4b95e1cb830b894b9acdd366a23f08ea223122"
+  },
+  "default": "PAYMENT CONFIRMATION - Ly",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "group",
+        "id": "Status Bar"
+      },
+      {
+        "type": "group",
+        "id": "Text Field"
+      },
+      {
+        "type": "text",
+        "id": "Text"
+      },
+      {
+        "type": "group",
+        "id": "Text Field1"
+      },
+      {
+        "type": "text",
+        "id": "Text1"
+      },
+      {
+        "type": "group",
+        "id": "Text Field2"
+      },
+      {
+        "type": "text",
+        "id": "Text2"
+      },
+      {
+        "type": "group",
+        "id": "Text Field3"
+      },
+      {
+        "type": "text",
+        "id": "Text3"
+      },
+      {
+        "type": "text",
+        "id": "Text4"
+      },
+      {
+        "type": "text",
+        "id": "Text5"
+      },
+      {
+        "type": "group",
+        "id": "Text Field4"
+      },
+      {
+        "type": "text",
+        "id": "Text6"
+      },
+      {
+        "type": "group",
+        "id": "Text Field5"
+      },
+      {
+        "type": "text",
+        "id": "Text7"
+      },
+      {
+        "type": "group",
+        "id": "Text Field6"
+      },
+      {
+        "type": "group",
+        "id": "Controls / Text Fields"
+      },
+      {
+        "type": "text",
+        "id": "Text8"
+      },
+      {
+        "type": "group",
+        "id": "Bars"
+      },
+      {
+        "type": "vector",
+        "id": "Line 6"
+      },
+      {
+        "type": "group",
+        "id": "Bars1"
+      },
+      {
+        "type": "vector",
+        "id": "Line 7"
+      },
+      {
+        "type": "group",
+        "id": "Button"
+      },
+      {
+        "type": "group",
+        "id": "Status Bar1"
+      },
+      {
+        "type": "group",
+        "id": "BG"
+      },
+      {
+        "type": "group",
+        "id": "Right Side"
+      },
+      {
+        "type": "group",
+        "id": "Left Side"
+      },
+      {
+        "type": "vector",
+        "id": "Notch"
+      },
+      {
+        "type": "group",
+        "id": "Battery"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle"
+      },
+      {
+        "type": "vector",
+        "id": "Combined Shape"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle1"
+      },
+      {
+        "type": "vector",
+        "id": "9:41"
+      },
+      {
+        "type": "group",
+        "id": "Controls / Text Fields1"
+      },
+      {
+        "type": "vector",
+        "id": "Field"
+      },
+      {
+        "type": "text",
+        "id": "Text9"
+      },
+      {
+        "type": "group",
+        "id": "Controls / Text Fields2"
+      },
+      {
+        "type": "vector",
+        "id": "Field1"
+      },
+      {
+        "type": "text",
+        "id": "Text10"
+      },
+      {
+        "type": "group",
+        "id": "Controls / Text Fields3"
+      },
+      {
+        "type": "vector",
+        "id": "Field2"
+      },
+      {
+        "type": "text",
+        "id": "Text11"
+      },
+      {
+        "type": "group",
+        "id": "Controls / Text Fields4"
+      },
+      {
+        "type": "vector",
+        "id": "Field3"
+      },
+      {
+        "type": "text",
+        "id": "Text12"
+      },
+      {
+        "type": "group",
+        "id": "Controls / Text Fields5"
+      },
+      {
+        "type": "vector",
+        "id": "Field4"
+      },
+      {
+        "type": "text",
+        "id": "Text13"
+      },
+      {
+        "type": "group",
+        "id": "Controls / Text Fields6"
+      },
+      {
+        "type": "vector",
+        "id": "Field5"
+      },
+      {
+        "type": "text",
+        "id": "Text14"
+      },
+      {
+        "type": "group",
+        "id": "Controls / Text Fields7"
+      },
+      {
+        "type": "vector",
+        "id": "Field6"
+      },
+      {
+        "type": "text",
+        "id": "Text15"
+      },
+      {
+        "type": "vector",
+        "id": "Field7"
+      },
+      {
+        "type": "text",
+        "id": "Text16"
+      },
+      {
+        "type": "text",
+        "id": "Title"
+      },
+      {
+        "type": "text",
+        "id": "Right Actionable"
+      },
+      {
+        "type": "group",
+        "id": "Left Actionable"
+      },
+      {
+        "type": "vector",
+        "id": "Vector"
+      },
+      {
+        "type": "text",
+        "id": "Title1"
+      },
+      {
+        "type": "text",
+        "id": "Right Actionable1"
+      },
+      {
+        "type": "group",
+        "id": "Left Actionable1"
+      },
+      {
+        "type": "vector",
+        "id": "Vector1"
+      },
+      {
+        "type": "group",
+        "id": "Button1"
+      },
+      {
+        "type": "text",
+        "id": "Text17"
+      }
+    ],
+    "modes": {
+      "PAYMENT CONFIRMATION - Ly": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": false,
+            "children": [
+              "Status Bar",
+              "Text Field",
+              "Text",
+              "Text Field1",
+              "Text1",
+              "Text Field2",
+              "Text2",
+              "Text Field3",
+              "Text3",
+              "Text4",
+              "Text5",
+              "Text Field4",
+              "Text6",
+              "Text Field5",
+              "Text7",
+              "Text Field6",
+              "Controls / Text Fields",
+              "Text8",
+              "Bars",
+              "Line 6",
+              "Bars1",
+              "Line 7",
+              "Button"
+            ],
+            "background-color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            }
+          },
+          {
+            "id": "Status Bar",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 412.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 48.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Status Bar1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text Field",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 134.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 102.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 242.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 29.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Controls / Text Fields1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text",
+            "margin": {
+              "left": 28.0,
+              "right": 302.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": -341.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 216.20689655172413,
+              "saturation": 0.48535564853556484,
+              "value": 0.9372549019607843
+            },
+            "text-content": "Họ tên",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Text Field1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 134.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 149.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 242.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 29.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Controls / Text Fields2"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text1",
+            "margin": {
+              "left": 25.0,
+              "right": 305.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": -294.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 216.20689655172413,
+              "saturation": 0.48535564853556484,
+              "value": 0.9372549019607843
+            },
+            "text-content": "Email",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Text Field2",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 134.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 197.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 242.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 29.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Controls / Text Fields3"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text2",
+            "margin": {
+              "left": 25.0,
+              "right": 305.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": -246.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 216.20689655172413,
+              "saturation": 0.48535564853556484,
+              "value": 0.9372549019607843
+            },
+            "text-content": "SĐT",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Text Field3",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 135.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 360.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 242.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 29.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Controls / Text Fields4"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text3",
+            "margin": {
+              "left": 26.0,
+              "right": 304.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": -83.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 216.20689655172413,
+              "saturation": 0.48535564853556484,
+              "value": 0.9372549019607843
+            },
+            "text-content": "Giá",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Text4",
+            "margin": {
+              "left": 26.0,
+              "right": 116.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": -132.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "font-weight": 600.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 209.6,
+              "saturation": 0.8823529411764706,
+              "value": 1.0
+            },
+            "text-content": "Volkswagen Viloran Luxury",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 20.0,
+            "line-height": 0.8,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Text5",
+            "margin": {
+              "left": 26.0,
+              "right": 147.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 121.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "font-weight": 600.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 209.6,
+              "saturation": 0.8823529411764706,
+              "value": 1.0
+            },
+            "text-content": "Tổng tiền cần thanh toán:",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Text Field4",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 135.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 413.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 242.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 29.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Controls / Text Fields5"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text6",
+            "margin": {
+              "left": 26.0,
+              "right": 304.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": -30.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 216.20689655172413,
+              "saturation": 0.48535564853556484,
+              "value": 0.9372549019607843
+            },
+            "text-content": "Nơi đỗ xe",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Text Field5",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 135.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 466.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 242.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 29.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Controls / Text Fields6"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text7",
+            "margin": {
+              "left": 26.0,
+              "right": 277.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 22.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 216.20689655172413,
+              "saturation": 0.48535564853556484,
+              "value": 0.9372549019607843
+            },
+            "text-content": "Ngày nhận",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Text Field6",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 135.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 519.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 242.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 29.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Controls / Text Fields7"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Controls / Text Fields",
+            "margin": {
+              "left": 31.0,
+              "top": 600.0,
+              "right": 35.0,
+              "bottom": 288.0
+            },
+            "border-radius": 8.0,
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 0.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "stroke-alignment": "outside",
+            "is-structured": false,
+            "children": [
+              "Field7",
+              "Text16"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text8",
+            "margin": {
+              "left": 26.0,
+              "right": 277.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 75.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 216.20689655172413,
+              "saturation": 0.48535564853556484,
+              "value": 0.9372549019607843
+            },
+            "text-content": "Ngày trả",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Bars",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -16.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 48.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 412.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 54.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Title",
+              "Right Actionable",
+              "Left Actionable"
+            ],
+            "background-color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            },
+            "clip-content": false
+          },
+          {
+            "id": "Line 6",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 25.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 90.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 351.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              }
+            },
+            "vector-content": "line_6.svg"
+          },
+          {
+            "id": "Bars1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -15.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 257.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 412.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 54.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Title1",
+              "Right Actionable1",
+              "Left Actionable1"
+            ],
+            "background-color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            },
+            "clip-content": false
+          },
+          {
+            "id": "Line 7",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 26.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 299.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 351.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              }
+            },
+            "vector-content": "line_7.svg"
+          },
+          {
+            "id": "Button",
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 4.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 32.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 670.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 345.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 48.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Button1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Status Bar1",
+            "is-structured": false,
+            "children": [
+              "BG",
+              "Right Side",
+              "Left Side"
+            ]
+          },
+          {
+            "id": "BG",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 78.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Notch"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Right Side",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 330.6661682128906
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 17.33074951171875
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 66.66189575195312
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.335957527160645
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Battery"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Left Side",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 33.453521728515625
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 17.16748046875
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.42616844177246
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0888671875
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "9:41"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Notch",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 127.5
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 219.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 30.0
+              }
+            }
+          },
+          {
+            "id": "Battery",
+            "margin": {
+              "left": 42.3338623046875,
+              "top": 0.00262451171875
+            },
+            "is-structured": false,
+            "children": [
+              "Rectangle",
+              "Combined Shape",
+              "Rectangle1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Rectangle",
+            "border-radius": 2.6666667461395264,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -2.3280677795410156
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 22.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.333333015441895
+              }
+            },
+            "vector-content": "rectangle.svg"
+          },
+          {
+            "id": "Combined Shape",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -0.000029802322387695312
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 3.6666259765625
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 1.328037977218628
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 4.0
+              }
+            },
+            "vector-content": "combined_shape.svg"
+          },
+          {
+            "id": "Rectangle1",
+            "border-radius": 1.3333333730697632,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -4.328067779541016
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 18.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 7.333333492279053
+              }
+            },
+            "vector-content": "rectangle1.svg"
+          },
+          {
+            "id": "9:41",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.42616844177246
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0888671875
+              }
+            },
+            "vector-content": "9_41.svg"
+          },
+          {
+            "id": "Controls / Text Fields1",
+            "border-radius": 8.0,
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 0.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "stroke-alignment": "outside",
+            "is-structured": false,
+            "children": [
+              "Field",
+              "Text9"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Field",
+            "border-radius": 8.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "field.svg"
+          },
+          {
+            "id": "Text9",
+            "margin": {
+              "left": 16.0,
+              "right": 16.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "Trương Đăng Khôi",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Controls / Text Fields2",
+            "border-radius": 8.0,
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 0.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "stroke-alignment": "outside",
+            "is-structured": false,
+            "children": [
+              "Field1",
+              "Text10"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Field1",
+            "border-radius": 8.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "field1.svg"
+          },
+          {
+            "id": "Text10",
+            "margin": {
+              "left": 16.0,
+              "right": 16.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "khoi123@gmail.com",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Controls / Text Fields3",
+            "border-radius": 8.0,
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 0.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "stroke-alignment": "outside",
+            "is-structured": false,
+            "children": [
+              "Field2",
+              "Text11"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Field2",
+            "border-radius": 8.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "field2.svg"
+          },
+          {
+            "id": "Text11",
+            "margin": {
+              "left": 16.0,
+              "right": 16.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "0987 654 321",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Controls / Text Fields4",
+            "border-radius": 8.0,
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 0.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "stroke-alignment": "outside",
+            "is-structured": false,
+            "children": [
+              "Field3",
+              "Text12"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Field3",
+            "border-radius": 8.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "field3.svg"
+          },
+          {
+            "id": "Text12",
+            "margin": {
+              "left": 16.0,
+              "right": 16.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "100.000(VNĐ)/Ngày",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Controls / Text Fields5",
+            "border-radius": 8.0,
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 0.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "stroke-alignment": "outside",
+            "is-structured": false,
+            "children": [
+              "Field4",
+              "Text13"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Field4",
+            "border-radius": 8.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "field4.svg"
+          },
+          {
+            "id": "Text13",
+            "margin": {
+              "left": 16.0,
+              "right": 16.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "UIT",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Controls / Text Fields6",
+            "border-radius": 8.0,
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 0.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "stroke-alignment": "outside",
+            "is-structured": false,
+            "children": [
+              "Field5",
+              "Text14"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Field5",
+            "border-radius": 8.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "field5.svg"
+          },
+          {
+            "id": "Text14",
+            "margin": {
+              "left": 16.0,
+              "right": 16.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "01/02/2025",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Controls / Text Fields7",
+            "border-radius": 8.0,
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 0.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "stroke-alignment": "outside",
+            "is-structured": false,
+            "children": [
+              "Field6",
+              "Text15"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Field6",
+            "border-radius": 8.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "field6.svg"
+          },
+          {
+            "id": "Text15",
+            "margin": {
+              "left": 16.0,
+              "right": 16.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "02/02/2025",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Field7",
+            "border-radius": 8.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "field7.svg"
+          },
+          {
+            "id": "Text16",
+            "margin": {
+              "left": 16.0,
+              "right": 16.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "1.000.000 VNĐ",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 17.510000228881836,
+            "line-height": 0.9137635803222657,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Title",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.0
+              }
+            },
+            "font-weight": 600.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 209.6,
+              "saturation": 0.8823529411764706,
+              "value": 1.0
+            },
+            "text-content": "Thông tin nhà cung cấp",
+            "overflow": "visible",
+            "text-align-vertical": "center",
+            "text-size": 22.0,
+            "line-height": 0.8181818389892578,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Right Actionable",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -24.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.0
+              }
+            },
+            "font-weight": 500.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 249.7752808988764,
+              "saturation": 0.6980392156862745,
+              "value": 1.0
+            },
+            "text-content": "Use email instead",
+            "overflow": "visible",
+            "text-align": "right",
+            "text-align-vertical": "center",
+            "text-size": 18.0,
+            "typeface": "Inter"
+          },
+          {
+            "id": "Left Actionable",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 16.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Vector"
+            ]
+          },
+          {
+            "id": "Vector",
+            "margin": {
+              "left": 10.5,
+              "top": 5.0,
+              "right": 10.5,
+              "bottom": 9.0
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            }
+          },
+          {
+            "id": "Title1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.0
+              }
+            },
+            "font-weight": 600.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 209.6,
+              "saturation": 0.8823529411764706,
+              "value": 1.0
+            },
+            "text-content": "Thông tin xe",
+            "overflow": "visible",
+            "text-align-vertical": "center",
+            "text-size": 22.0,
+            "line-height": 0.8181818389892578,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Right Actionable1",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -24.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.0
+              }
+            },
+            "font-weight": 500.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 249.7752808988764,
+              "saturation": 0.6980392156862745,
+              "value": 1.0
+            },
+            "text-content": "Use email instead",
+            "overflow": "visible",
+            "text-align": "right",
+            "text-align-vertical": "center",
+            "text-size": 18.0,
+            "typeface": "Inter"
+          },
+          {
+            "id": "Left Actionable1",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 16.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Vector1"
+            ]
+          },
+          {
+            "id": "Vector1",
+            "margin": {
+              "left": 10.5,
+              "top": 5.0,
+              "right": 10.5,
+              "bottom": 9.0
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            }
+          },
+          {
+            "id": "Button1",
+            "border-radius": 48.0,
+            "is-structured": false,
+            "children": [
+              "Text17"
+            ],
+            "fills": [
+              {
+                "color": {},
+                "opacity": 1.0,
+                "fill-type": "lineargradient",
+                "blend-mode": "normal",
+                "color-stops": [
+                  {
+                    "color": {
+                      "alpha": 1.0,
+                      "hue": 216.20689655172413,
+                      "saturation": 0.48535564853556484,
+                      "value": 0.9372549019607843
+                    },
+                    "color-stop-position": 0.29
+                  },
+                  {
+                    "color": {
+                      "alpha": 1.0,
+                      "hue": 209.6,
+                      "saturation": 0.8823529411764706,
+                      "value": 1.0
+                    },
+                    "color-stop-position": 0.85
+                  }
+                ],
+                "gradient-handle-positions": [
+                  {
+                    "x": 0.0,
+                    "y": 0.5
+                  },
+                  {
+                    "x": 1.0,
+                    "y": 0.5
+                  },
+                  {
+                    "x": 0.0,
+                    "y": 1.0
+                  }
+                ]
+              }
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text17",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 1.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            },
+            "text-content": "Xác nhận và thanh toán",
+            "overflow": "visible",
+            "text-align-vertical": "center",
+            "text-size": 22.0,
+            "line-height": 0.8181818389892578,
+            "typeface": "Roboto Flex"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "PAYMENT CONFIRMATION - Ly",
+      "size": {
+        "width": 412.0,
+        "height": 917.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

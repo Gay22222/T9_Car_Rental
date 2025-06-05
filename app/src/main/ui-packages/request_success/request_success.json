@@ -1,0 +1,993 @@
+{
+  "name": "request_success",
+  "version": 33,
+  "source-key": {
+    "type": "figma",
+    "file": "MRoLQWAqZ10TRTFz8Qqo0a",
+    "node": "33604:1350",
+    "version": "2221113506087177971",
+    "component-id": "7bac44851118cf4fbe5aa7ac69cec0f1c0983bfd"
+  },
+  "default": "REQUEST SUCCESS",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "group",
+        "id": "Group 386"
+      },
+      {
+        "type": "group",
+        "id": "Group 387"
+      },
+      {
+        "type": "group",
+        "id": "Group 385"
+      },
+      {
+        "type": "group",
+        "id": "Button"
+      },
+      {
+        "type": "group",
+        "id": "Button1"
+      },
+      {
+        "type": "text",
+        "id": "Text"
+      },
+      {
+        "type": "group",
+        "id": "Group 388"
+      },
+      {
+        "type": "group",
+        "id": "Group 389"
+      },
+      {
+        "type": "group",
+        "id": "Bars"
+      },
+      {
+        "type": "group",
+        "id": "Status Bar"
+      },
+      {
+        "type": "image",
+        "id": "original-0270c1e5eb77eba7f50a2a64ae316475 1"
+      },
+      {
+        "type": "group",
+        "id": "Phosphor Icons / ChatCircle"
+      },
+      {
+        "type": "image",
+        "id": "c 2"
+      },
+      {
+        "type": "text",
+        "id": "yêu cầu sẽ được phê duyệt trong vòng 48h. nhớ kiểm tra thông báo để sớm được phông bạt nhé!!!"
+      },
+      {
+        "type": "image",
+        "id": "2617918 1"
+      },
+      {
+        "type": "text",
+        "id": "Title"
+      },
+      {
+        "type": "text",
+        "id": "Right Actionable"
+      },
+      {
+        "type": "group",
+        "id": "Left Actionable"
+      },
+      {
+        "type": "vector",
+        "id": "Vector"
+      },
+      {
+        "type": "group",
+        "id": "BG"
+      },
+      {
+        "type": "group",
+        "id": "Right Side"
+      },
+      {
+        "type": "group",
+        "id": "Left Side"
+      },
+      {
+        "type": "vector",
+        "id": "Notch"
+      },
+      {
+        "type": "group",
+        "id": "Battery"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle"
+      },
+      {
+        "type": "vector",
+        "id": "Combined Shape"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle1"
+      },
+      {
+        "type": "vector",
+        "id": "9:41"
+      },
+      {
+        "type": "vector",
+        "id": "Vector1"
+      },
+      {
+        "type": "vector",
+        "id": "Vector2"
+      }
+    ],
+    "modes": {
+      "REQUEST SUCCESS": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": false,
+            "children": [
+              "Group 386",
+              "Group 387"
+            ],
+            "background-color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            }
+          },
+          {
+            "id": "Group 386",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 123.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 857.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 177.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 36.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Group 385"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Group 387",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -31.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 479.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 841.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Group 388"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Group 385",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 177.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 36.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Button"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Button",
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 4.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 177.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 36.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Button1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Button1",
+            "border-radius": 48.0,
+            "is-structured": false,
+            "children": [
+              "Text"
+            ],
+            "fills": [
+              {
+                "color": {},
+                "opacity": 1.0,
+                "fill-type": "lineargradient",
+                "blend-mode": "normal",
+                "color-stops": [
+                  {
+                    "color": {
+                      "alpha": 1.0,
+                      "hue": 16.25615763546798,
+                      "saturation": 0.7960784313725491,
+                      "value": 1.0
+                    },
+                    "color-stop-position": 0.0
+                  },
+                  {
+                    "color": {
+                      "alpha": 1.0,
+                      "hue": 16.194690265486724,
+                      "saturation": 0.9658119658119658,
+                      "value": 0.9176470588235294
+                    },
+                    "color-stop-position": 0.65
+                  },
+                  {
+                    "color": {
+                      "alpha": 1.0,
+                      "hue": 16.153846153846153,
+                      "saturation": 0.9952153110047847,
+                      "value": 0.8196078431372549
+                    },
+                    "color-stop-position": 1.0
+                  }
+                ],
+                "gradient-handle-positions": [
+                  {
+                    "x": 0.0,
+                    "y": 0.5
+                  },
+                  {
+                    "x": 1.0,
+                    "y": 0.5
+                  },
+                  {
+                    "x": 0.0,
+                    "y": 1.0
+                  }
+                ]
+              }
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 1.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.0
+              }
+            },
+            "font-weight": 700.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            },
+            "text-content": "VỀ TRANG CHỦ",
+            "overflow": "visible",
+            "text-align-vertical": "center",
+            "text-size": 22.0,
+            "line-height": 0.8181818389892578,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Group 388",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 479.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 841.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Group 389"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Group 389",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 479.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 841.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Bars",
+              "Status Bar",
+              "original-0270c1e5eb77eba7f50a2a64ae316475 1",
+              "Phosphor Icons / ChatCircle",
+              "c 2",
+              "yêu cầu sẽ được phê duyệt trong vòng 48h. nhớ kiểm tra thông báo để sớm được phông bạt nhé!!!",
+              "2617918 1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Bars",
+            "margin": {
+              "left": 31.0,
+              "right": 36.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 48.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 48.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Title",
+              "Right Actionable",
+              "Left Actionable"
+            ],
+            "background-color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            },
+            "clip-content": false
+          },
+          {
+            "id": "Status Bar",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 30.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 412.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 48.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "BG",
+              "Right Side",
+              "Left Side"
+            ]
+          },
+          {
+            "id": "original-0270c1e5eb77eba7f50a2a64ae316475 1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 31.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 141.0
+              }
+            },
+            "relative-transform": [
+              [
+                -1.0,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0,
+                0.0
+              ]
+            ],
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 442.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 257.0
+              }
+            },
+            "image-content": "original_0270c1e5eb77eba7f50a2a64ae316475_1.png",
+            "scale": "cover"
+          },
+          {
+            "id": "Phosphor Icons / ChatCircle",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 65.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 398.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 414.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 336.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Vector1",
+              "Vector2"
+            ],
+            "background-color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            },
+            "clip-content": false
+          },
+          {
+            "id": "c 2",
+            "border-radius": 18.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 46.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 695.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 228.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 146.0
+              }
+            },
+            "image-content": "c_2.png",
+            "scale": "cover"
+          },
+          {
+            "id": "yêu cầu sẽ được phê duyệt trong vòng 48h. nhớ kiểm tra thông báo để sớm được phông bạt nhé!!!",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 184.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 502.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 211.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 121.0
+              }
+            },
+            "font-weight": 600.0,
+            "text-content": "yêu cầu sẽ được phê duyệt trong vòng 48h.\nnhớ kiểm tra thông báo để sớm được phông bạt nhé!!!",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-size": 19.700000762939453,
+            "line-height": 1.1718749546157545,
+            "typeface": "Roboto Flex",
+            "case": "upper"
+          },
+          {
+            "id": "2617918 1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 31.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 141.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 186.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 186.0
+              }
+            },
+            "image-content": "2617918_1.png",
+            "scale": "cover"
+          },
+          {
+            "id": "Title",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 0.5
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.0
+              }
+            },
+            "font-weight": 700.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 180.0,
+              "saturation": 0.1,
+              "value": 0.0392156862745098
+            },
+            "text-content": "Thuê Xe",
+            "overflow": "visible",
+            "text-align-vertical": "center",
+            "text-size": 25.0,
+            "line-height": 0.72,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Right Actionable",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -24.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.0
+              }
+            },
+            "font-weight": 500.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 249.7752808988764,
+              "saturation": 0.6980392156862745,
+              "value": 1.0
+            },
+            "text-content": "Use email instead",
+            "overflow": "visible",
+            "text-align": "right",
+            "text-align-vertical": "center",
+            "text-size": 18.0,
+            "typeface": "Inter"
+          },
+          {
+            "id": "Left Actionable",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 16.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Vector"
+            ]
+          },
+          {
+            "id": "Vector",
+            "margin": {
+              "left": 10.5,
+              "top": 5.0,
+              "right": 10.5,
+              "bottom": 9.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -0.75
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -0.75
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "vector.svg"
+          },
+          {
+            "id": "BG",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 78.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Notch"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Right Side",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 330.6671142578125
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 17.33074951171875
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 66.66091918945312
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.33594799041748
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Battery"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Left Side",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 33.45361328125
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 17.16748046875
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.42616844177246
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0888671875
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "9:41"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Notch",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 127.5
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 219.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 30.0
+              }
+            }
+          },
+          {
+            "id": "Battery",
+            "margin": {
+              "left": 42.3328857421875,
+              "top": 0.00262451171875
+            },
+            "is-structured": false,
+            "children": [
+              "Rectangle",
+              "Combined Shape",
+              "Rectangle1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Rectangle",
+            "border-radius": 2.6666667461395264,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -2.3280372619628906
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 22.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.333333015441895
+              }
+            },
+            "vector-content": "rectangle.svg"
+          },
+          {
+            "id": "Combined Shape",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": 7.152557373046875e-7
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 3.6666259765625
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 1.328037977218628
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 4.0
+              }
+            },
+            "vector-content": "combined_shape.svg"
+          },
+          {
+            "id": "Rectangle1",
+            "border-radius": 1.3333333730697632,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -4.328037261962891
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 18.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 7.333333492279053
+              }
+            },
+            "vector-content": "rectangle1.svg"
+          },
+          {
+            "id": "9:41",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.42616844177246
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0888671875
+              }
+            },
+            "vector-content": "9_41.svg"
+          },
+          {
+            "id": "Vector1",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            }
+          },
+          {
+            "id": "Vector2",
+            "margin": {
+              "left": 51.74560546875,
+              "top": 42.265625,
+              "right": 52.077301025390625,
+              "bottom": 41.99639892578125
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "vector1.svg"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "REQUEST SUCCESS",
+      "size": {
+        "width": 412.0,
+        "height": 917.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

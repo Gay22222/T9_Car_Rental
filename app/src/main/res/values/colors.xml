@@ -18,9 +18,24 @@
     <color name="blue1">#66a3ff</color>
     <color name="blue2">#0033cc</color>
     <color name="White">#fff</color>
-    <color name="darkGrey">#a6a6a6 </color>
-    <color name="Grey">#c3c3c3 </color>
-    <color name="Black">#000 </color>
+    <color name="darkGrey">#a6a6a6</color>
+    <color name="Grey">#c3c3c3</color>
+    <color name="Black">#000</color>
     <color name="transparent">#00000000</color>
 
+    <!-- Màu cho gradient -->
+    <color name="gradient_login_start">#7BA9F0</color>
+    <color name="gradient_login_end">#1E90FF</color>
+    <color name="gradient_register_start">#E8A159</color>
+    <color name="gradient_register_end">#F56928</color>
+    <color name="gradient_social_start">#3A4049</color>
+    <color name="gradient_social_end">#20252A</color>
+    <color name="splash_scroll_active">#0086D5</color>
+    <color name="splash_title">#141523</color>
+    <color name="splash_description">#A1A1A1</color>
+
+    <color name="text_title">#00318B</color> <!-- Hue: 219.42, Saturation: 0.99, Value: 0.54 -->
+    <color name="text_instruction">#6B000000</color> <!-- Alpha: 0.42, Black -->
+    <color name="text_input_hint">#B0B0B0</color> <!-- Value: 0.69, Gray -->
+    <color name="or_text">#2F4A94</color> <!-- Hue: 225.8, Saturation: 0.89, Value: 0.58 -->
 </resources>

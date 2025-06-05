@@ -1,0 +1,1174 @@
+{
+  "name": "sflash_2_my",
+  "version": 33,
+  "source-key": {
+    "type": "figma",
+    "file": "MRoLQWAqZ10TRTFz8Qqo0a",
+    "node": "33604:1385",
+    "version": "2221113062665392143",
+    "component-id": "53f31409df12b4564c858a9094fe07b6cec59774"
+  },
+  "default": "SFLASH (2) - My",
+  "documentation": "SF2",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "image",
+        "id": "image"
+      },
+      {
+        "type": "group",
+        "id": "description-card"
+      },
+      {
+        "type": "group",
+        "id": "Status Bar"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq1"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq2"
+      },
+      {
+        "type": "group",
+        "id": "Phosphor Icons / Star"
+      },
+      {
+        "type": "group",
+        "id": "Group 370"
+      },
+      {
+        "type": "group",
+        "id": "Frame 1"
+      },
+      {
+        "type": "group",
+        "id": "scroll-circles"
+      },
+      {
+        "type": "image",
+        "id": "Screenshot_2025-04-03_154923-removebg-preview 2"
+      },
+      {
+        "type": "group",
+        "id": "description"
+      },
+      {
+        "type": "group",
+        "id": "scroll-circle"
+      },
+      {
+        "type": "group",
+        "id": "scroll-circle1"
+      },
+      {
+        "type": "group",
+        "id": "scroll-circle2"
+      },
+      {
+        "type": "group",
+        "id": "scroll-circle3"
+      },
+      {
+        "type": "text",
+        "id": "Tìm xe dễ dàng"
+      },
+      {
+        "type": "text",
+        "id": "Lọc theo giá, địa điểm và loại xe để có lựa chọn tốt nhất."
+      },
+      {
+        "type": "group",
+        "id": "BG"
+      },
+      {
+        "type": "group",
+        "id": "Right Side"
+      },
+      {
+        "type": "group",
+        "id": "Left Side"
+      },
+      {
+        "type": "vector",
+        "id": "Notch"
+      },
+      {
+        "type": "group",
+        "id": "Battery"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle"
+      },
+      {
+        "type": "vector",
+        "id": "Combined Shape"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle1"
+      },
+      {
+        "type": "vector",
+        "id": "9:41"
+      },
+      {
+        "type": "vector",
+        "id": "Vector"
+      },
+      {
+        "type": "vector",
+        "id": "Vector1"
+      },
+      {
+        "type": "group",
+        "id": "Button"
+      },
+      {
+        "type": "group",
+        "id": "Phosphor Icons / ArrowRight"
+      },
+      {
+        "type": "group",
+        "id": "Button1"
+      },
+      {
+        "type": "text",
+        "id": "Text"
+      },
+      {
+        "type": "vector",
+        "id": "Vector2"
+      },
+      {
+        "type": "vector",
+        "id": "Vector3"
+      },
+      {
+        "type": "vector",
+        "id": "Vector4"
+      }
+    ],
+    "modes": {
+      "SFLASH (2) - My": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": false,
+            "children": [
+              "image",
+              "description-card",
+              "Status Bar",
+              "Range Rover Evoq",
+              "Range Rover Evoq1",
+              "Range Rover Evoq2",
+              "Phosphor Icons / Star",
+              "Group 370"
+            ],
+            "background-color": {
+              "alpha": 1.0,
+              "hue": 217.05882352941174,
+              "saturation": 0.139917695473251,
+              "value": 0.9529411764705882
+            }
+          },
+          {
+            "id": "image",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 525.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 1023.0
+              }
+            },
+            "image-content": "image.png",
+            "scale": "cover",
+            "fills": [
+              {
+                "color": {},
+                "opacity": 1.0,
+                "fill-type": "image",
+                "blend-mode": "normal",
+                "color-stops": [],
+                "gradient-handle-positions": []
+              },
+              {
+                "color": {
+                  "alpha": 0.2980392156862745,
+                  "hue": 209.6,
+                  "saturation": 0.8823529411764706,
+                  "value": 1.0
+                },
+                "opacity": 1.0,
+                "fill-type": "solid",
+                "blend-mode": "normal",
+                "color-stops": [],
+                "gradient-handle-positions": []
+              }
+            ]
+          },
+          {
+            "id": "description-card",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 0.0000029802313292748295
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": 0.000018984078451467212
+              }
+            },
+            "relative-transform": [
+              [
+                0.9999999403953552,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                0.9999999403953552,
+                0.0
+              ]
+            ],
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 412.0000305175781
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 387.0000305175781
+              }
+            },
+            "main-axis-align": "start",
+            "children": [
+              "Frame 1"
+            ],
+            "background-color": {
+              "alpha": 0.8,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            },
+            "clip-content": false
+          },
+          {
+            "id": "Status Bar",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 412.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 48.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "BG",
+              "Right Side",
+              "Left Side"
+            ]
+          },
+          {
+            "id": "Range Rover Evoq",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -131.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": 105.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "Honda Civic 2025",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 19.700000762939453,
+            "line-height": 1.1718749546157545,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Range Rover Evoq1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -103.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": 135.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "4.7 (5 Đánh giá)",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Range Rover Evoq2",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": 28.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": 105.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "750.000VNĐ/Ngày",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Phosphor Icons / Star",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 43.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 1026.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Vector",
+              "Vector1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Group 370",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 40.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 830.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 328.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 48.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Button",
+              "Phosphor Icons / ArrowRight"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Frame 1",
+            "padding": 25.0,
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "children": [
+              "scroll-circles",
+              "Screenshot_2025-04-03_154923-removebg-preview 2",
+              "description"
+            ],
+            "item-spacing": 20.0,
+            "clip-content": false
+          },
+          {
+            "id": "scroll-circles",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "arrangement": "row",
+            "children": [
+              "scroll-circle",
+              "scroll-circle1",
+              "scroll-circle2",
+              "scroll-circle3"
+            ],
+            "item-spacing": 8.756743431091309,
+            "clip-content": false
+          },
+          {
+            "id": "Screenshot_2025-04-03_154923-removebg-preview 2",
+            "relative-transform": [
+              [
+                1.0000001192092896,
+                0.0,
+                0.0
+              ],
+              [
+                0.0,
+                1.0000001192092896,
+                0.0
+              ]
+            ],
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 83.9999771118164
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 56.85712432861328
+              }
+            },
+            "image-content": "screenshot_2025_04_03_154923_removebg_preview_2.png",
+            "scale": "cover"
+          },
+          {
+            "id": "description",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "shrink"
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "children": [
+              "Tìm xe dễ dàng",
+              "Lọc theo giá, địa điểm và loại xe để có lựa chọn tốt nhất."
+            ],
+            "item-spacing": 8.756743431091309,
+            "clip-content": false
+          },
+          {
+            "id": "scroll-circle",
+            "border-radius": 3.283778667449951,
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 17.51348581829734
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 6.567557420280082
+              }
+            },
+            "stroke-width": 1.0945929288864136,
+            "stroke-color": {
+              "alpha": 1.0,
+              "hue": 240.0,
+              "saturation": 0.008888888888888858,
+              "value": 0.8823529411764706
+            },
+            "is-structured": false,
+            "clip-content": false
+          },
+          {
+            "id": "scroll-circle1",
+            "border-radius": 3.283778667449951,
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 17.51348581829734
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 6.567557420280082
+              }
+            },
+            "is-structured": false,
+            "background-color": {
+              "alpha": 1.0,
+              "hue": 218.2222222222222,
+              "saturation": 1.0,
+              "value": 0.5294117647058824
+            },
+            "clip-content": false
+          },
+          {
+            "id": "scroll-circle2",
+            "border-radius": 3.283778667449951,
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 17.51348581829734
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 6.567557420280082
+              }
+            },
+            "stroke-width": 1.0945929288864136,
+            "stroke-color": {
+              "alpha": 1.0,
+              "hue": 240.0,
+              "saturation": 0.008888888888888858,
+              "value": 0.8823529411764706
+            },
+            "is-structured": false,
+            "clip-content": false
+          },
+          {
+            "id": "scroll-circle3",
+            "border-radius": 3.283778667449951,
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 17.51348581829734
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 6.567557420280082
+              }
+            },
+            "stroke-width": 1.0945929288864136,
+            "stroke-color": {
+              "alpha": 1.0,
+              "hue": 240.0,
+              "saturation": 0.008888888888888858,
+              "value": 0.8823529411764706
+            },
+            "is-structured": false,
+            "clip-content": false
+          },
+          {
+            "id": "Tìm xe dễ dàng",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 366.68860729404514
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "font-weight": 600.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 240.0,
+              "saturation": 0.05,
+              "value": 0.0784313725490196
+            },
+            "text-content": "Tìm xe dễ dàng",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-size": 32.0,
+            "line-height": 1.5,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Lọc theo giá, địa điểm và loại xe để có lựa chọn tốt nhất.",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 300.0000126361829
+              },
+              "height-constraints": {
+                "sizing-mode": "shrink"
+              }
+            },
+            "font-weight": 500.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6313725490196078
+            },
+            "text-content": "Lọc theo giá, địa điểm và loại xe để có lựa chọn tốt nhất.",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-size": 22.0,
+            "line-height": 1.5,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "BG",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 78.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Notch"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Right Side",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 330.667236328125
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 17.330810546875
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 66.66079711914062
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.33594799041748
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Battery"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Left Side",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 33.45361328125
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 17.16748046875
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.42616844177246
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0888671875
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "9:41"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Notch",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 127.5
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 219.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 30.0
+              }
+            }
+          },
+          {
+            "id": "Battery",
+            "margin": {
+              "left": 42.332763671875,
+              "top": 0.0025634765625,
+              "bottom": 0.0000514984130859375
+            },
+            "is-structured": false,
+            "children": [
+              "Rectangle",
+              "Combined Shape",
+              "Rectangle1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Rectangle",
+            "border-radius": 2.6666667461395264,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -2.3280372619628906
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 22.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.333333015441895
+              }
+            },
+            "vector-content": "rectangle.svg"
+          },
+          {
+            "id": "Combined Shape",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": 7.152557373046875e-7
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 3.666748046875
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 1.328037977218628
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 4.0
+              }
+            },
+            "vector-content": "combined_shape.svg"
+          },
+          {
+            "id": "Rectangle1",
+            "border-radius": 1.3333333730697632,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -4.328037261962891
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 18.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 7.333333492279053
+              }
+            },
+            "vector-content": "rectangle1.svg"
+          },
+          {
+            "id": "9:41",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.42616844177246
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0888671875
+              }
+            },
+            "vector-content": "9_41.svg"
+          },
+          {
+            "id": "Vector",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            }
+          },
+          {
+            "id": "Vector1",
+            "margin": {
+              "left": 2.9990234375,
+              "top": 2.992156982421875,
+              "right": 2.999034881591797,
+              "bottom": 3.997650146484375
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "vector.svg"
+          },
+          {
+            "id": "Button",
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 4.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 328.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 48.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Button1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Phosphor Icons / ArrowRight",
+            "drop-shadow": {
+              "color": {
+                "alpha": 0.24705882352941178,
+                "hue": 0.0,
+                "saturation": 0.0,
+                "value": 0.0
+              },
+              "blur": 4.0,
+              "offset-x": 0.0,
+              "offset-y": 4.0,
+              "spread": 0.0,
+              "blend-mode": "normal"
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 276.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 8.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              }
+            },
+            "stroke-color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.0
+            },
+            "is-structured": false,
+            "children": [
+              "Vector2",
+              "Vector3",
+              "Vector4"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Button1",
+            "border-radius": 48.0,
+            "is-structured": false,
+            "children": [
+              "Text"
+            ],
+            "fills": [
+              {
+                "color": {},
+                "opacity": 1.0,
+                "fill-type": "lineargradient",
+                "blend-mode": "normal",
+                "color-stops": [
+                  {
+                    "color": {
+                      "alpha": 1.0,
+                      "hue": 216.20689655172413,
+                      "saturation": 0.48535564853556484,
+                      "value": 0.9372549019607843
+                    },
+                    "color-stop-position": 0.29
+                  },
+                  {
+                    "color": {
+                      "alpha": 1.0,
+                      "hue": 209.6,
+                      "saturation": 0.8823529411764706,
+                      "value": 1.0
+                    },
+                    "color-stop-position": 0.85
+                  }
+                ],
+                "gradient-handle-positions": [
+                  {
+                    "x": 0.0,
+                    "y": 0.5
+                  },
+                  {
+                    "x": 1.0,
+                    "y": 0.5
+                  },
+                  {
+                    "x": 0.0,
+                    "y": 1.0
+                  }
+                ]
+              }
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Text",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": 0.0
+              }
+            },
+            "font-weight": 700.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            },
+            "text-content": "Tiếp theo",
+            "overflow": "visible",
+            "text-align-vertical": "center",
+            "text-size": 22.0,
+            "line-height": 0.8181818389892578,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Vector2",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            }
+          },
+          {
+            "id": "Vector3",
+            "margin": {
+              "left": 5.0,
+              "top": 16.0,
+              "right": 5.0,
+              "bottom": 16.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "vector1.svg"
+          },
+          {
+            "id": "Vector4",
+            "margin": {
+              "left": 18.0,
+              "top": 7.0,
+              "right": 5.0,
+              "bottom": 7.0
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -1.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "vector2.svg"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "SFLASH (2) - My",
+      "size": {
+        "width": 412.0,
+        "height": 917.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

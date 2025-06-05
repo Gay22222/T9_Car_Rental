@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E9EDF6">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/splash_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/image_splash_3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Description Card -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/description_card"
+        android:layout_width="412dp"
+        android:layout_height="387dp"
+        android:background="#CCFFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Scroll Circles -->
+        <LinearLayout
+            android:id="@+id/scroll_circles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:id="@+id/scroll_circle_1"
+                android:layout_width="17.5dp"
+                android:layout_height="6.6dp"
+                android:layout_marginEnd="8.8dp"
+                android:background="@drawable/splash_scroll_inactive" />
+
+            <View
+                android:id="@+id/scroll_circle_2"
+                android:layout_width="17.5dp"
+                android:layout_height="6.6dp"
+                android:layout_marginEnd="8.8dp"
+                android:background="@drawable/splash_scroll_inactive" />
+
+            <View
+                android:id="@+id/scroll_circle_3"
+                android:layout_width="17.5dp"
+                android:layout_height="6.6dp"
+                android:layout_marginEnd="8.8dp"
+                android:background="@color/splash_scroll_active" />
+
+            <View
+                android:id="@+id/scroll_circle_4"
+                android:layout_width="17.5dp"
+                android:layout_height="6.6dp"
+                android:background="@drawable/splash_scroll_inactive" />
+        </LinearLayout>
+
+        <!-- Logo -->
+        <ImageView
+            android:id="@+id/splash_logo"
+            android:layout_width="84dp"
+            android:layout_height="57dp"
+            android:layout_marginTop="30dp"
+            android:contentDescription="@string/app_name"
+            android:scaleType="centerCrop"
+            android:src="@drawable/screenshot_2025_04_03_154923_removebg_preview_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scroll_circles" />
+
+        <!-- Description -->
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="366dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:fontWeight="600"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.5"
+            android:text="Đặt xe nhanh chóng"
+            android:textColor="@color/splash_title"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/splash_logo" />
+
+        <TextView
+            android:id="@+id/description_text"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:fontWeight="500"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.5"
+            android:text="Chọn xe, xác nhận và lên đường ngay thôi."
+            android:textColor="@color/splash_description"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title_text" />
+
+        <Button
+            android:id="@+id/next_button"
+            style="@style/AppButton"
+            android:layout_width="328dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_gradient_splash_button"
+            android:drawableEnd="@drawable/vector2_2"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:fontWeight="700"
+            android:gravity="center"
+            android:text="Tiếp theo"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_text" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

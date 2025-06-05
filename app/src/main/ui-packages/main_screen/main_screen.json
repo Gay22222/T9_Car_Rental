@@ -1,0 +1,2357 @@
+{
+  "name": "main_screen",
+  "version": 33,
+  "source-key": {
+    "type": "figma",
+    "file": "MRoLQWAqZ10TRTFz8Qqo0a",
+    "node": "33604:1347",
+    "version": "2221113506087177971",
+    "component-id": "a3fcefe8cac9529d3afe5863fff5db0efba6a46a"
+  },
+  "default": "MAIN SCREEN",
+  "design": {
+    "atoms": [
+      {
+        "type": "group",
+        "id": "top_level",
+        "root": "true"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 17"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 18"
+      },
+      {
+        "type": "group",
+        "id": "Status Bar"
+      },
+      {
+        "type": "text",
+        "id": "Icon right"
+      },
+      {
+        "type": "group",
+        "id": "Views / Images: Avatars"
+      },
+      {
+        "type": "image",
+        "id": "Image"
+      },
+      {
+        "type": "image",
+        "id": "Image1"
+      },
+      {
+        "type": "group",
+        "id": "TextField2"
+      },
+      {
+        "type": "group",
+        "id": "Groups"
+      },
+      {
+        "type": "text",
+        "id": "View All"
+      },
+      {
+        "type": "text",
+        "id": "Top Brands"
+      },
+      {
+        "type": "text",
+        "id": "Top Brands1"
+      },
+      {
+        "type": "group",
+        "id": "Groups1"
+      },
+      {
+        "type": "text",
+        "id": "BMW"
+      },
+      {
+        "type": "text",
+        "id": "BMW1"
+      },
+      {
+        "type": "text",
+        "id": "BMW2"
+      },
+      {
+        "type": "text",
+        "id": "BMW3"
+      },
+      {
+        "type": "group",
+        "id": "Frame 457"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq"
+      },
+      {
+        "type": "group",
+        "id": "Frame 515"
+      },
+      {
+        "type": "group",
+        "id": "Phosphor Icons / Star"
+      },
+      {
+        "type": "group",
+        "id": "BG"
+      },
+      {
+        "type": "group",
+        "id": "Right Side"
+      },
+      {
+        "type": "group",
+        "id": "Left Side"
+      },
+      {
+        "type": "vector",
+        "id": "Notch"
+      },
+      {
+        "type": "group",
+        "id": "Battery"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle"
+      },
+      {
+        "type": "vector",
+        "id": "Combined Shape"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle1"
+      },
+      {
+        "type": "vector",
+        "id": "9:41"
+      },
+      {
+        "type": "vector",
+        "id": "image"
+      },
+      {
+        "type": "vector",
+        "id": "Rectangle 19"
+      },
+      {
+        "type": "text",
+        "id": "Icon right1"
+      },
+      {
+        "type": "text",
+        "id": "Input caption"
+      },
+      {
+        "type": "group",
+        "id": "search"
+      },
+      {
+        "type": "group",
+        "id": "Icons Background"
+      },
+      {
+        "type": "vector",
+        "id": "Vector"
+      },
+      {
+        "type": "group",
+        "id": "Icons Colorizer"
+      },
+      {
+        "type": "vector",
+        "id": "Icons Button"
+      },
+      {
+        "type": "vector",
+        "id": "Icons Colorizer1"
+      },
+      {
+        "type": "vector",
+        "id": "Background"
+      },
+      {
+        "type": "group",
+        "id": "Frame 454"
+      },
+      {
+        "type": "group",
+        "id": "Frame 455"
+      },
+      {
+        "type": "group",
+        "id": "Frame 456"
+      },
+      {
+        "type": "group",
+        "id": "Groups2"
+      },
+      {
+        "type": "image",
+        "id": "BMW.svg"
+      },
+      {
+        "type": "group",
+        "id": "Groups3"
+      },
+      {
+        "type": "image",
+        "id": "images (1)"
+      },
+      {
+        "type": "group",
+        "id": "Groups4"
+      },
+      {
+        "type": "image",
+        "id": "images (2)"
+      },
+      {
+        "type": "group",
+        "id": "Groups5"
+      },
+      {
+        "type": "image",
+        "id": "images (3)"
+      },
+      {
+        "type": "group",
+        "id": "Frame 514"
+      },
+      {
+        "type": "group",
+        "id": "Group 388"
+      },
+      {
+        "type": "image",
+        "id": "A2.0-1"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq1"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq2"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq3"
+      },
+      {
+        "type": "group",
+        "id": "Phosphor Icons / Star1"
+      },
+      {
+        "type": "image",
+        "id": "Honda-Civic-2025-Lua-chon-hoan-hao-cho-gia-dinh-tre"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq4"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq5"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq6"
+      },
+      {
+        "type": "group",
+        "id": "Phosphor Icons / Star2"
+      },
+      {
+        "type": "image",
+        "id": "mercedes-C300-amg-2022-2023-2024-2025-noi-that-ngoai-that-mercedeshaxaco-com-vn-5"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq7"
+      },
+      {
+        "type": "text",
+        "id": "Range Rover Evoq8"
+      },
+      {
+        "type": "vector",
+        "id": "Vector1"
+      },
+      {
+        "type": "vector",
+        "id": "Vector2"
+      },
+      {
+        "type": "vector",
+        "id": "Vector3"
+      },
+      {
+        "type": "vector",
+        "id": "Vector4"
+      },
+      {
+        "type": "vector",
+        "id": "Vector5"
+      },
+      {
+        "type": "vector",
+        "id": "Vector6"
+      }
+    ],
+    "modes": {
+      "MAIN SCREEN": {
+        "rules": [
+          {
+            "id": "top_level",
+            "is-structured": false,
+            "children": [
+              "Rectangle 17",
+              "Rectangle 18",
+              "Status Bar",
+              "Icon right",
+              "Views / Images: Avatars",
+              "Image",
+              "Image1",
+              "TextField2",
+              "Groups",
+              "View All",
+              "Top Brands",
+              "Top Brands1",
+              "Groups1",
+              "BMW",
+              "BMW1",
+              "BMW2",
+              "BMW3",
+              "Frame 457",
+              "Range Rover Evoq",
+              "Frame 515",
+              "Phosphor Icons / Star"
+            ],
+            "background-color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 1.0
+            }
+          },
+          {
+            "id": "Rectangle 17",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 68.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 412.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 64.0
+              }
+            },
+            "vector-content": "rectangle_17.svg"
+          },
+          {
+            "id": "Rectangle 18",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 68.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 412.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 64.0
+              }
+            },
+            "vector-content": "rectangle_18.svg"
+          },
+          {
+            "id": "Status Bar",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 412.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 48.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "BG",
+              "Right Side",
+              "Left Side"
+            ]
+          },
+          {
+            "id": "Icon right",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 91.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 44.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 148.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.11764705882352941
+            },
+            "text-content": "Đồng Nai, Việt Nam",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 12.0,
+            "line-height": 1.171875,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Views / Images: Avatars",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 339.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 81.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 45.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 41.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "image"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Image",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -81.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -801.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              }
+            },
+            "image-content": "image.png",
+            "scale": "cover"
+          },
+          {
+            "id": "Image1",
+            "border-radius": 6.25,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -321.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -849.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 31.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              }
+            },
+            "image-content": "image1.png",
+            "scale": "cover"
+          },
+          {
+            "id": "TextField2",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 49.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 61.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 238.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 60.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Rectangle 19",
+              "Icon right1",
+              "Input caption",
+              "search"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Groups",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -59.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -733.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 401.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 19.0
+              }
+            },
+            "is-structured": false,
+            "clip-content": false
+          },
+          {
+            "id": "View All",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -7.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -751.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 74.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0
+              }
+            },
+            "font-weight": 300.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "Tất cả",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Top Brands",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -181.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -752.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 219.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 15.0
+              }
+            },
+            "font-weight": 700.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "Hãng Nổi Bật",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 25.0,
+            "line-height": 1.171875,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Top Brands1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -181.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -634.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 219.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 7.0
+              }
+            },
+            "font-weight": 700.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "Xe Nổi Bật ",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 25.0,
+            "line-height": 1.171875,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Groups1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -107.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -686.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 368.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 58.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Background",
+              "Frame 454",
+              "Frame 455",
+              "Frame 456"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "BMW",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -324.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -681.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 50.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0
+              }
+            },
+            "font-weight": 700.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "BMW",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "BMW1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -236.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -681.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 58.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0
+              }
+            },
+            "font-weight": 700.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "Vinfast ",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "BMW2",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -126.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -681.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 86.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0
+              }
+            },
+            "font-weight": 700.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "Mercedes",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "BMW3",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -24.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -681.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 86.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0
+              }
+            },
+            "font-weight": 700.0,
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "Honda",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Frame 457",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 299.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 177.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 84.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 55.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Groups5",
+              "images (3)"
+            ]
+          },
+          {
+            "id": "Range Rover Evoq",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -103.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": 135.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "4.7 (5 Đánh giá)",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Frame 515",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 43.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 310.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 397.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 712.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Frame 514"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Phosphor Icons / Star",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 43.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 1026.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Vector5",
+              "Vector6"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "BG",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 78.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 0.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Notch"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Right Side",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 330.667236328125
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 17.33074951171875
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 66.66079711914062
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.33594799041748
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Battery"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Left Side",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 33.45361328125
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 17.16748046875
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.42616844177246
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0888671875
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "9:41"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Notch",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": 127.5
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 219.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 30.0
+              }
+            }
+          },
+          {
+            "id": "Battery",
+            "margin": {
+              "left": 42.332763671875,
+              "top": 0.00262451171875
+            },
+            "is-structured": false,
+            "children": [
+              "Rectangle",
+              "Combined Shape",
+              "Rectangle1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Rectangle",
+            "border-radius": 2.6666667461395264,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -2.3280372619628906
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 22.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.333333015441895
+              }
+            },
+            "vector-content": "rectangle.svg"
+          },
+          {
+            "id": "Combined Shape",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": 7.152557373046875e-7
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 3.6666259765625
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 1.328037977218628
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 4.0
+              }
+            },
+            "vector-content": "combined_shape.svg"
+          },
+          {
+            "id": "Rectangle1",
+            "border-radius": 1.3333333730697632,
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -4.328037261962891
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 18.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 7.333333492279053
+              }
+            },
+            "vector-content": "rectangle1.svg"
+          },
+          {
+            "id": "9:41",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 28.42616844177246
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 11.0888671875
+              }
+            },
+            "vector-content": "9_41.svg"
+          },
+          {
+            "id": "image",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "image2.svg"
+          },
+          {
+            "id": "Rectangle 19",
+            "border-radius": 8.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -0.5
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 19.5
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 238.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 40.0
+              }
+            },
+            "vector-content": "rectangle_19.svg"
+          },
+          {
+            "id": "Icon right1",
+            "presence": false,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 36.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 148.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.11764705882352941
+            },
+            "text-content": "Đồng Nai, Việt Nam",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 12.0,
+            "line-height": 1.171875,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Input caption",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 12.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 32.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 243.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 16.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2196078431372549
+            },
+            "text-content": "Xe cộ gì chưa người đẹp",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "search",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -4.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -4.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Icons Background",
+              "Vector",
+              "Icons Colorizer"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Icons Background",
+            "is-structured": false,
+            "children": [
+              "Icons Button"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Vector",
+            "alignment": {
+              "horizontal": {
+                "attachment": "center",
+                "offset": -0.25
+              },
+              "vertical": {
+                "attachment": "center",
+                "offset": -0.25
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 17.5
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 17.5
+              }
+            }
+          },
+          {
+            "id": "Icons Colorizer",
+            "is-structured": false,
+            "children": [
+              "Icons Colorizer1"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Icons Button",
+            "presence": false,
+            "border-radius": 2.0,
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            }
+          },
+          {
+            "id": "Icons Colorizer1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 7.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 7.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "icons_colorizer.svg"
+          },
+          {
+            "id": "Background",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 42.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 52.0
+              }
+            },
+            "vector-content": "background.svg"
+          },
+          {
+            "id": "Frame 454",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 86.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 2.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 84.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 55.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Groups2",
+              "BMW.svg"
+            ]
+          },
+          {
+            "id": "Frame 455",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 170.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 3.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 84.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 55.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Groups3",
+              "images (1)"
+            ]
+          },
+          {
+            "id": "Frame 456",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 263.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 3.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 84.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 55.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Groups4",
+              "images (2)"
+            ]
+          },
+          {
+            "id": "Groups2",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -15.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -23.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 43.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 31.0
+              }
+            },
+            "is-structured": false,
+            "clip-content": false
+          },
+          {
+            "id": "BMW.svg",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -23.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -10.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 41.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 41.0
+              }
+            },
+            "image-content": "bmw_svg.png",
+            "scale": "cover"
+          },
+          {
+            "id": "Groups3",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -15.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -23.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 43.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 31.0
+              }
+            },
+            "is-structured": false,
+            "clip-content": false
+          },
+          {
+            "id": "images (1)",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -23.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -10.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 41.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 41.0
+              }
+            },
+            "image-content": "images_1_.jpeg",
+            "scale": "cover"
+          },
+          {
+            "id": "Groups4",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -15.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -23.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 43.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 31.0
+              }
+            },
+            "is-structured": false,
+            "clip-content": false
+          },
+          {
+            "id": "images (2)",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -23.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -10.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 41.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 41.0
+              }
+            },
+            "image-content": "images_2_.jpeg",
+            "scale": "cover"
+          },
+          {
+            "id": "Groups5",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -15.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -23.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 43.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 31.0
+              }
+            },
+            "is-structured": false,
+            "clip-content": false
+          },
+          {
+            "id": "images (3)",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -23.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -10.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 41.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 41.0
+              }
+            },
+            "image-content": "images_3_.jpeg",
+            "scale": "cover"
+          },
+          {
+            "id": "Frame 514",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 397.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 712.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Group 388"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Group 388",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 397.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 712.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "A2.0-1",
+              "Range Rover Evoq1",
+              "Range Rover Evoq2",
+              "Range Rover Evoq3",
+              "Phosphor Icons / Star1",
+              "Honda-Civic-2025-Lua-chon-hoan-hao-cho-gia-dinh-tre",
+              "Range Rover Evoq4",
+              "Range Rover Evoq5",
+              "Range Rover Evoq6",
+              "Phosphor Icons / Star2",
+              "mercedes-C300-amg-2022-2023-2024-2025-noi-that-ngoai-that-mercedeshaxaco-com-vn-5",
+              "Range Rover Evoq7",
+              "Range Rover Evoq8"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "A2.0-1",
+            "border-radius": 15.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 4.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 314.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 167.0
+              }
+            },
+            "image-content": "a2_0_1.png",
+            "scale": "cover"
+          },
+          {
+            "id": "Range Rover Evoq1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -159.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -518.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "Vinfast Lux A2.0",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 19.700000762939453,
+            "line-height": 1.1718749546157545,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Range Rover Evoq2",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -131.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -488.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "4.9 (18 Đánh giá)",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Range Rover Evoq3",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -518.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "899.000VNĐ/Ngày",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Phosphor Icons / Star1",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 198.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Vector1",
+              "Vector2"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "Honda-Civic-2025-Lua-chon-hoan-hao-cho-gia-dinh-tre",
+            "border-radius": 15.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 4.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 259.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 314.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 167.0
+              }
+            },
+            "image-content": "honda_civic_2025_lua_chon_hoan_hao_cho_gia_dinh_tre.jpeg",
+            "scale": "cover"
+          },
+          {
+            "id": "Range Rover Evoq4",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -159.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -259.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "Honda Civic 2025",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 19.700000762939453,
+            "line-height": 1.1718749546157545,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Range Rover Evoq5",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -131.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -229.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "4.7 (5 Đánh giá)",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Range Rover Evoq6",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": -259.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "750.000VNĐ/Ngày",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Phosphor Icons / Star2",
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 457.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 32.0
+              }
+            },
+            "is-structured": false,
+            "children": [
+              "Vector3",
+              "Vector4"
+            ],
+            "clip-content": false
+          },
+          {
+            "id": "mercedes-C300-amg-2022-2023-2024-2025-noi-that-ngoai-that-mercedeshaxaco-com-vn-5",
+            "border-radius": 15.0,
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": 4.0
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": 518.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 314.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 167.0
+              }
+            },
+            "image-content": "mercedes_c300_amg_2022_2023_2024_2025_noi_that_ngoai_that_mercedeshaxaco_com_vn_5.jpeg",
+            "scale": "cover"
+          },
+          {
+            "id": "Range Rover Evoq7",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": -159.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.2901960784313726
+            },
+            "text-content": "Honda Civic 2025",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 19.700000762939453,
+            "line-height": 1.1718749546157545,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Range Rover Evoq8",
+            "alignment": {
+              "horizontal": {
+                "attachment": "end",
+                "offset": 0.0
+              },
+              "vertical": {
+                "attachment": "end",
+                "offset": 0.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "fixed",
+                "value": 234.0
+              },
+              "height-constraints": {
+                "sizing-mode": "fixed",
+                "value": 14.0
+              }
+            },
+            "color": {
+              "alpha": 1.0,
+              "hue": 0.0,
+              "saturation": 0.0,
+              "value": 0.6901960784313725
+            },
+            "text-content": "750.000VNĐ/Ngày",
+            "overflow": "visible",
+            "max-lines": -1,
+            "text-align": "left",
+            "text-align-vertical": "center",
+            "text-size": 17.510000228881836,
+            "line-height": 1.1718749846818448,
+            "typeface": "Roboto Flex"
+          },
+          {
+            "id": "Vector1",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            }
+          },
+          {
+            "id": "Vector2",
+            "margin": {
+              "left": 2.9990234375,
+              "top": 2.9921875,
+              "right": 2.999034881591797,
+              "bottom": 3.99761962890625
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -0.9970703125
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "vector.svg"
+          },
+          {
+            "id": "Vector3",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            }
+          },
+          {
+            "id": "Vector4",
+            "margin": {
+              "left": 2.9990234375,
+              "top": 2.9921875,
+              "right": 2.999034881591797,
+              "bottom": 3.99761962890625
+            },
+            "alignment": {
+              "horizontal": {
+                "attachment": "start",
+                "offset": -0.9970703125
+              },
+              "vertical": {
+                "attachment": "start",
+                "offset": -1.0
+              }
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "vector1.svg"
+          },
+          {
+            "id": "Vector5",
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            }
+          },
+          {
+            "id": "Vector6",
+            "margin": {
+              "left": 2.9990234375,
+              "top": 2.9921875,
+              "right": 2.999034881591797,
+              "bottom": 3.99761962890625
+            },
+            "size-constraints": {
+              "width-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              },
+              "height-constraints": {
+                "sizing-mode": "proportional",
+                "value": 1.0
+              }
+            },
+            "vector-content": "vector2.svg"
+          }
+        ]
+      }
+    }
+  },
+  "previews": [
+    {
+      "design": "MAIN SCREEN",
+      "size": {
+        "width": 412.0,
+        "height": 917.0
+      }
+    }
+  ],
+  "adin-component-search-paths": [],
+  "image-search-paths": [],
+  "vector-search-paths": []
+}

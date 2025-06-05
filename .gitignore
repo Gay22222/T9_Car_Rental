@@ -1,14 +1,50 @@
+# Tệp và thư mục được tạo bởi Android Studio/IDEA
 *.iml
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.idea/
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/misc.xml
+.idea/vcs.xml
+.idea/compiler.xml
+.idea/jarRepositories.xml
+.idea/runConfigurations.xml
+
+# Tệp cấu hình cục bộ
 local.properties
+
+# Thư mục build
+/build/
+/app/build/
+/*/build/
+
+# Tệp tạm và bộ nhớ cache
+.DS_Store
+*.log
+*.cache
+.gradle/
+captures/
+
+# Native build
+.externalNativeBuild/
+.cxx/
+
+# Tệp cấu hình Gradle
+.gradle/
+gradlew
+gradlew.bat
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Tệp môi trường hoặc nhạy cảm
+*.keystore
+*.jks
+*.env
+
+# Tệp debug
+*.apk
+*.ap_
+*.aab
