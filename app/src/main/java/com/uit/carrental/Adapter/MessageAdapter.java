@@ -23,8 +23,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
     @NonNull
     @Override
     public MessageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.message_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.message_item, parent, false);
         return new MessageViewHolder(view);
     }
 
@@ -33,7 +32,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         Message message = messages.get(position);
         holder.messageText.setText(message.getContent());
 
-        // Adjust layout for user vs bot
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams)
                 holder.messageContainer.getLayoutParams();
         if (message.isUser()) {

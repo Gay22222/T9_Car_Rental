@@ -2,7 +2,7 @@ package com.uit.carrental.Model;
 
 public class Message {
     private String content;
-    private boolean isUser; // true if sent by user, false if by bot
+    private boolean isUser;
 
     public Message(String content, boolean isUser) {
         this.content = content;

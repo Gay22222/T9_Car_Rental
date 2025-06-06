@@ -26,14 +26,17 @@ app/
 │   │   │               │   └── StartAppActivity.java
 │   │   │               ├── Adapter/
 │   │   │               │   ├── ActivityAdapter.java
+│   │   │               │   ├── MessageAdapter.java
 │   │   │               │   ├── NotificationAdapter.java
 │   │   │               │   ├── OwnerActivityAdapter.java
 │   │   │               │   ├── OwnerNotificationAdapter.java
 │   │   │               │   ├── OwnerVehicleAdapter.java
 │   │   │               │   ├── SplashPagerAdapter.java
-│   │   │               │   └── VehicleAdapter.java
+│   │   │               │   ├── VehicleAdapter.java
+│   │   │               │   └── ViewPagerAdapter.java
 │   │   │               ├── FragmentPages/
 │   │   │               │   ├── Customer/
+│   │   │               │   │   ├── ChatFragment.java
 │   │   │               │   │   ├── CustomerActivityFragment.java
 │   │   │               │   │   ├── CustomerHomeFragment.java
 │   │   │               │   │   ├── CustomerNotificationFragment.java
@@ -47,6 +50,7 @@ app/
 │   │   │               ├── Model/
 │   │   │               │   ├── Activity.java
 │   │   │               │   ├── CreateOrder.java
+│   │   │               │   ├── Message.java
 │   │   │               │   ├── Order.java
 │   │   │               │   ├── User.java
 │   │   │               │   ├── UserClient.java
@@ -181,6 +185,8 @@ app/
 │   │   │   │   ├── ic_setting.xml
 │   │   │   │   ├── ic_visibility_black_24dp.xml
 │   │   │   │   ├── ic_visibility_off_black_24dp.xml
+│   │   │   │   ├── icon1_ai.xml
+│   │   │   │   ├── icon_ai.xml
 │   │   │   │   ├── icon_next.xml
 │   │   │   │   ├── icons_colorizer_main.xml
 │   │   │   │   ├── id_card.png
@@ -191,6 +197,7 @@ app/
 │   │   │   │   ├── image2_cccd.xml
 │   │   │   │   ├── image2_main.xml
 │   │   │   │   ├── image3_car_details.png
+│   │   │   │   ├── image_56_ai.png
 │   │   │   │   ├── image_5_account.png
 │   │   │   │   ├── image_account.xml
 │   │   │   │   ├── image_car_details.png
@@ -212,9 +219,12 @@ app/
 │   │   │   │   ├── line_8_stroke_cccd.xml
 │   │   │   │   ├── line_8_update_profile.xml
 │   │   │   │   ├── mercedes_c300_amg_2022_2023_2024_2025_noi_that_ngoai_that_mercedeshaxaco_com_vn_5.jpeg
+│   │   │   │   ├── message_bubble_background.xml
+│   │   │   │   ├── message_bubble_background_user.xml
 │   │   │   │   ├── rectangle.xml
 │   │   │   │   ├── rectangle1.xml
 │   │   │   │   ├── rectangle1_account.xml
+│   │   │   │   ├── rectangle1_ai.xml
 │   │   │   │   ├── rectangle1_car_details.xml
 │   │   │   │   ├── rectangle1_cccd.xml
 │   │   │   │   ├── rectangle1_main.xml
@@ -230,10 +240,12 @@ app/
 │   │   │   │   ├── rectangle_196_signup.xml
 │   │   │   │   ├── rectangle_197_signup.xml
 │   │   │   │   ├── rectangle_198_signup.xml
+│   │   │   │   ├── rectangle_199_ai.xml
 │   │   │   │   ├── rectangle_199_signup.xml
 │   │   │   │   ├── rectangle_19_main.xml
 │   │   │   │   ├── rectangle_200_signup.xml
 │   │   │   │   ├── rectangle_account.xml
+│   │   │   │   ├── rectangle_ai.xml
 │   │   │   │   ├── rectangle_car_details.xml
 │   │   │   │   ├── rectangle_cccd.xml
 │   │   │   │   ├── rectangle_main.xml
@@ -258,8 +270,10 @@ app/
 │   │   │   │   ├── time_9_41_signup.xml
 │   │   │   │   ├── vector.xml
 │   │   │   │   ├── vector1.xml
+│   │   │   │   ├── vector10_ai.xml
 │   │   │   │   ├── vector10_settings.xml
 │   │   │   │   ├── vector10_signup.xml
+│   │   │   │   ├── vector11_ai.xml
 │   │   │   │   ├── vector11_settings.xml
 │   │   │   │   ├── vector11_signup.xml
 │   │   │   │   ├── vector12_settings.xml
@@ -358,10 +372,12 @@ app/
 │   │   │   │   ├── customer_fragment_home.xml
 │   │   │   │   ├── customer_fragment_notification.xml
 │   │   │   │   ├── customer_fragment_setting.xml
+│   │   │   │   ├── fragment_chat.xml
 │   │   │   │   ├── item_activity.xml
 │   │   │   │   ├── item_brand.xml
 │   │   │   │   ├── item_notification.xml
 │   │   │   │   ├── item_setting_row.xml
+│   │   │   │   ├── message_item.xml
 │   │   │   │   ├── owner_activity_main.xml
 │   │   │   │   ├── owner_booking_detail.xml
 │   │   │   │   ├── owner_fragment_activity.xml
@@ -2185,6 +2201,24 @@ app/
 </layer-list>
 ```
 
+### src\main\res\drawable\icon1_ai.xml
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="32dp"
+    android:height="25dp"
+    android:viewportWidth="32"
+    android:viewportHeight="25">
+  <path
+      android:pathData="M31.244,0.756L12.911,11.599M31.244,0.756L16.733,23.788L12.911,11.599M31.244,0.756L0.756,4.337L12.911,11.599"
+      android:strokeLineJoin="round"
+      android:strokeWidth="1.5"
+      android:fillColor="#00000000"
+      android:strokeColor="#ffffff"
+      android:strokeLineCap="round"/>
+</vector>
+
+```
+
 ### src\main\res\drawable\icons_colorizer_main.xml
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
@@ -2195,6 +2229,24 @@ app/
   <path
       android:pathData="M0,0h32v32h-32z"
       android:fillColor="#5F5F5F"/>
+</vector>
+
+```
+
+### src\main\res\drawable\icon_ai.xml
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="35dp"
+    android:height="35dp"
+    android:viewportWidth="35"
+    android:viewportHeight="35">
+  <path
+      android:pathData="M17.5,10.802V24.199M10.802,17.5H24.199M34.246,17.5C34.246,26.749 26.749,34.246 17.5,34.246C8.251,34.246 0.754,26.749 0.754,17.5C0.754,8.251 8.251,0.754 17.5,0.754C26.749,0.754 34.246,8.251 34.246,17.5Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="1.5"
+      android:fillColor="#00000000"
+      android:strokeColor="#ffffff"
+      android:strokeLineCap="round"/>
 </vector>
 
 ```
@@ -2836,6 +2888,24 @@ app/
 
 ```
 
+### src\main\res\drawable\message_bubble_background.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/chat_bubble_background" />
+    <corners android:radius="16dp" />
+</shape>
+```
+
+### src\main\res\drawable\message_bubble_background_user.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@color/blue1" /> <!-- Dùng blue1 từ colors.xml -->
+    <corners android:radius="16dp" />
+</shape>
+```
+
 ### src\main\res\drawable\rectangle.xml
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
@@ -2869,6 +2939,20 @@ app/
 ```
 
 ### src\main\res\drawable\rectangle1_account.xml
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="18dp"
+    android:height="8dp"
+    android:viewportWidth="18"
+    android:viewportHeight="8">
+  <path
+      android:pathData="M0,1.333C0,0.597 0.597,0 1.333,0H16.667C17.403,0 18,0.597 18,1.333V6C18,6.736 17.403,7.333 16.667,7.333H1.333C0.597,7.333 0,6.736 0,6V1.333Z"
+      android:fillColor="#131A34"/>
+</vector>
+
+```
+
+### src\main\res\drawable\rectangle1_ai.xml
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="18dp"
@@ -3092,6 +3176,36 @@ app/
 
 ```
 
+### src\main\res\drawable\rectangle_199_ai.xml
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="412dp"
+    android:height="880dp"
+    android:viewportWidth="412"
+    android:viewportHeight="880">
+  <path
+      android:pathData="M32,0L380,0A32,32 0,0 1,412 32L412,848A32,32 0,0 1,380 880L32,880A32,32 0,0 1,0 848L0,32A32,32 0,0 1,32 0z">
+    <aapt:attr name="android:fillColor">
+      <gradient 
+          android:startX="206"
+          android:startY="0"
+          android:endX="206"
+          android:endY="880"
+          android:type="linear">
+        <item android:offset="0.06" android:color="#FFD9D9D9"/>
+        <item android:offset="0.17" android:color="#FFBDACD1"/>
+        <item android:offset="0.38" android:color="#FFA07FC9"/>
+        <item android:offset="0.59" android:color="#FF6F499D"/>
+        <item android:offset="0.77" android:color="#FF513580"/>
+        <item android:offset="1" android:color="#FF351E61"/>
+      </gradient>
+    </aapt:attr>
+  </path>
+</vector>
+
+```
+
 ### src\main\res\drawable\rectangle_199_signup.xml
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
@@ -3137,6 +3251,24 @@ app/
 ```
 
 ### src\main\res\drawable\rectangle_account.xml
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="22dp"
+    android:height="12dp"
+    android:viewportWidth="22"
+    android:viewportHeight="12">
+  <path
+      android:strokeWidth="1"
+      android:pathData="M2.667,0.5H19.333C20.53,0.5 21.5,1.47 21.5,2.667V8.667C21.5,9.863 20.529,10.833 19.333,10.833H2.667C1.47,10.833 0.5,9.863 0.5,8.667V2.667L0.511,2.445C0.622,1.353 1.545,0.5 2.667,0.5Z"
+      android:strokeAlpha="0.35"
+      android:fillColor="#00000000"
+      android:strokeColor="#131A34"
+      android:fillAlpha="0.35"/>
+</vector>
+
+```
+
+### src\main\res\drawable\rectangle_ai.xml
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="22dp"
@@ -3505,6 +3637,24 @@ app/
 
 ```
 
+### src\main\res\drawable\vector10_ai.xml
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="28dp"
+    android:viewportWidth="28"
+    android:viewportHeight="28">
+  <path
+      android:pathData="M14.55,21.848L20.851,25.849C21.664,26.361 22.664,25.599 22.426,24.661L20.601,17.485C20.552,17.286 20.559,17.078 20.624,16.883C20.688,16.688 20.806,16.516 20.963,16.385L26.614,11.672C27.352,11.059 26.977,9.822 26.014,9.759L18.638,9.284C18.437,9.272 18.243,9.202 18.081,9.082C17.919,8.963 17.796,8.798 17.726,8.609L14.975,1.683C14.902,1.483 14.77,1.31 14.595,1.188C14.421,1.066 14.213,1 14,1C13.787,1 13.579,1.066 13.405,1.188C13.23,1.31 13.098,1.483 13.025,1.683L10.274,8.609C10.204,8.798 10.081,8.963 9.919,9.082C9.757,9.202 9.563,9.272 9.362,9.284L1.986,9.759C1.023,9.822 0.648,11.059 1.386,11.672L7.037,16.385C7.194,16.516 7.312,16.688 7.376,16.883C7.441,17.078 7.448,17.286 7.399,17.485L5.711,24.136C5.424,25.261 6.624,26.174 7.587,25.561L13.45,21.848C13.614,21.744 13.805,21.688 14,21.688C14.195,21.688 14.386,21.744 14.55,21.848V21.848Z"
+      android:strokeLineJoin="round"
+      android:strokeWidth="2"
+      android:fillColor="#00000000"
+      android:strokeColor="#FFFF00"
+      android:strokeLineCap="round"/>
+</vector>
+
+```
+
 ### src\main\res\drawable\vector10_settings.xml
 ```xml
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
@@ -3537,6 +3687,20 @@ app/
       android:fillColor="#00000000"
       android:strokeColor="#B0B0B0"
       android:strokeLineCap="round"/>
+</vector>
+
+```
+
+### src\main\res\drawable\vector11_ai.xml
+```xml
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="272dp"
+    android:height="156dp"
+    android:viewportWidth="272"
+    android:viewportHeight="156">
+  <path
+      android:pathData="M186.06,0.49L270.8,48.97C272.07,49.7 271.91,50.97 270.44,51.82L90.56,155.3C89.09,156.14 86.87,156.24 85.59,155.51L0.86,107.03C-0.41,106.3 -0.25,105.03 1.21,104.18L181.1,0.7C182.57,-0.14 184.79,-0.24 186.06,0.49Z"
+      android:fillColor="#180D5B"/>
 </vector>
 
 ```
@@ -9434,6 +9598,105 @@ app/
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
+### src\main\res\layout\fragment_chat.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/chat_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Draggable Chat Container -->
+    <LinearLayout
+        android:id="@+id/draggable_chat_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical"
+        android:background="@android:color/transparent"
+        android:layout_gravity="bottom">
+
+        <!-- Chat Header (Rating) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="103dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/rating_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/vector10_ai"
+                android:contentDescription="Star" />
+
+            <TextView
+                android:id="@+id/rating_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.7 (5 Đánh giá)"
+                android:textColor="@color/rating_text_color"
+                android:textSize="17.51sp"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- Chat RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chat_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="8dp"
+            android:background="@android:color/transparent" />
+
+        <!-- Input Area -->
+        <LinearLayout
+            android:id="@+id/input_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/input_area_background"
+            android:paddingStart="7dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="7dp"
+            android:paddingBottom="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/plus_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/icon_ai"
+                android:contentDescription="@string/add_content_description" />
+
+            <EditText
+                android:id="@+id/message_input"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="48dp"
+                android:layout_marginEnd="48dp"
+                android:hint="@string/chat_hint"
+                android:textColor="@color/input_text_color"
+                android:textColorHint="@color/input_text_color"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:textSize="17sp" />
+
+            <ImageView
+                android:id="@+id/send_button"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:src="@drawable/icon1_ai"
+                android:contentDescription="@string/send_content_description" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
+```
+
 ### src\main\res\layout\item_activity.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -9698,6 +9961,53 @@ app/
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+
+### src\main\res\layout\message_item.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- Avatar -->
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/image_56_ai"
+        android:contentDescription="Avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Message Bubble -->
+    <LinearLayout
+        android:id="@+id/message_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/message_bubble_background"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintStart_toEndOf="@id/avatar"
+        app:layout_constraintTop_toTopOf="@id/avatar">
+
+        <TextView
+            android:id="@+id/message_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/message_text_color"
+            android:textSize="17sp"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:text="Placeholder" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
@@ -11415,6 +11725,11 @@ app/
     <color name="update_profile_cccd">#00A3FF</color>
     <!-- Colors from update_cccd_nh_h_ng.json -->
     <color name="cccd_label">#727A7A</color> <!-- HSV(202.5, 0.066, 0.478) -->
+    <color name="chat_bubble_background">#D6D9D9</color> <!-- Frame 516, 521, 520, 522 -->
+    <color name="input_area_background">#9387E9</color> <!-- Frame 519 -->
+    <color name="message_text_color">#2D3E8C</color> <!-- Text in bubbles -->
+    <color name="input_text_color">#B8FFFFFF</color> <!-- Input placeholder -->
+    <color name="rating_text_color">#B0B0B0</color> <!-- Range Rover Evoq -->
 </resources>
 ```
 
@@ -11493,6 +11808,14 @@ app/
     <string name="action_profile">Profile</string>
     <string name="default_web_client_id">fake-client-id.apps.googleusercontent.com</string>
 
+
+    <!-- Chat strings -->
+    <string name="chat_hint">Type a message...</string>
+    <string name="send_content_description">Send message</string>
+    <string name="add_content_description">Add attachment</string>
+    <!-- Tab strings -->
+    <string name="tab_home">Home</string>
+    <string name="tab_chat">Chat</string>
 </resources>
 ```
 

@@ -15,24 +15,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.uit.carrental.Adapter.VehicleAdapter;
 import com.uit.carrental.Model.Vehicle;
 import com.uit.carrental.Model.onClickInterface;
 import com.uit.carrental.R;
 import com.uit.carrental.Service.Vehicle.VehicleDetailActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +40,7 @@ public class CustomerHomeFragment extends Fragment {
     private EditText searchInput;
     private TextView locationText;
     private ImageView avatarImage;
+    private FloatingActionButton fabChat;
     private ArrayList<Vehicle> vehicles;
     private VehicleAdapter vehicleAdapter;
     private BrandAdapter brandAdapter;
@@ -62,6 +60,7 @@ public class CustomerHomeFragment extends Fragment {
         searchInput = mView.findViewById(R.id.search_input);
         locationText = mView.findViewById(R.id.location_text);
         avatarImage = mView.findViewById(R.id.avatar_image);
+        fabChat = mView.findViewById(R.id.fab_chat);
 
         // Initialize Firebase and ProgressDialog
         dtbVehicle = FirebaseFirestore.getInstance();
@@ -80,6 +79,9 @@ public class CustomerHomeFragment extends Fragment {
         // Setup RecyclerViews
         setupBrandsRecyclerView();
         setupVehiclesRecyclerView();
+
+        // Handle FAB click to open chat
+        fabChat.setOnClickListener(v -> openChatFragment());
 
         // Load vehicle data from Firestore
         try {
@@ -124,7 +126,6 @@ public class CustomerHomeFragment extends Fragment {
                             temp.setVehicle_price(document.getString("vehicle_price"));
                             temp.setVehicle_imageURL(document.getString("vehicle_imageURL"));
                             temp.setProvider_name(document.getString("provider_name"));
-                            // Fake rating 4 sao nếu null
                             temp.setVehicle_rating(document.getString("vehicle_rating") != null ?
                                     document.getString("vehicle_rating") : "4.0 (0 Đánh giá)");
                             vehicles.add(temp);
@@ -136,20 +137,30 @@ public class CustomerHomeFragment extends Fragment {
                 });
     }
 
+    private void openChatFragment() {
+        FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+        ChatFragment chatFragment = new ChatFragment();
+        transaction.replace(R.id.frame_layout_customer, chatFragment, "CHAT_FRAGMENT");
+        transaction.addToBackStack("CHAT_FRAGMENT");
+        transaction.commit();
+    }
+
     private void LoadImage(String docId, ImageView imageView) {
         if (docId == null) {
             Log.e("LoadImage", "docId is null");
             return;
         }
-        DocumentReference imageRef = FirebaseFirestore.getInstance().collection("Image").document(docId);
-        imageRef.get().addOnSuccessListener(documentSnapshot -> {
-            if (documentSnapshot.exists()) {
-                String imageUrl = documentSnapshot.getString("Image");
-                if (imageUrl != null) {
-                    Glide.with(mView).load(imageUrl).into(imageView);
-                }
-            }
-        }).addOnFailureListener(e -> Log.e("LoadImage", "Error: " + e.getMessage()));
+        FirebaseFirestore.getInstance().collection("Image").document(docId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String imageUrl = documentSnapshot.getString("Image");
+                        if (imageUrl != null) {
+                            Glide.with(mView).load(imageUrl).into(imageView);
+                        }
+                    }
+                })
+                .addOnFailureListener(e -> Log.e("LoadImage", "Error: " + e.getMessage()));
     }
 
     // Brand model class
