@@ -42,7 +42,9 @@ public class UpdateVehicle extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_vehicle);
-
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
         Intent intent = getIntent();
         vehicleID = intent.getStringExtra("vehicle_id");
         vehicle.setVehicle_id(vehicleID);

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="84dp"
+    android:layout_height="70dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginEnd="8dp">
+
+    <ImageView
+        android:id="@+id/brand_image"
+        android:layout_width="41dp"
+        android:layout_height="41dp"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/bmw_svg" />
+
+    <TextView
+        android:id="@+id/brand_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        android:fontWeight="700"
+        android:textColor="@color/black"
+        android:textSize="17.51sp"
+        tools:text="BMW" />
+</LinearLayout>

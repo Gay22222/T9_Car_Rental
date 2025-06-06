@@ -1,184 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/White"
+    android:background="@color/white"
     tools:context=".FragmentPages.Owner.OwnerSettingFragment">
 
-    <!-- NỀN XANH -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/sky"
-        android:padding="16dp">
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="58dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <!-- Avatar -->
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_avatar"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:src="@drawable/ic_person"
-            android:background="@drawable/yellow_circle_line"
-            android:layout_marginEnd="16dp" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+        <!-- Name and Edit Text -->
+        <LinearLayout
+            android:id="@+id/text_info"
+            android:layout_width="164dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/img_avatar"
-            android:text="Tên nhà cung cấp"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/sunflower" />
-    </RelativeLayout>
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            app:layout_constraintStart_toEndOf="@id/img_avatar"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <!-- PHẦN CHÍNH CUỘN -->
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Trương Đăng Khôi"
+                android:textColor="@color/setting_text_name"
+                android:textSize="19.7sp"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:fontWeight="700"
+                android:lineHeight="24dp" />
+
+            <TextView
+                android:id="@+id/tv_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Chỉnh sửa thông tin"
+                android:textColor="@color/setting_text_edit"
+                android:textSize="17.51sp"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:lineHeight="20.5dp" />
+        </LinearLayout>
+
+        <!-- Edit Icon -->
+        <ImageView
+            android:id="@+id/edit_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/vector_settings"
+            android:contentDescription="Edit Profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_info"
+            app:layout_constraintBottom_toBottomOf="@id/text_info" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Divider -->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="278dp"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/line_8_settings"
+        app:layout_constraintStart_toStartOf="@id/header"
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <!-- ScrollView for Settings -->
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true">
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:gravity="center_horizontal">
+            android:paddingBottom="16dp">
 
             <!-- Thông tin tài khoản -->
-            <LinearLayout
+            <include
                 android:id="@+id/layout_information"
+                layout="@layout/item_setting_row"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
-                android:background="@drawable/yellow_line"
-                android:gravity="center_vertical"
-                android:padding="15dp"
-                android:layout_marginBottom="1dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:text="Thông tin tài khoản"
-                    android:textColor="@color/sky"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_next"
-                    android:layout_marginStart="12dp" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="12dp" />
 
             <!-- Giao diện khách hàng -->
-            <LinearLayout
-                android:id="@+id/layout_connect"
+            <include
+                android:id="@+id/layout_switch_to_customer"
+                layout="@layout/item_setting_row"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
-                android:background="@drawable/yellow_line"
-                android:gravity="center_vertical"
-                android:padding="15dp"
-                android:layout_marginBottom="1dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:text="Giao diện khách hàng"
-                    android:textColor="@color/sky"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_next"
-                    android:layout_marginStart="12dp" />
-            </LinearLayout>
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="12dp" />
 
             <!-- Thay đổi mật khẩu -->
-            <LinearLayout
+            <include
                 android:id="@+id/layout_change_password"
+                layout="@layout/item_setting_row"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
-                android:background="@drawable/yellow_line"
-                android:gravity="center_vertical"
-                android:padding="15dp"
-                android:layout_marginBottom="1dp">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="12dp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:text="Thay đổi mật khẩu"
-                    android:textColor="@color/sky"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_next"
-                    android:layout_marginStart="12dp" />
-            </LinearLayout>
-
-            <!-- Yêu cầu xoá tài khoản -->
-            <LinearLayout
+            <!-- Yêu cầu xóa tài khoản -->
+            <include
                 android:id="@+id/layout_delete_account"
+                layout="@layout/item_setting_row"
                 android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
-                android:background="@drawable/yellow_line"
-                android:gravity="center_vertical"
-                android:padding="15dp"
-                android:layout_marginBottom="1dp">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="12dp" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:text="Yêu cầu xoá tài khoản"
-                    android:textColor="@color/sky"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_next"
-                    android:layout_marginStart="12dp" />
-            </LinearLayout>
+            <!-- Cài đặt -->
+            <include
+                android:id="@+id/layout_settings"
+                layout="@layout/item_setting_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="12dp" />
 
             <!-- Đăng xuất -->
-            <LinearLayout
+            <TextView
                 android:id="@+id/layout_sign_out"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
-                android:orientation="horizontal"
-                android:background="@drawable/yellow_line"
-                android:gravity="center_vertical"
-                android:padding="15dp">
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="6"
-                    android:text="Đăng xuất"
-                    android:textColor="@color/sky"
-                    android:textSize="18sp" />
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_next"
-                    android:layout_marginStart="12dp" />
-            </LinearLayout>
-
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginVertical="12dp"
+                android:background="@drawable/setting_sign_out_gradient"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:gravity="center"
+                android:lineHeight="18dp"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:text="Đăng xuất"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:elevation="4dp" />
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

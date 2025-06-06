@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vehicle_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="15dp"
+    app:cardElevation="4dp"
+    android:layout_margin="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="289dp"
+        android:padding="4dp">
+
+        <ImageView
+            android:id="@+id/img_vehicle"
+            android:layout_width="0dp"
+            android:layout_height="167dp"
+            android:background="@drawable/rounded_corner"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="314:167"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/a2_0_1" />
+
+        <TextView
+            android:id="@+id/vehicle_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:fontWeight="700"
+            android:textColor="@color/text_title"
+            android:textSize="19.7sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_vehicle"
+            tools:text="Vinfast Lux A2.0" />
+
+        <TextView
+            android:id="@+id/provider_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:textColor="@color/gray"
+            android:textSize="17.51sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vehicle_name"
+            tools:text="Công ty ABC" />
+
+        <ImageView
+            android:id="@+id/rating_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:src="@drawable/vector_main"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/vehicle_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:textColor="@color/text_input_hint"
+            android:textSize="17.51sp"
+            app:layout_constraintBottom_toBottomOf="@id/rating_icon"
+            app:layout_constraintStart_toEndOf="@id/rating_icon"
+            tools:text="4.9 (18 Đánh giá)" />
+
+        <TextView
+            android:id="@+id/tv_vehicle_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="36dp"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:textColor="@color/text_input_hint"
+            android:textSize="17.51sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_vehicle"
+            tools:text="899.000VNĐ/Ngày" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

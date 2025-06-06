@@ -1,29 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/apk/res/android">
+    <!-- Core colors -->
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#1D1D1D</color>
+    <color name="white">#FFFFFF</color>
     <color name="sky">#375E97</color>
     <color name="sunset">#FB6542</color>
     <color name="sunflower">#FFBB00</color>
     <color name="gray">#838181</color>
 
+    <!-- Theme colors -->
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!-- Additional colors -->
     <color name="green1">#29CF40</color>
     <color name="blue1">#66a3ff</color>
     <color name="blue2">#0033cc</color>
-    <color name="White">#fff</color>
     <color name="darkGrey">#a6a6a6</color>
     <color name="Grey">#c3c3c3</color>
-    <color name="Black">#000</color>
     <color name="transparent">#00000000</color>
 
-    <!-- Màu cho gradient -->
+    <!-- Gradient colors -->
     <color name="gradient_login_start">#7BA9F0</color>
     <color name="gradient_login_end">#1E90FF</color>
     <color name="gradient_register_start">#E8A159</color>
@@ -34,8 +35,33 @@
     <color name="splash_title">#141523</color>
     <color name="splash_description">#A1A1A1</color>
 
-    <color name="text_title">#00318B</color> <!-- Hue: 219.42, Saturation: 0.99, Value: 0.54 -->
-    <color name="text_instruction">#6B000000</color> <!-- Alpha: 0.42, Black -->
-    <color name="text_input_hint">#B0B0B0</color> <!-- Value: 0.69, Gray -->
-    <color name="or_text">#2F4A94</color> <!-- Hue: 225.8, Saturation: 0.89, Value: 0.58 -->
+    <!-- UI package colors -->
+    <color name="text_title">#4A4A4A</color>
+    <color name="text_instruction">#707070</color>
+    <color name="or_text">#707070</color>
+    <color name="text_input_hint">#B2B2B2</color>
+    <color name="spec_title">#517077</color>
+    <!-- Colors from setting_nh_h_ng.json -->
+    <color name="setting_text_name">#4A4A4A</color>
+    <color name="setting_text_edit">#00A3FF</color>
+    <color name="setting_button_gradient_start">#C7F5F5</color>
+    <color name="setting_button_gradient_end">#E2F9FA</color>
+    <color name="setting_sign_out_gradient_start">#FF6B3D</color>
+    <color name="setting_sign_out_gradient_mid">#F5290C</color>
+    <color name="setting_sign_out_gradient_end">#D10800</color>
+    <color name="setting_shadow">#3F000000</color>
+    <!-- Colors from account_nh_h_ng.json -->
+    <color name="account_title">#0A0F10</color>
+    <color name="account_label">#1A3B7F</color>
+    <color name="account_input_color">#192B70</color>
+    <!-- Colors from update_profile_nh_h_ng.json -->
+    <color name="update_profile_email">#4A4A4A</color>
+    <color name="update_profile_cccd">#00A3FF</color>
+    <!-- Colors from update_cccd_nh_h_ng.json -->
+    <color name="cccd_label">#727A7A</color> <!-- HSV(202.5, 0.066, 0.478) -->
+    <color name="chat_bubble_background">#D6D9D9</color> <!-- Frame 516, 521, 520, 522 -->
+    <color name="input_area_background">#9387E9</color> <!-- Frame 519 -->
+    <color name="message_text_color">#2D3E8C</color> <!-- Text in bubbles -->
+    <color name="input_text_color">#B8FFFFFF</color> <!-- Input placeholder -->
+    <color name="rating_text_color">#B0B0B0</color> <!-- Range Rover Evoq -->
 </resources>

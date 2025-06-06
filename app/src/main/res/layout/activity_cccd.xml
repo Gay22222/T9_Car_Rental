@@ -3,135 +3,153 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".Service.UserAuthentication.CCCDActivity">
 
-    <ScrollView
+    <!-- Thanh điều hướng -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bars"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="54dp"
+        android:layout_marginTop="48dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Nút back -->
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="Back"
+            android:src="@drawable/vector_cccd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Tiêu đề -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cập nhật CCCD"
+            android:textColor="@color/account_title"
+            android:textSize="29.33sp"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:lineHeight="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- ScrollView cho thông tin -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bars">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="16dp">
+
+            <!-- Divider -->
             <View
-                android:id="@+id/title_view"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_175sdp"
-                android:layout_marginEnd="@dimen/_2sdp"
-                android:background="@drawable/rectangle_quarter_radius"
-                android:backgroundTint="@color/sky"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/divider"
+                android:layout_width="290.75dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="18dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/line_8_stroke_cccd" />
 
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="@dimen/_175sdp"
-                android:layout_height="@dimen/_75sdp"
-                app:layout_constraintBottom_toBottomOf="@+id/title_view"
-                app:layout_constraintEnd_toEndOf="@+id/title_view"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/title_view"
-                app:srcCompat="@drawable/id_card" />
-
+            <!-- CCCD mặt trước -->
             <TextView
                 android:id="@+id/tv_front_CCCD"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:text="Mặt trước CCCD *"
-                android:textColor="@color/sky"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_view"
-                tools:ignore="HardcodedText,MissingConstraints" />
+                android:layout_marginTop="26dp"
+                android:text="CCCD mặt trước"
+                android:textColor="@color/cccd_label"
+                android:textSize="23.35sp"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
 
-            <ImageView
-                android:id="@+id/img_front_CCCD"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                android:background="@drawable/input_image"
-                app:layout_constraintEnd_toEndOf="@+id/front_CCCD"
-                app:layout_constraintStart_toStartOf="@id/front_CCCD"
-                app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD"
-                tools:ignore="MissingConstraints" />
-
-            <View
-                android:id="@+id/front_CCCD"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_200sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/stroke"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginStart="@dimen/_15sdp"
-                android:layout_marginEnd="@dimen/_15sdp"
-                app:layout_constraintTop_toBottomOf="@+id/tv_front_CCCD"
-                tools:ignore="MissingConstraints" />
-
-            <TextView
-                android:id="@+id/tv_behind_CCCD"
-                app:layout_constraintStart_toStartOf="@+id/tv_front_CCCD"
+            <FrameLayout
+                android:id="@+id/front_cccd_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:text="Mặt sau CCCD *"
-                android:textSize="@dimen/_14ssp"
-                android:textStyle="bold"
-                android:textColor="@color/sky"
-                app:layout_constraintTop_toBottomOf="@+id/img_front_CCCD"
-                tools:ignore="HardcodedText,MissingConstraints" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="26dp"
+                android:padding="12dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Chọn ảnh CCCD mặt trước">
 
-            <View
-                android:id="@+id/viewBehindCiCard"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_200sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/stroke"
-                app:layout_constraintStart_toStartOf="@+id/front_CCCD"
-                app:layout_constraintEnd_toEndOf="@+id/front_CCCD"
-                app:layout_constraintTop_toBottomOf="@+id/tv_behind_CCCD"
-                tools:ignore="MissingConstraints" />
+                <ImageView
+                    android:id="@+id/img_front_CCCD"
+                    android:layout_width="139dp"
+                    android:layout_height="137dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/input_image"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
 
-            <ImageView
-                android:id="@+id/img_behind_CCCD"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_200sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:background="@drawable/input_image"
-                android:adjustViewBounds="true"
-                android:scaleType="centerCrop"
-                app:layout_constraintStart_toStartOf="@+id/front_CCCD"
-                app:layout_constraintEnd_toEndOf="@+id/front_CCCD"
-                app:layout_constraintTop_toBottomOf="@+id/tv_behind_CCCD"
-                tools:ignore="MissingConstraints" />
+            <!-- CCCD mặt sau -->
+            <TextView
+                android:id="@+id/tv_behind_CCCD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="26dp"
+                android:text="CCCD mặt sau"
+                android:textColor="@color/cccd_label"
+                android:textSize="23.35sp"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <FrameLayout
+                android:id="@+id/behind_cccd_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="26dp"
+                android:padding="12dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true"
+                android:contentDescription="Chọn ảnh CCCD mặt sau">
+
+                <ImageView
+                    android:id="@+id/img_behind_CCCD"
+                    android:layout_width="139dp"
+                    android:layout_height="137dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/input_image"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
+
+            <!-- Nút tải ảnh lên -->
+            <Button
                 android:id="@+id/update_img"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/buttonSize"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:background="@drawable/blue_round_button"
-                android:backgroundTint="@color/sunset"
+                style="@style/AppButton"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_gradient_cccd"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:lineHeight="24sp"
                 android:text="Tải ảnh lên"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/_16ssp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginEnd="@dimen/_75sdp"
-                android:layout_marginStart="@dimen/_75sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginBottom="@dimen/_20sdp"
-                app:layout_constraintTop_toBottomOf="@+id/img_behind_CCCD"
-                tools:ignore="HardcodedText,MissingConstraints" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+                android:textColor="@color/white"
+                android:textSize="20.33sp"
+                android:elevation="4dp" />
+        </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

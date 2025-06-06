@@ -38,7 +38,6 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="HardcodedText" />
 
-
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
@@ -174,7 +173,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/img_card"
                     tools:ignore="HardcodedText" />
 
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/img_card"
                     android:layout_width="0dp"
@@ -190,10 +188,10 @@
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
                         android:background="@drawable/yellow_line"
+                        android:contentDescription="Chọn ảnh xe"
                         app:layout_constraintEnd_toEndOf="@+id/img_card"
                         app:layout_constraintStart_toStartOf="@+id/img_card"
-                        app:layout_constraintTop_toTopOf="@+id/img_card"
-                        tools:ignore="ContentDescription" />
+                        app:layout_constraintTop_toTopOf="@+id/img_card" />
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>

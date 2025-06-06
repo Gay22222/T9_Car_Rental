@@ -38,4 +38,8 @@
     <string name="action_profile">Profile</string>
     <string name="default_web_client_id">fake-client-id.apps.googleusercontent.com</string>
 
+    <!-- Chat strings -->
+    <string name="chat_hint">Type a message...</string>
+    <string name="send_content_description">Send message</string>
+    <string name="add_content_description">Add attachment</string>
 </resources>

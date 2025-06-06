@@ -1,72 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/vehicle_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"    >
+    app:cardCornerRadius="15dp"
+    app:cardElevation="4dp"
+    android:layout_margin="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/blue_round_card"
-            android:layout_margin="@dimen/_15sdp">
+            android:layout_height="263dp"
+            android:padding="4dp">
 
                 <ImageView
                     android:id="@+id/img_vehicle"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_120sdp"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_1sdp"
-                    android:layout_marginBottom="@dimen/_3sdp"
-                    android:adjustViewBounds="true"
+                    android:layout_width="0dp"
+                    android:layout_height="167dp"
+                    android:background="@drawable/rounded_corner"
+                    android:clipToOutline="true"
                     android:scaleType="centerCrop"
+                    app:layout_constraintDimensionRatio="314:167"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/provider_name"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@drawable/a2_0_1" />
 
                 <TextView
                     android:id="@+id/vehicle_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:textColor="@color/sunset"
-                    android:text="Tên xe"
-                    android:textSize="@dimen/_24ssp"
-                    android:textStyle="bold"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/relay_roboto_flex_regular"
+                    android:fontWeight="700"
+                    android:textColor="@color/text_title"
+                    android:textSize="19.7sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="HardcodedText" />
-                <TextView
-                    android:id="@+id/provider_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="Tên nhà cung cấp"
-                    android:textSize="@dimen/_14ssp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@id/vehicle_name"
-                    app:layout_constraintTop_toBottomOf="@+id/vehicle_name"
-                    tools:ignore="HardcodedText" />
+                    app:layout_constraintTop_toBottomOf="@id/img_vehicle"
+                    tools:text="Vinfast Lux A2.0" />
+
                 <TextView
                     android:id="@+id/tv_vehicle_price"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_27sdp"
-                    android:backgroundTint="@color/white"
-                    android:paddingEnd="@dimen/_5sdp"
-                    android:paddingStart="@dimen/_7sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:text="Giá/ngày"
-                    android:textColor="@color/sky"
-                    android:textSize="@dimen/_12ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="28dp"
+                    android:fontFamily="@font/relay_roboto_flex_regular"
+                    android:textColor="@color/text_input_hint"
+                    android:textSize="17.51sp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:background="@drawable/select_button"
-                    tools:ignore="HardcodedText" />
+                    app:layout_constraintTop_toBottomOf="@id/img_vehicle"
+                    tools:text="899.000VNĐ/Ngày" />
+
+                <TextView
+                    android:id="@+id/vehicle_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/relay_roboto_flex_regular"
+                    android:textColor="@color/text_input_hint"
+                    android:textSize="17.51sp"
+                    app:layout_constraintBottom_toBottomOf="@id/rating_icon"
+                    app:layout_constraintStart_toEndOf="@id/rating_icon"
+                    tools:text="4.9 (18 Đánh giá)" />
+
+                <ImageView
+                    android:id="@+id/rating_icon"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginBottom="4dp"
+                    android:src="@drawable/vector_main"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="ContentDescription" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.cardview.widget.CardView>

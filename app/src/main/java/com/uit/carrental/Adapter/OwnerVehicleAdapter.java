@@ -19,11 +19,11 @@ import com.uit.carrental.Service.Vehicle.UpdateVehicle;
 
 import java.util.ArrayList;
 
-public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapter.MyViewHolder>{
-    OwnerVehicleFragment ownerVehicleFragment;
-    Vehicle vehicle;
-    ArrayList<Vehicle> vehicles;
-    onClickInterface onClickInterface;
+public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapter.MyViewHolder> {
+    private final OwnerVehicleFragment ownerVehicleFragment;
+    private final ArrayList<Vehicle> vehicles;
+    private final onClickInterface onClickInterface;
+
     public OwnerVehicleAdapter(OwnerVehicleFragment context, ArrayList<Vehicle> vehicles, onClickInterface onClickInterface) {
         this.ownerVehicleFragment = context;
         this.vehicles = vehicles;
@@ -32,29 +32,37 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
 
     @NonNull
     @Override
-    public OwnerVehicleAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(ownerVehicleFragment.getActivity()).inflate(R.layout.vehicle_card, parent, false);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(ownerVehicleFragment.getActivity()).inflate(R.layout.owner_vehicle_card, parent, false);
         return new MyViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull OwnerVehicleAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final int pos = position;
-        vehicle = vehicles.get(position);
-        holder.name.setText(vehicle.getVehicle_name());
-        holder.price.setText(vehicle.getVehicle_price());
-        holder.provider.setText(vehicle.getProvider_name());
-        Glide.with(ownerVehicleFragment.getActivity()).load(vehicle.getVehicle_imageURL()).into(holder.vehicleImage);
+        Vehicle vehicle = vehicles.get(position);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onClickInterface.setClick(pos);
-                vehicle = vehicles.get(pos);
-                Intent intent = new Intent(ownerVehicleFragment.getActivity(), UpdateVehicle.class);
-                intent.putExtra("vehicle_id", vehicle.getVehicle_id());
-                ownerVehicleFragment.startActivity(intent);
-            }
+        // Mock data if null
+        holder.name.setText(vehicle.getVehicle_name() != null ? vehicle.getVehicle_name() : "Xe mẫu");
+        holder.price.setText(vehicle.getVehicle_price() != null ? vehicle.getVehicle_price() : "500.000VNĐ/Ngày");
+        holder.provider.setText(vehicle.getProvider_name() != null ? vehicle.getProvider_name() : "Nhà cung cấp mẫu");
+        holder.rating.setText(vehicle.getVehicle_rating() != null ? vehicle.getVehicle_rating() : "4.0 (0 Đánh giá)");
+
+        // Load image with Glide
+        if (vehicle.getVehicle_imageURL() != null && !vehicle.getVehicle_imageURL().isEmpty()) {
+            Glide.with(ownerVehicleFragment.getActivity())
+                    .load(vehicle.getVehicle_imageURL())
+                    .into(holder.vehicleImage);
+        } else {
+            holder.vehicleImage.setImageResource(R.drawable.a2_0_1); // Mock image
+        }
+
+        holder.itemView.setOnClickListener(v -> {
+            onClickInterface.setClick(pos);
+            Vehicle clickedVehicle = vehicles.get(pos);
+            Intent intent = new Intent(ownerVehicleFragment.getActivity(), UpdateVehicle.class);
+            intent.putExtra("vehicle_id", clickedVehicle.getVehicle_id());
+            ownerVehicleFragment.startActivity(intent);
         });
     }
 
@@ -64,14 +72,15 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-
-        TextView name, price, provider;
+        TextView name, price, provider, rating;
         ImageView vehicleImage;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.vehicle_name);
             price = itemView.findViewById(R.id.tv_vehicle_price);
             provider = itemView.findViewById(R.id.provider_name);
+            rating = itemView.findViewById(R.id.vehicle_rating);
             vehicleImage = itemView.findViewById(R.id.img_vehicle);
         }
     }

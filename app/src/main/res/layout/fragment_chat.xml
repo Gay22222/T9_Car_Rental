@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Main Content -->
+    <LinearLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@id/input_container"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Rating Section -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="103dp"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/rating_icon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/vector10_ai"
+                android:contentDescription="Star" />
+
+            <TextView
+                android:id="@+id/rating_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4.7 (5 Đánh giá)"
+                android:textColor="@color/rating_text_color"
+                android:textSize="17.51sp"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:layout_marginStart="4dp" />
+        </LinearLayout>
+
+        <!-- RecyclerView for Messages -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chat_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- Input Area -->
+    <LinearLayout
+        android:id="@+id/input_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/input_area_background"
+        android:paddingStart="7dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="7dp"
+        android:paddingBottom="5dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Plus Circle Button -->
+        <ImageView
+            android:id="@+id/plus_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/icon_ai"
+            android:contentDescription="@string/add_content_description" />
+
+        <!-- Input Field -->
+        <EditText
+            android:id="@+id/message_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="48dp"
+            android:layout_marginEnd="48dp"
+            android:hint="@string/chat_hint"
+            android:textColor="@color/input_text_color"
+            android:textColorHint="@color/input_text_color"
+            android:fontFamily="@font/relay_roboto_flex_regular"
+            android:textSize="17sp" />
+
+        <!-- Send Button -->
+        <ImageView
+            android:id="@+id/send_button"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:src="@drawable/icon1_ai"
+            android:contentDescription="@string/send_content_description" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
