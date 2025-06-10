@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -29,7 +30,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.uit.carrental.Model.User;
 import com.uit.carrental.R;
 
@@ -39,29 +39,20 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity {
 
     private static final String TAG = "RegisterActivity";
-    private static final int RC_SIGN_IN = 406; // Khớp với LoginActivity
+    private static final int RC_SIGN_IN = 406;
+    private static final String ADMIN_EMAIL = "21522516@gm.uit.edu.vn";
 
     private EditText inputUsername, inputPhone, inputEmail, inputPass, inputConfirmPass;
     private Button btnSignUp;
+    private ImageButton btnBack; // Thêm biến cho nút Back
     private LinearLayout btnFacebook, btnGoogle;
     private FirebaseAuth mAuth;
-    private FirebaseFirestore dtbUser;
+    private FirebaseFirestore dbUser;
     private GoogleSignInClient mGoogleSignInClient;
     private ProgressDialog progressDialog;
     private String username, phone, email, password, confirmPassword;
     private boolean isValid = true;
     private User user;
-
-    private void initViews() {
-        inputUsername = findViewById(R.id.username_input);
-        inputPhone = findViewById(R.id.phone_input);
-        inputEmail = findViewById(R.id.email_input);
-        inputPass = findViewById(R.id.password_input);
-        inputConfirmPass = findViewById(R.id.confirm_password_input);
-        btnSignUp = findViewById(R.id.btn_signUp2);
-        btnFacebook = findViewById(R.id.facebook_button);
-        btnGoogle = findViewById(R.id.google_button);
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,10 +63,11 @@ public class RegisterActivity extends AppCompatActivity {
         initViews();
 
         mAuth = FirebaseAuth.getInstance();
-        dtbUser = FirebaseFirestore.getInstance();
+        dbUser = FirebaseFirestore.getInstance();
         progressDialog = new ProgressDialog(this);
         configureGoogleSignIn();
 
+        btnBack.setOnClickListener(v -> finish()); // Xử lý sự kiện nhấn nút Back
         btnSignUp.setOnClickListener(view -> {
             checkPassword();
             if (isValid) {
@@ -85,10 +77,21 @@ public class RegisterActivity extends AppCompatActivity {
 
         btnFacebook.setOnClickListener(view -> {
             Toast.makeText(this, "Đăng nhập với Facebook chưa được triển khai.", Toast.LENGTH_SHORT).show();
-            // TODO: Implement Facebook login logic
         });
 
         btnGoogle.setOnClickListener(view -> loginWithGoogle());
+    }
+
+    private void initViews() {
+        inputUsername = findViewById(R.id.username_input);
+        inputPhone = findViewById(R.id.phone_input);
+        inputEmail = findViewById(R.id.email_input);
+        inputPass = findViewById(R.id.password_input);
+        inputConfirmPass = findViewById(R.id.confirm_password_input);
+        btnSignUp = findViewById(R.id.btn_signUp2);
+        btnBack = findViewById(R.id.btn_back); // Ánh xạ nút Back
+        btnFacebook = findViewById(R.id.facebook_button);
+        btnGoogle = findViewById(R.id.google_button);
     }
 
     private void configureGoogleSignIn() {
@@ -110,6 +113,10 @@ public class RegisterActivity extends AppCompatActivity {
             inputConfirmPass.setError("Mật khẩu không khớp");
             inputConfirmPass.requestFocus();
             isValid = false;
+        } else if (password.length() < 6) {
+            inputPass.setError("Mật khẩu phải có ít nhất 6 ký tự");
+            inputPass.requestFocus();
+            isValid = false;
         } else {
             isValid = true;
         }
@@ -118,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
     private void createAccount() {
         username = inputUsername.getText().toString().trim();
         phone = inputPhone.getText().toString().trim();
-        email = inputEmail.getText().toString().trim();
+        email = inputEmail.getText().toString().trim().toLowerCase();
         password = inputPass.getText().toString().trim();
 
         if (!validateForm()) return;
@@ -147,9 +154,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     inputEmail.requestFocus();
                                     break;
                                 case "ERROR_WEAK_PASSWORD":
-                                    errorMessage = "Mật khẩu quá yếu (ít nhất 6 ký tự).";
-                                    inputPass.setError(errorMessage);
-                                    inputPass.requestFocus();
+                                    errorMessage = "Mật khẩu quá yếu.";
                                     break;
                                 default:
                                     errorMessage = e.getMessage();
@@ -166,11 +171,11 @@ public class RegisterActivity extends AppCompatActivity {
             firebaseUser.sendEmailVerification()
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            Toast.makeText(this, "Đã gửi email xác thực đến " + email, Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Đã gửi email xác nhận đến " + email, Toast.LENGTH_LONG).show();
                             createUserDocument();
                         } else {
                             progressDialog.dismiss();
-                            Toast.makeText(this, "Gửi email xác thực thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Gửi email xác nhận thất bại: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
         }
@@ -178,33 +183,30 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void createUserDocument() {
         user = new User();
+        user.setUserId(mAuth.getCurrentUser().getUid());
         user.setUsername(username);
         user.setEmail(email);
         user.setPhoneNumber(phone);
-        user.setUser_id(FirebaseAuth.getInstance().getUid());
 
         Map<String, Boolean> roleMap = new HashMap<>();
         roleMap.put("customer", true);
         roleMap.put("owner", true);
-
+        roleMap.put("admin", email.equalsIgnoreCase(ADMIN_EMAIL));
         user.setRoles(roleMap);
-        user.setCurrentRole("customer"); // Mặc định ban đầu là customer
+        user.setCurrentRole(email.equalsIgnoreCase(ADMIN_EMAIL) ? "admin" : "customer");
 
-        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-                .build();
-        dtbUser.setFirestoreSettings(settings);
-
-        DocumentReference newUserRef = dtbUser.collection("Users")
-                .document(FirebaseAuth.getInstance().getUid());
+        DocumentReference newUserRef = dbUser.collection("Users").document(user.getUserId());
 
         newUserRef.set(user).addOnCompleteListener(task -> {
             progressDialog.dismiss();
             if (task.isSuccessful()) {
-                Toast.makeText(this, "Đăng ký thành công. Vui lòng xác thực Email trước khi đăng nhập.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Đăng ký thành công. Vui lòng đăng nhập.", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
                 finish();
             } else {
                 View parentLayout = findViewById(android.R.id.content);
-                Snackbar.make(parentLayout, "Tạo tài liệu người dùng thất bại: " + task.getException().getMessage(), Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(parentLayout, "Tạo tài liệu người dùng thất bại: " + task.getException().getMessage(), Snackbar.LENGTH_LONG).show();
             }
         });
     }
@@ -220,9 +222,17 @@ public class RegisterActivity extends AppCompatActivity {
             inputPhone.setError("Số điện thoại bắt buộc.");
             inputPhone.requestFocus();
             valid = false;
+        } else if (!phone.matches("^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$")) {
+            inputPhone.setError("Số điện thoại không hợp lệ.");
+            inputPhone.requestFocus();
+            valid = false;
         }
         if (TextUtils.isEmpty(email)) {
             inputEmail.setError("Email bắt buộc.");
+            inputEmail.requestFocus();
+            valid = false;
+        } else if (!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$")) {
+            inputEmail.setError("Email không hợp lệ.");
             inputEmail.requestFocus();
             valid = false;
         }
@@ -258,7 +268,6 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // Lưu thông tin người dùng với username và phone mặc định trống
                         username = acct.getDisplayName() != null ? acct.getDisplayName() : "";
                         email = acct.getEmail();
                         phone = "";

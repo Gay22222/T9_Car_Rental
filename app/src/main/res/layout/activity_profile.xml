@@ -1,248 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".Service.UserAuthentication.ProfileManagement">
+    android:background="@color/white">
 
-    <!-- Thanh điều hướng -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bars"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_marginTop="48dp"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <!-- Nút back -->
-        <ImageView
-            android:id="@+id/back_button"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="16dp"
-            android:contentDescription="Back"
-            android:src="@drawable/vector_update_profile"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- Tiêu đề -->
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/relay_roboto_flex_regular"
-            android:lineHeight="24dp"
-            android:text="Cập Nhật Thông Tin"
-            android:textColor="@color/account_title"
-            android:textSize="29.33sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Avatar -->
-
-    <!-- Nút chỉnh sửa avatar -->
-
-    <!-- Email hiển thị -->
-
-    <!-- Divider -->
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_avatar_profile_input_fragment"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/ic_person"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bars" />
-
+    <!-- Nút quay lại -->
     <ImageView
-        android:id="@+id/edit_avatar"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="238dp"
-        android:layout_marginBottom="35dp"
-        android:contentDescription="Edit Avatar"
-        android:src="@drawable/vector1_update_profile"
-        app:layout_constraintBottom_toBottomOf="@+id/email_display"
-        app:layout_constraintStart_toEndOf="@+id/img_avatar_profile_input_fragment" />
+        android:id="@+id/back_button"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_arrow_left"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Tiêu đề -->
     <TextView
-        android:id="@+id/email_display"
+        android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Cập nhật thông tin cá nhân"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_title"
         android:fontFamily="@font/relay_roboto_flex_regular"
-        android:text="221521019@gm.uit.edu.vn"
-        android:textColor="@color/update_profile_email"
-        android:textSize="19.88sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toEndOf="@+id/img_avatar_profile_input_fragment"
-        app:layout_constraintTop_toBottomOf="@+id/bars" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="351dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="13dp"
-        android:background="@drawable/line_8_update_profile"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/email_display" />
+        app:layout_constraintTop_toBottomOf="@id/back_button" />
 
-    <!-- ScrollView cho thông tin -->
+    <!-- ScrollView chứa các trường nhập -->
     <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider">
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingBottom="16dp">
+            android:padding="16dp">
 
-            <!-- Tên người dùng -->
+            <!-- Ảnh đại diện -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_avatar_profile_input_fragment"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_person"
+                app:civ_border_color="@color/sky"
+                app:civ_border_width="2dp" />
+
+            <!-- Nút chỉnh sửa ảnh đại diện -->
+            <ImageView
+                android:id="@+id/edit_avatar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_edit"
+                android:contentDescription="Edit Avatar" />
+
+            <!-- Họ và tên -->
+            <TextView
+                android:id="@+id/tv_fullname_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Họ và tên"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
             <EditText
                 android:id="@+id/profile_input_fullname"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/field_update_profile"
+                android:background="@drawable/background1_car_details"
                 android:fontFamily="@font/relay_roboto_flex_regular"
-                android:hint="Tên người dùng"
-                android:paddingHorizontal="16dp"
-                android:textColor="@color/account_input_color"
-                android:textColorHint="@color/text_input_hint"
-                android:textSize="23.35sp"
-                tools:ignore="HardcodedText" />
+                android:hint="Nhập họ và tên"
+                android:inputType="textPersonName"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp" />
 
             <!-- Email -->
+            <TextView
+                android:id="@+id/tv_email_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Email"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
             <EditText
                 android:id="@+id/profile_input_email"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/field1_update_profile"
-                android:enabled="false"
+                android:background="@drawable/background1_car_details"
                 android:fontFamily="@font/relay_roboto_flex_regular"
-                android:hint="Email"
-                android:paddingHorizontal="16dp"
-                android:textColor="@color/account_input_color"
-                android:textColorHint="@color/text_input_hint"
-                android:textSize="23.35sp"
-                tools:ignore="HardcodedText" />
+                android:hint="Nhập email"
+                android:inputType="textEmailAddress"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:enabled="false" />
 
             <!-- Số điện thoại -->
+            <TextView
+                android:id="@+id/tv_phone_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Số điện thoại"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
             <EditText
                 android:id="@+id/profile_input_phone"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/field2_update_profile"
-                android:enabled="false"
+                android:background="@drawable/background1_car_details"
                 android:fontFamily="@font/relay_roboto_flex_regular"
-                android:hint="Số điện thoại"
-                android:paddingHorizontal="16dp"
-                android:textColor="@color/account_input_color"
-                android:textColorHint="@color/text_input_hint"
-                android:textSize="23.35sp"
-                tools:ignore="HardcodedText" />
+                android:hint="Nhập số điện thoại"
+                android:inputType="phone"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:enabled="false" />
+
+            <!-- Ngày sinh -->
+            <TextView
+                android:id="@+id/tv_birthday_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ngày sinh"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <Button
+                android:id="@+id/profile_input_dateofbirth"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/background1_car_details"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:gravity="start|center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Chọn ngày sinh"
+                android:textColor="@color/text_title"
+                android:textSize="16sp" />
 
             <!-- Địa chỉ -->
+            <TextView
+                android:id="@+id/tv_address_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Địa chỉ"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
             <EditText
                 android:id="@+id/profile_input_address"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/field3_update_profile"
+                android:background="@drawable/background1_car_details"
                 android:fontFamily="@font/relay_roboto_flex_regular"
-                android:hint="Địa chỉ"
-                android:paddingHorizontal="16dp"
-                android:textColor="@color/account_input_color"
-                android:textColorHint="@color/text_input_hint"
-                android:textSize="23.35sp"
-                tools:ignore="HardcodedText" />
+                android:hint="Nhập địa chỉ"
+                android:inputType="textPostalAddress"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp" />
 
             <!-- Thành phố -->
+            <TextView
+                android:id="@+id/tv_city_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Thành phố"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
             <EditText
                 android:id="@+id/profile_input_city"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/field4_update_profile"
-                android:drawableEnd="@drawable/vector2_update_profile"
+                android:background="@drawable/background1_car_details"
                 android:fontFamily="@font/relay_roboto_flex_regular"
-                android:hint="Thành phố"
+                android:hint="Nhập thành phố"
+                android:inputType="text"
                 android:paddingStart="16dp"
-                android:paddingEnd="50dp"
-                android:textColor="@color/account_input_color"
-                android:textColorHint="@color/text_input_hint"
-                android:textSize="23.35sp"
-                tools:ignore="HardcodedText" />
+                android:paddingEnd="16dp"
+                android:textSize="16sp" />
 
-            <!-- Ngày sinh -->
-            <Button
-                android:id="@+id/profile_input_dateofbirth"
-                style="@style/AppButton"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/field5_update_profile"
-                android:fontFamily="@font/relay_roboto_flex_regular"
-                android:hint="Ngày sinh"
-                android:paddingHorizontal="16dp"
-                android:textColor="@color/account_input_color"
-                android:textColorHint="@color/text_input_hint"
-                android:textSize="23.35sp"
-                tools:ignore="HardcodedText" />
-
-            <!-- Cập nhật CCCD -->
+            <!-- Mô tả -->
             <TextView
-                android:id="@+id/update_cccd"
+                android:id="@+id/tv_description_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:fontFamily="@font/relay_roboto_flex_regular"
-                android:fontWeight="700"
-                android:padding="12dp"
-                android:text="Cập nhật CCCD"
-                android:textColor="@color/update_profile_cccd"
-                android:textSize="23.35sp"
-                android:textStyle="normal"
-                tools:ignore="HardcodedText" />
+                android:layout_marginTop="16dp"
+                android:text="Mô tả bản thân"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
 
-            <!-- Nút lưu thay đổi -->
-            <Button
-                android:id="@+id/btn_update"
-                style="@style/AppButton"
-                android:layout_width="328dp"
-                android:layout_height="48dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="103dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/button_gradient_update_profile"
+            <EditText
+                android:id="@+id/profile_input_description"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/background1_car_details"
                 android:fontFamily="@font/relay_roboto_flex_regular"
-                android:lineHeight="24dp"
-                android:text="Lưu thay đổi"
-                android:textColor="@color/white"
-                android:textSize="20.33sp" />
+                android:hint="Nhập mô tả (ví dụ: sở thích, nghề nghiệp)"
+                android:inputType="textMultiLine"
+                android:padding="16dp"
+                android:textSize="16sp" />
+
+            <!-- Vai trò hiện tại (chỉ hiển thị) -->
+            <TextView
+                android:id="@+id/tv_role_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Vai trò"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <TextView
+                android:id="@+id/tv_current_role"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/background1_car_details"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_title"
+                tools:text="Khách hàng" />
+
+            <!-- Trạng thái xác minh (chỉ hiển thị) -->
+            <TextView
+                android:id="@+id/tv_verification_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Trạng thái xác minh"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <TextView
+                android:id="@+id/tv_verification_status"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/background1_car_details"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_title"
+                tools:text="Chưa xác minh" />
+
+            <!-- Trạng thái tài khoản (chỉ hiển thị) -->
+            <TextView
+                android:id="@+id/tv_status_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Trạng thái tài khoản"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/background1_car_details"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_title"
+                tools:text="Hoạt động" />
+
         </LinearLayout>
     </ScrollView>
+
+    <!-- Nút cập nhật -->
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/blue_round_button"
+        android:text="Lưu thông tin"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintBottom_toTopOf="@id/update_cccd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Nút cập nhật CCCD -->
+    <TextView
+        android:id="@+id/update_cccd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Cập nhật căn cước công dân"
+        android:textColor="@color/sky"
+        android:textSize="16sp"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

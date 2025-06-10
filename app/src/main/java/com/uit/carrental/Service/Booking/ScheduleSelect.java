@@ -1,280 +1,349 @@
 package com.uit.carrental.Service.Booking;
 
-import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.uit.carrental.Model.Activity;
-import com.uit.carrental.R;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import androidx.lifecycle.ViewModelProvider;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointForward;
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import org.checkerframework.checker.units.qual.C;
-
+import com.uit.carrental.Model.Booking;
+import com.uit.carrental.Model.Notification;
+import com.uit.carrental.Model.Vehicle;
+import com.uit.carrental.R;
+import com.google.firebase.Timestamp;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 public class ScheduleSelect extends AppCompatActivity {
-    Button btn_request, btn_back;
-    TextView NgayNhan, NgayTra;
-    TextView GioNhan, GioTra;
-    private DatePickerDialog picker;
-    private TimePickerDialog tpicker;
-    Intent intent;
-    String vehicle_id;
-    FirebaseFirestore dtb_Vehicle, dtb_Noti,dtb_update;
-    private Activity noti = new Activity();
-    String current_user_id;
-    StorageReference storageReference;
-    FirebaseAuth firebaseAuth;
 
-    //
-//    APIService apiService;
-//    boolean notify = false;
-//    String provideID;
-    //
-
-
-    FirebaseUser user;
-
+    private static final String TAG = "ScheduleSelect";
+    private TextView tvSelectStartDate, tvSelectEndDate, tvSelectStartTime, tvSelectEndTime, tvTotalDays, tvTotalPrice;
+    private Button btnConfirm;
+    private ImageView backButton;
+    private ScheduleSelectViewModel viewModel;
+    private String vehicleId;
+    private Calendar startDateTime, endDateTime;
+    private List<Long> bookedDates; // Danh sách epoch millis của các ngày đã đặt
+    private FirebaseFirestore db;
+    private Vehicle vehicle; // Đối tượng xe để lấy giá
+    private long totalDays;
+    private long totalAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_schedule_select);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-        setContentView(R.layout.activity_schedule_select);
 
-        intent = getIntent();
+        vehicleId = getIntent().getStringExtra("vehicleId");
+        if (vehicleId == null) {
+            Toast.makeText(this, R.string.no_vehicle_id, Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
-        String Vehicle_ID = intent.getStringExtra("vehicle_id");
-        vehicle_id = Vehicle_ID;
-
-        storageReference = FirebaseStorage.getInstance().getReference();
-        dtb_Vehicle = FirebaseFirestore.getInstance();
-        firebaseAuth = FirebaseAuth.getInstance();
-        current_user_id = firebaseAuth.getCurrentUser().getUid();
-        dtb_Noti = FirebaseFirestore.getInstance();
-        dtb_update = FirebaseFirestore.getInstance();
-
-        //
-//        user= FirebaseAuth.getInstance().getCurrentUser();
-//        apiService= Client.getClient("http:/fcm.googleapis.com/").create(APIService.class);
-        //
-
-        initComponents();
-
-        overridePendingTransition(R.anim.anim_in_left, R.anim.anim_out_right);
-
-
-        btn_request.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                notify=true;
-                setNotiFirebase();
-                Intent Writeinfor=new Intent(ScheduleSelect.this, RequestSuccessActivity.class);
-                startActivity(Writeinfor);
-            }
-        });
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onStop();
-            }
-        });
+        initViews();
+        initViewModel();
+        loadVehicleData();
+        setupListeners();
     }
-    private void setNotiFirebase(){
-        dtb_Vehicle.collection("Vehicles")
-                .whereEqualTo("vehicle_id", vehicle_id)
+
+    private void initViews() {
+        tvSelectStartDate = findViewById(R.id.tv_select_start_date);
+        tvSelectEndDate = findViewById(R.id.tv_select_end_date);
+        tvSelectStartTime = findViewById(R.id.tv_select_start_time);
+        tvSelectEndTime = findViewById(R.id.tv_select_end_time);
+        tvTotalDays = findViewById(R.id.tv_total_days);
+        tvTotalPrice = findViewById(R.id.tv_total_price);
+        btnConfirm = findViewById(R.id.btn_confirm);
+        backButton = findViewById(R.id.back_button);
+        db = FirebaseFirestore.getInstance();
+        bookedDates = new ArrayList<>();
+        startDateTime = null;
+        endDateTime = null;
+        totalDays = 0;
+        totalAmount = 0;
+    }
+
+    private void initViewModel() {
+        viewModel = new ViewModelProvider(this).get(ScheduleSelectViewModel.class);
+    }
+
+    private void loadVehicleData() {
+        db.collection("Vehicles").document(vehicleId)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                noti.setVehicle_id(document.get("vehicle_id").toString());
-                                noti.setProvider_id(document.get("provider_id").toString());
-                                noti.setPickup(NgayNhan.getText().toString() + " " + GioNhan.getText().toString());
-                                noti.setDropoff(NgayTra.getText().toString() + " " + GioTra.getText().toString());
-                                noti.setStatus("Dang cho");
-
-                                noti.setCustomer_id(current_user_id);
-//                                provideID=noti.getProvider_id();
-
-                                dtb_Noti.collection("Notification")
-                                        .add(noti)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                            @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                noti.setNoti_id(documentReference.getId());
-                                                Log.e("NotiID", noti.getNoti_id());
-                                                updateData(noti.getNoti_id());
-                                                Intent intent = new Intent(ScheduleSelect.this, RequestSuccessActivity.class);
-                                                startActivity(intent);
-/*
-                                                toast("Thêm noti thành công");
-*/
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                toast("Thêm noti thất bại");
-                                            }
-                                        });
-
-                            }
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        vehicle = documentSnapshot.toObject(Vehicle.class);
+                        if (vehicle == null) {
+                            Toast.makeText(this, R.string.vehicle_not_found, Toast.LENGTH_SHORT).show();
+                            finish();
                         } else {
-                            Toast.makeText(ScheduleSelect.this, "Không thể lấy thông báo", Toast.LENGTH_SHORT).show();
+                            loadBookedDates();
                         }
-
-
+                    } else {
+                        Toast.makeText(this, R.string.vehicle_not_found, Toast.LENGTH_SHORT).show();
+                        finish();
                     }
-                    private void updateData(String NotiID) {
-                        Log.e("NotificationID", NotiID);
-                        Map<String, Object> data = new HashMap<>();
-                        data.put("noti_id", NotiID);
-
-                        dtb_update.collection("Notification")
-                                .document(NotiID)
-                                .update(data)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-/*
-                                        Toast.makeText(ScheduleSelect.this, "DocumentSnapshot successfully updated!", Toast.LENGTH_LONG).show();
-*/
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(ScheduleSelect.this, "Error updating document", Toast.LENGTH_LONG).show();
-                                    }
-                                });
-                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Lỗi tải dữ liệu xe: " + e.getMessage());
+                    Toast.makeText(this, R.string.load_vehicle_error, Toast.LENGTH_SHORT).show();
+                    finish();
                 });
     }
-    private void toast(String txt){
-        Toast toast = Toast.makeText(getApplicationContext(),txt,Toast.LENGTH_LONG);
-        toast.show();
-    }
-    private void setonclick(){
-        NgayNhan.setFocusable(false);
-        NgayNhan.setClickable(true);
-        NgayTra.setFocusable(false);
-        NgayTra.setClickable(true);
-        GioNhan.setFocusable(false);
-        GioNhan.setClickable(true);
-        GioTra.setFocusable(false);
-        GioTra.setClickable(true);
 
-        final Calendar calendar = Calendar.getInstance();
-
-        NgayNhan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                picker = new DatePickerDialog(ScheduleSelect.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year1, int month1, int dayOfMonth) {
-                        String formattedDate = String.format("%04d-%02d-%02d", year1, month1 + 1, dayOfMonth);
-                        NgayNhan.setText(formattedDate);
+    private void loadBookedDates() {
+        db.collection("Bookings")
+                .whereEqualTo("vehicleId", vehicleId)
+                .whereIn("status", List.of("pending", "confirmed", "paid"))
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    bookedDates.clear();
+                    for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                        Booking booking = doc.toObject(Booking.class);
+                        if (booking != null && booking.getStartTime() != null && booking.getEndTime() != null) {
+                            addBookedDates(booking.getStartTime(), booking.getEndTime());
+                        }
                     }
-                }, year, month, day);
-                picker.show();
-            }
-        });
-
-        NgayTra.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-                picker = new DatePickerDialog(ScheduleSelect.this, new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year1, int month1, int dayOfMonth) {
-                        String formattedDate = String.format("%04d-%02d-%02d", year1, month1 + 1, dayOfMonth);
-                        NgayTra.setText(formattedDate);
-                    }
-                }, year, month, day);
-                picker.show();
-            }
-        });
-
-        GioNhan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                int minute = calendar.get(Calendar.MINUTE);
-
-                tpicker = new TimePickerDialog(ScheduleSelect.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String formattedTime = String.format("%02d:%02d", hourOfDay, minute);
-                        GioNhan.setText(formattedTime);
-                    }
-                }, hour, minute, true);
-                tpicker.show();
-            }
-        });
-
-        GioTra.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int hour = calendar.get(Calendar.HOUR_OF_DAY);
-                int minute = calendar.get(Calendar.MINUTE);
-
-                tpicker = new TimePickerDialog(ScheduleSelect.this, new TimePickerDialog.OnTimeSetListener() {
-                    @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        String formattedTime = String.format("%02d:%02d", hourOfDay, minute);
-                        GioTra.setText(formattedTime);
-                    }
-                }, hour, minute, true);
-                tpicker.show();
-            }
-        });
+                    Log.d(TAG, "Loaded " + bookedDates.size() + " booked dates");
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Lỗi tải lịch đặt xe: " + e.getMessage());
+                    Toast.makeText(this, R.string.load_schedule_error, Toast.LENGTH_SHORT).show();
+                });
     }
 
-    private void initComponents(){
-        btn_request = findViewById(R.id.btn_requestbooking);
-        btn_back = findViewById(R.id.btn_noti_back);
-        NgayNhan = findViewById(R.id.edt_NgayNhan);
-        NgayTra = findViewById(R.id.edt_NgayTra);
-        GioNhan= findViewById(R.id.edt_GioNhan);
-        GioTra= findViewById(R.id.edt_GioTra);
-        setonclick();
+    private void addBookedDates(Timestamp startTime, Timestamp endTime) {
+        Calendar startCal = Calendar.getInstance();
+        startCal.setTime(startTime.toDate());
+        startCal.set(Calendar.HOUR_OF_DAY, 0);
+        startCal.set(Calendar.MINUTE, 0);
+        startCal.set(Calendar.SECOND, 0);
+        startCal.set(Calendar.MILLISECOND, 0);
+
+        Calendar endCal = Calendar.getInstance();
+        endCal.setTime(endTime.toDate());
+        endCal.set(Calendar.HOUR_OF_DAY, 0);
+        endCal.set(Calendar.MINUTE, 0);
+        endCal.set(Calendar.SECOND, 0);
+        endCal.set(Calendar.MILLISECOND, 0);
+
+        while (!startCal.after(endCal)) {
+            bookedDates.add(startCal.getTimeInMillis());
+            startCal.add(Calendar.DAY_OF_MONTH, 1);
+        }
     }
 
+    private void setupListeners() {
+        backButton.setOnClickListener(v -> finish());
+
+        tvSelectStartDate.setOnClickListener(v -> showDatePicker(true));
+        tvSelectEndDate.setOnClickListener(v -> showDatePicker(false));
+        tvSelectStartTime.setOnClickListener(v -> showTimePicker(true));
+        tvSelectEndTime.setOnClickListener(v -> showTimePicker(false));
+
+        btnConfirm.setOnClickListener(v -> confirmBooking());
+    }
+
+    private void showDatePicker(boolean isStartDate) {
+        CalendarConstraints.Builder constraintsBuilder = new CalendarConstraints.Builder()
+                .setValidator(new CalendarConstraints.DateValidator() {
+                    @Override
+                    public boolean isValid(long date) {
+                        Calendar today = Calendar.getInstance();
+                        today.set(Calendar.HOUR_OF_DAY, 0);
+                        today.set(Calendar.MINUTE, 0);
+                        today.set(Calendar.SECOND, 0);
+                        today.set(Calendar.MILLISECOND, 0);
+                        return date >= today.getTimeInMillis() && !bookedDates.contains(date);
+                    }
+
+                    @Override
+                    public int describeContents() { return 0; }
+
+                    @Override
+                    public void writeToParcel(android.os.Parcel dest, int flags) {}
+                });
+
+        MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(isStartDate ? R.string.select_start_date : R.string.select_end_date)
+                .setCalendarConstraints(constraintsBuilder.build())
+                .build();
+
+        datePicker.addOnPositiveButtonClickListener(selection -> {
+            Calendar selectedCal = Calendar.getInstance();
+            selectedCal.setTimeInMillis(selection);
+            selectedCal.set(Calendar.HOUR_OF_DAY, 0);
+            selectedCal.set(Calendar.MINUTE, 0);
+            selectedCal.set(Calendar.SECOND, 0);
+            selectedCal.set(Calendar.MILLISECOND, 0);
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+            if (isStartDate) {
+                startDateTime = startDateTime != null ? startDateTime : Calendar.getInstance();
+                startDateTime.setTimeInMillis(selection);
+                tvSelectStartDate.setText(sdf.format(new Date(selection)));
+            } else {
+                endDateTime = endDateTime != null ? endDateTime : Calendar.getInstance();
+                endDateTime.setTimeInMillis(selection);
+                tvSelectEndDate.setText(sdf.format(new Date(selection)));
+            }
+            updateTotalDaysAndPrice();
+        });
+
+        datePicker.show(getSupportFragmentManager(), isStartDate ? "START_DATE_PICKER" : "END_DATE_PICKER");
+    }
+
+    private void showTimePicker(boolean isStartTime) {
+        Calendar calendar = Calendar.getInstance();
+        TimePickerDialog timePicker = new TimePickerDialog(
+                this,
+                (view, hourOfDay, minute) -> {
+                    if (isStartTime) {
+                        startDateTime = startDateTime != null ? startDateTime : Calendar.getInstance();
+                        startDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        startDateTime.set(Calendar.MINUTE, minute);
+                        tvSelectStartTime.setText(String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute));
+                    } else {
+                        endDateTime = endDateTime != null ? endDateTime : Calendar.getInstance();
+                        endDateTime.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        endDateTime.set(Calendar.MINUTE, minute);
+                        tvSelectEndTime.setText(String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute));
+                    }
+                    updateTotalDaysAndPrice();
+                },
+                calendar.get(Calendar.HOUR_OF_DAY),
+                calendar.get(Calendar.MINUTE),
+                true
+        );
+        timePicker.show();
+    }
+
+    private void updateTotalDaysAndPrice() {
+        if (startDateTime == null || endDateTime == null || vehicle == null) {
+            tvTotalDays.setText(R.string.total_days);
+            tvTotalPrice.setText(R.string.total_price);
+            totalDays = 0;
+            totalAmount = 0;
+            return;
+        }
+
+        // Tính số giờ thuê
+        long diffInMillis = endDateTime.getTimeInMillis() - startDateTime.getTimeInMillis();
+        if (diffInMillis <= 0) {
+            tvTotalDays.setText(R.string.total_days);
+            tvTotalPrice.setText(R.string.total_price);
+            totalDays = 0;
+            totalAmount = 0;
+            return;
+        }
+
+        // Làm tròn số ngày (1 ngày = 24 giờ)
+        totalDays = (long) Math.ceil((double) diffInMillis / (1000 * 60 * 60 * 24));
+
+        // Lấy giá xe từ vehiclePrice (giả định dạng "500.000 VNĐ/Ngày")
+        long pricePerDay = parsePricePerDay(vehicle.getVehiclePrice());
+        totalAmount = totalDays * pricePerDay;
+
+        // Định dạng giá
+        DecimalFormat formatter = new DecimalFormat("#,### VNĐ");
+        tvTotalDays.setText(getString(R.string.total_days, totalDays));
+        tvTotalPrice.setText(getString(R.string.total_price, formatter.format(totalAmount)));
+    }
+
+    private long parsePricePerDay(String priceString) {
+        if (priceString == null || priceString.isEmpty()) {
+            return 0;
+        }
+        try {
+            // Loại bỏ " VNĐ/Ngày" và các dấu chấm
+            String cleanPrice = priceString.replaceAll("[^0-9]", "");
+            return Long.parseLong(cleanPrice);
+        } catch (NumberFormatException e) {
+            Log.e(TAG, "Lỗi phân tích giá: " + e.getMessage());
+            return 0;
+        }
+    }
+
+    private void confirmBooking() {
+        if (startDateTime == null || endDateTime == null) {
+            Toast.makeText(this, R.string.no_date_selected, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (endDateTime.before(startDateTime)) {
+            Toast.makeText(this, R.string.invalid_date_range, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (tvSelectStartTime.getText().toString().equals(getString(R.string.select_start_time)) ||
+                tvSelectEndTime.getText().toString().equals(getString(R.string.select_end_time))) {
+            Toast.makeText(this, R.string.no_time_selected, Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (totalDays <= 0 || totalAmount <= 0) {
+            Toast.makeText(this, R.string.invalid_booking, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        viewModel.checkScheduleConflict(vehicleId, new Timestamp(startDateTime.getTime()), new Timestamp(endDateTime.getTime()))
+                .observe(this, isAvailable -> {
+                    if (isAvailable == null) {
+                        Toast.makeText(this, R.string.booking_failed, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (!isAvailable) {
+                        Toast.makeText(this, R.string.time_overlap_error, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    Booking booking = new Booking();
+                    booking.setVehicleId(vehicleId);
+                    booking.setCustomerId(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    booking.setOwnerId(vehicle.getOwnerId());
+                    booking.setStartTime(new Timestamp(startDateTime.getTime()));
+                    booking.setEndTime(new Timestamp(endDateTime.getTime()));
+                    booking.setStatus("pending");
+                    booking.setCreatedAt(Timestamp.now());
+                    booking.setUpdatedAt(Timestamp.now());
+                    booking.setTotalAmount(totalAmount);
+                    booking.setPickupLocation("Địa chỉ nhận xe"); // TODO: Lấy từ input
+                    booking.setDropoffLocation("Địa chỉ trả xe"); // TODO: Lấy từ input
+
+                    viewModel.createBooking(booking).observe(this, bookingId -> {
+                        if (bookingId != null) {
+                            Notification notification = new Notification();
+                            notification.setUserId(vehicle.getOwnerId());
+                            notification.setBookingId(bookingId);
+                            notification.setMessage("Có booking mới: #" + bookingId);
+                            notification.setType("new_booking");
+                            db.collection("Notifications").add(notification);
+
+                            Intent intent = new Intent(ScheduleSelect.this, RequestSuccessActivity.class);
+                            intent.putExtra("bookingId", bookingId);
+                            startActivity(intent);
+                            Toast.makeText(this, R.string.booking_success, Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(this, R.string.booking_failed, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                });
+    }
 }

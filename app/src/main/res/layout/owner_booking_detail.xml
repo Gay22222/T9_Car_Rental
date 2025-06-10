@@ -1,510 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:background="@color/white">
 
-    <ScrollView
+    <!-- Nút quay lại -->
+    <ImageView
+        android:id="@+id/btn_noti_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_arrow_left"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Chi tiết yêu cầu thuê xe"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_noti_back"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Ảnh xe -->
+    <ImageView
+        android:id="@+id/img_noti_car"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/rounded_corner"
+        android:clipToOutline="true"
+        app:layout_constraintDimensionRatio="16:9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <TextView
-                    android:id="@+id/tv_confirm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="CHI TIẾT ĐƠN HÀNG"
-                    android:textColor="@color/sky"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/btn_noti_back"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/btn_noti_back" />
-                <TextView
-                    android:id="@+id/tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="ID:"
-                    android:textColor="@color/sky"
-                    android:textSize="20sp"
-
-                    app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:layout_marginLeft="60dp"
-                    />
-                <TextView
-                    android:id="@+id/txtview_noti_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="id giao dich"
-                    android:textColor="@color/sky"
-                    android:textSize="20sp"
-
-                    app:layout_constraintTop_toBottomOf="@+id/tv_confirm"
-                    app:layout_constraintLeft_toRightOf="@+id/tv"
-                    android:layout_marginLeft="10dp"
-                    />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_noti_back"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/ic_arrow_back_blu"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/status"
-                    app:layout_constraintTop_toBottomOf="@+id/txtview_noti_id"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    android:text="Trạng thái: "
-                    android:textColor="@color/sky"
-                    android:layout_marginLeft="60dp"
-                    android:textSize="20dp"
-
-                    ></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/txtview_noti_status"
-                    app:layout_constraintTop_toBottomOf="@+id/txtview_noti_id"
-                    app:layout_constraintLeft_toRightOf="@+id/status"
-                    android:text="đang chờ "
-                    android:textColor="@color/sky"
-                    android:layout_marginLeft="5dp"
-                    android:textSize="20dp"
-                    ></TextView>
-
-                <ImageView
-                    android:id="@+id/img_noti_car"
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:layout_marginTop="24dp"
-                    app:layout_constraintTop_toBottomOf="@+id/status"
-                    app:layout_constraintLeft_toLeftOf="parent"/>
-
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/rental_time"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:layout_marginTop="10dp"
-
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_noti_car">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/blue_round_button"
-                        android:paddingBottom="10dp">
-
-                        <View
-                            android:id="@+id/divider"
-                            android:layout_width="0dp"
-                            android:layout_height="0.3dp"
-                            android:layout_marginTop="4dp"
-                            android:background="#707070"
-                            android:scrollbarThumbHorizontal="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/driverDetailText" />
-
-                        <TextView
-                            android:id="@+id/driverDetailText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="4dp"
-
-                            android:text="Thông tin khách hàng"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="24dp"
-                            android:orientation="vertical"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/driverDetailText"
-                            app:layout_constraintTop_toBottomOf="@+id/divider">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/nameText"
-                                    android:layout_width="50dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="Họ Tên:"
-                                    android:textColor="@color/white" />
-
-                                <TextView
-                                    android:id="@+id/txtview_noti_name"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:paddingLeft="15dp"
-
-                                    android:textColor="@color/white" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:paddingTop="10dp">
-
-                                <TextView
-                                    android:id="@+id/emailText"
-                                    android:layout_width="50dp"
-                                    android:layout_height="wrap_content"
-
-                                    android:textColor="@color/white"
-                                    android:text="Email:" />
-
-                                <TextView
-                                    android:id="@+id/txtview_noti_email"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:paddingLeft="15dp"
-
-                                    android:textColor="@color/white" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:paddingTop="10dp">
-
-                                <TextView
-                                    android:id="@+id/phoneNumberText"
-                                    android:layout_width="50dp"
-                                    android:layout_height="wrap_content"
-                                    android:textColor="@color/white"
-                                    android:text="SĐT:" />
-
-                                <TextView
-                                    android:id="@+id/txtview_noti_phoneNumber"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:paddingLeft="15dp"
-
-                                    android:textColor="@color/white" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/personalInfoText"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/rental_time">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/blue_round_button"
-                        android:paddingBottom="10dp">
-
-                        <View
-                            android:id="@+id/divider1"
-                            android:layout_width="0dp"
-                            android:layout_height="0.3dp"
-                            android:layout_marginTop="4dp"
-                            android:background="#707070"
-                            android:scrollbarThumbHorizontal="@color/colorPrimary"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/tv_InforCar" />
-
-
-                        <TextView
-                            android:id="@+id/tv_InforCar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="24dp"
-                            android:layout_marginTop="4dp"
-
-                            android:text="Thông tin xe"
-                            android:textColor="@color/white"
-                            android:textSize="18sp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <LinearLayout
-                            android:id="@+id/linearLayout"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:orientation="vertical"
-                            app:layout_constraintEnd_toEndOf="@+id/divider1"
-                            app:layout_constraintStart_toStartOf="@+id/tv_InforCar"
-                            app:layout_constraintTop_toBottomOf="@id/divider1">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:paddingBottom="5dp">
-
-                                <TextView
-                                    android:id="@+id/txtview_noti_BrandCar"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-
-
-                                    android:textColor="@color/white"
-                                    android:textSize="18sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/gia"
-                                    android:layout_width="75dp"
-                                    android:layout_height="wrap_content"
-
-                                    android:textColor="@color/white"
-                                    android:text="Giá:" />
-
-                                <TextView
-                                    android:id="@+id/txtview_noti_price"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-
-                                    android:paddingLeft="15dp"
-
-                                    android:textColor="@color/white" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/noti_DiaDiem"
-                                    android:layout_width="75dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="Nơi đỗ xe:"
-
-                                    android:textColor="@color/white" />
-
-                                <TextView
-                                    android:id="@+id/txt_checkout_address"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-
-                                    android:paddingLeft="15dp"
-
-                                    android:textColor="@color/white"/>
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/noti_pickup"
-                                    android:layout_width="75dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="Ngày nhận:"
-
-                                    android:textColor="@color/white" />
-                                <TextView
-                                    android:id="@+id/tv_noti_pickup"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:paddingLeft="15dp"
-
-                                    android:textColor="@color/white"
-                                    tools:layout_editor_absoluteX="125dp"
-                                    tools:layout_editor_absoluteY="269dp"
-                                    />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/noti_dropoff"
-                                    android:layout_width="75dp"
-                                    android:layout_height="wrap_content"
-                                    android:text="Ngày trả:"
-
-                                    android:textColor="@color/white" />
-
-                                <TextView
-                                    android:id="@+id/tv_noti_dropoff"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-
-                                    android:paddingLeft="15dp"
-
-                                    android:textColor="@color/white" />
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <View
-                            android:id="@+id/divider2"
-                            android:layout_width="0dp"
-                            android:layout_height="0.3dp"
-                            android:layout_marginTop="8dp"
-                            android:background="#707070"
-                            android:scrollbarThumbHorizontal="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="24dp"
-                            android:orientation="vertical"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/tv_InforCar"
-                            app:layout_constraintTop_toBottomOf="@+id/divider2">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-                                <LinearLayout
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
-                                    android:layout_weight="1"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:id="@+id/txtview_noti_totalText"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:textColor="@color/white"
-                                        android:text="Tổng tiền cần thanh toán:" />
-
-                                    <TextView
-                                        android:id="@+id/txtview_noti_totalCost"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:textColor="@color/white"
-                                        android:textSize="24sp" />
-                                </LinearLayout>
-                            </LinearLayout>
-                        </LinearLayout>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_noti_XacNhan"
-                    android:layout_width="150dp"
-                    android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginLeft="40dp"
-                    android:background="@drawable/round_card"
-
-                    android:text="Xác nhận"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/personalInfoText" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_noti_huy"
-                    android:layout_width="150dp"
-                    android:layout_height="@dimen/buttonSize"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginRight="40dp"
-                    android:background="@drawable/round_card"
-
-                    android:text="Hủy"
-                    android:textColor="@color/white"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/personalInfoText"
-                    app:layout_constraintLeft_toRightOf="@+id/btn_noti_XacNhan"/>
-
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </ScrollView>
-
-
-
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:layout_marginTop="16dp" />
+
+    <!-- ID yêu cầu -->
+    <TextView
+        android:id="@+id/txtview_noti_id_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mã yêu cầu:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_noti_car"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/txtview_noti_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/txtview_noti_id_label"
+        app:layout_constraintTop_toTopOf="@id/txtview_noti_id_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Tên xe -->
+    <TextView
+        android:id="@+id/txtview_noti_BrandCar_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tên xe:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtview_noti_id_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/txtview_noti_BrandCar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/txtview_noti_BrandCar_label"
+        app:layout_constraintTop_toTopOf="@id/txtview_noti_BrandCar_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Tên khách hàng -->
+    <TextView
+        android:id="@+id/txtview_noti_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Khách hàng:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtview_noti_BrandCar_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/txtview_noti_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/txtview_noti_name_label"
+        app:layout_constraintTop_toTopOf="@id/txtview_noti_name_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Email -->
+    <TextView
+        android:id="@+id/txtview_noti_email_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtview_noti_name_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/txtview_noti_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/txtview_noti_email_label"
+        app:layout_constraintTop_toTopOf="@id/txtview_noti_email_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Số điện thoại -->
+    <TextView
+        android:id="@+id/txtview_noti_phoneNumber_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Số điện thoại:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtview_noti_email_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/txtview_noti_phoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/txtview_noti_phoneNumber_label"
+        app:layout_constraintTop_toTopOf="@id/txtview_noti_phoneNumber_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Địa chỉ -->
+    <TextView
+        android:id="@+id/txt_checkout_address_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Địa chỉ:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtview_noti_phoneNumber_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/txt_checkout_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/txt_checkout_address_label"
+        app:layout_constraintTop_toTopOf="@id/txt_checkout_address_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Thời gian nhận xe -->
+    <TextView
+        android:id="@+id/tv_noti_pickup_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thời gian nhận:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_checkout_address_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tv_noti_pickup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/tv_noti_pickup_label"
+        app:layout_constraintTop_toTopOf="@id/tv_noti_pickup_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Thời gian trả xe -->
+    <TextView
+        android:id="@+id/tv_noti_dropoff_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thời gian trả:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_noti_pickup_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/tv_noti_dropoff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/tv_noti_dropoff_label"
+        app:layout_constraintTop_toTopOf="@id/tv_noti_dropoff_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Giá thuê -->
+    <TextView
+        android:id="@+id/txtview_noti_price_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giá thuê/ngày:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_noti_dropoff_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/txtview_noti_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/txtview_noti_price_label"
+        app:layout_constraintTop_toTopOf="@id/txtview_noti_price_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Tổng chi phí -->
+    <TextView
+        android:id="@+id/txtview_noti_totalCost_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tổng chi phí:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtview_noti_price_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/txtview_noti_totalCost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/sunset"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/txtview_noti_totalCost_label"
+        app:layout_constraintTop_toTopOf="@id/txtview_noti_totalCost_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Trạng thái -->
+    <TextView
+        android:id="@+id/txtview_noti_status_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trạng thái:"
+        android:textSize="16sp"
+        android:textColor="@color/text_input_hint"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtview_noti_totalCost_label"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/txtview_noti_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintStart_toEndOf="@id/txtview_noti_status_label"
+        app:layout_constraintTop_toTopOf="@id/txtview_noti_status_label"
+        android:layout_marginStart="8dp" />
+
+    <!-- Nút xác nhận -->
+    <Button
+        android:id="@+id/btn_noti_XacNhan"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/blue_round_button"
+        android:text="@string/confirm"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintEnd_toStartOf="@id/btn_noti_huy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtview_noti_status_label" />
+
+    <!-- Nút hủy -->
+    <Button
+        android:id="@+id/btn_noti_huy"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/red_round_button"
+        android:text="@string/reject"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_noti_XacNhan"
+        app:layout_constraintTop_toBottomOf="@id/txtview_noti_status_label" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

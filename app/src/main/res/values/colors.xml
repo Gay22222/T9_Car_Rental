@@ -64,4 +64,6 @@
     <color name="message_text_color">#2D3E8C</color> <!-- Text in bubbles -->
     <color name="input_text_color">#B8FFFFFF</color> <!-- Input placeholder -->
     <color name="rating_text_color">#B0B0B0</color> <!-- Range Rover Evoq -->
+    <color name="green_verified">#4CAF50</color>
+    <color name="orange_pending">#FFA500</color>
 </resources>

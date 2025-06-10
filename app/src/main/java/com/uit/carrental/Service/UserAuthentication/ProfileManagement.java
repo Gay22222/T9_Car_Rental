@@ -1,11 +1,5 @@
 package com.uit.carrental.Service.UserAuthentication;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
@@ -20,55 +14,56 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-import com.uit.carrental.Model.User;
-import com.uit.carrental.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+import com.google.firebase.firestore.SetOptions;
+import com.squareup.picasso.Picasso;
+import com.uit.carrental.ActivityPages.AdminMainActivity;
+import com.uit.carrental.ActivityPages.CustomerMainActivity;
+import com.uit.carrental.ActivityPages.OwnerMainActivity;
+import com.uit.carrental.Model.User;
+import com.uit.carrental.R;
+import com.uit.carrental.Service.Api.CloudinaryApi;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileManagement extends AppCompatActivity {
-    private DatePickerDialog datePickerDialog;
-    private Button dateButton, btnUpdate;
-    private Uri mImageURI;
+
     private CircleImageView imgAvatar;
     private ImageView backButton, editAvatar;
-    private String imageID;
-    private String documentId, downloadUrl, uploadtype;
-    private FirebaseUser firebaseUser;
-    private FirebaseFirestore dtb_user;
-    private EditText phonenumber, email, fullname, address, city;
-    private TextView emailDisplay, updateCccd;
-    private User user = new User();
+    private EditText etFullname, etEmail, etPhone, etAddress, etCity, etDescription;
+    private Button btnUpdate, btnDateOfBirth;
+    private TextView tvUpdateCccd, tvCurrentRole, tvVerificationStatus, tvStatus;
+    private DatePickerDialog datePickerDialog;
+    private ProfileViewModel viewModel;
+    private Uri avatarUri;
+    private ProgressDialog progressDialog;
+    private boolean isFirstLogin;
 
-    private static final String MOCK_AVATAR = "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyd2owNnAxcXR5YmJhMmh3ZDlvY3hoOXFhaWN2aXY3cm1tMXkwMnBlNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/FY8c5SKwiNf1EtZKGs/giphy_s.gif";
-
-    ActivityResultLauncher<String> AvatarpickImagesFromGallery = registerForActivityResult(
+    ActivityResultLauncher<String> pickImagesFromGallery = registerForActivityResult(
             new ActivityResultContracts.GetContent(),
             new ActivityResultCallback<Uri>() {
                 @Override
                 public void onActivityResult(Uri result) {
                     if (result != null) {
-                        mImageURI = result;
+                        avatarUri = result;
                         imgAvatar.setImageURI(result);
-                        uploadImage(uploadtype);
+                        uploadAvatar();
                     }
                 }
             });
@@ -77,73 +72,181 @@ public class ProfileManagement extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        init();
-        if (dtb_user != null) {
-            getinfo();
-        } else {
-            Toast.makeText(this, "Lỗi khởi tạo Firebase Firestore", Toast.LENGTH_LONG).show();
-        }
 
-        backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(ProfileManagement.this, UserProfile.class);
-            startActivity(intent);
-            overridePendingTransition(0, 0);
-            finish();
-        });
+        isFirstLogin = getIntent().getBooleanExtra("is_first_login", false);
 
-        btnUpdate.setOnClickListener(v -> updateinfo());
+        initViews();
+        initViewModel();
+        observeLiveData();
+        viewModel.loadUserData();
 
-        imgAvatar.setOnClickListener(v -> {
-            uploadtype = "UsersAvatar/";
-            AvatarpickImagesFromGallery.launch("image/*");
-        });
+        backButton.setOnClickListener(v -> navigateBackBasedOnRole());
 
-        editAvatar.setOnClickListener(v -> {
-            uploadtype = "UsersAvatar/";
-            AvatarpickImagesFromGallery.launch("image/*");
-        });
+        btnUpdate.setOnClickListener(v -> updateInfo());
 
-        dateButton.setOnClickListener(v -> openDatePicker(v));
+        imgAvatar.setOnClickListener(v -> pickImagesFromGallery.launch("image/*"));
 
-        updateCccd.setOnClickListener(v -> {
+        editAvatar.setOnClickListener(v -> pickImagesFromGallery.launch("image/*"));
+
+        btnDateOfBirth.setOnClickListener(this::openDatePicker);
+
+        tvUpdateCccd.setOnClickListener(v -> {
             Intent intent = new Intent(ProfileManagement.this, CCCDActivity.class);
             startActivity(intent);
             overridePendingTransition(0, 0);
         });
+
+        CloudinaryApi.init(this);
     }
 
-    private void init() {
-        phonenumber = findViewById(R.id.profile_input_phone);
-        email = findViewById(R.id.profile_input_email);
-        phonenumber.setEnabled(false);
-        email.setEnabled(false);
-
-        fullname = findViewById(R.id.profile_input_fullname);
-        address = findViewById(R.id.profile_input_address);
-        city = findViewById(R.id.profile_input_city);
-        btnUpdate = findViewById(R.id.btn_update);
+    private void initViews() {
         imgAvatar = findViewById(R.id.img_avatar_profile_input_fragment);
         backButton = findViewById(R.id.back_button);
         editAvatar = findViewById(R.id.edit_avatar);
-        emailDisplay = findViewById(R.id.email_display);
-        updateCccd = findViewById(R.id.update_cccd);
+        etFullname = findViewById(R.id.profile_input_fullname);
+        etEmail = findViewById(R.id.profile_input_email);
+        etPhone = findViewById(R.id.profile_input_phone);
+        etAddress = findViewById(R.id.profile_input_address);
+        etCity = findViewById(R.id.profile_input_city);
+        etDescription = findViewById(R.id.profile_input_description);
+        btnUpdate = findViewById(R.id.btn_update);
+        btnDateOfBirth = findViewById(R.id.profile_input_dateofbirth);
+        tvUpdateCccd = findViewById(R.id.update_cccd);
+        tvCurrentRole = findViewById(R.id.tv_current_role);
+        tvVerificationStatus = findViewById(R.id.tv_verification_status);
+        tvStatus = findViewById(R.id.tv_status);
 
-        try {
-            dtb_user = FirebaseFirestore.getInstance();
-            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-            if (firebaseUser != null) {
-                user.setUser_id(firebaseUser.getUid());
-            } else {
-                Toast.makeText(this, "Người dùng chưa đăng nhập", Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Lỗi khởi tạo Firebase: " + e.getMessage(), Toast.LENGTH_LONG).show();
-            dtb_user = null;
-        }
+        etEmail.setEnabled(false);
+        etPhone.setEnabled(false);
 
         initDatePicker();
-        dateButton = findViewById(R.id.profile_input_dateofbirth);
-        dateButton.setText(getTodaysDate());
+        btnDateOfBirth.setText(getTodaysDate());
+    }
+
+    private void initViewModel() {
+        viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+    }
+
+    private void observeLiveData() {
+        viewModel.getUserLiveData().observe(this, user -> {
+            if (user != null) {
+                etFullname.setText(user.getUsername());
+                etEmail.setText(user.getEmail());
+                etPhone.setText(user.getPhoneNumber());
+                etAddress.setText(user.getAddress());
+                etCity.setText(user.getCity());
+                etDescription.setText(user.getDescription());
+                btnDateOfBirth.setText(user.getBirthday() != null && !user.getBirthday().isEmpty() ? user.getBirthday() : getTodaysDate());
+                tvCurrentRole.setText(getRoleDisplayText(user.getCurrentRole()));
+                tvVerificationStatus.setText(getVerificationDisplayText(user.getVerificationStatus()));
+                tvStatus.setText(getStatusDisplayText(user.getStatus()));
+
+                if (user.getAvatarUrl() != null && !user.getAvatarUrl().isEmpty()) {
+                    Picasso.get().load(user.getAvatarUrl()).placeholder(R.drawable.ic_person).into(imgAvatar);
+                } else {
+                    imgAvatar.setImageResource(R.drawable.ic_person);
+                }
+            }
+        });
+
+        viewModel.getErrorLiveData().observe(this, error -> {
+            if (error != null) {
+                if (progressDialog != null && progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+                Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        viewModel.getUpdateSuccessLiveData().observe(this, success -> {
+            if (progressDialog != null && progressDialog.isShowing()) {
+                progressDialog.dismiss();
+            }
+            if (success != null && success) {
+                navigateAfterUpdate();
+            }
+        });
+    }
+
+    private void navigateAfterUpdate() {
+        User user = viewModel.getUserLiveData().getValue();
+        Intent intent;
+        if (user == null || user.getCurrentRole() == null) {
+            // Nếu user hoặc currentRole null, lấy từ Firestore lần nữa
+            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            if (firebaseUser != null) {
+                FirebaseFirestore.getInstance().collection("Users").document(firebaseUser.getUid())
+                        .get()
+                        .addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                User fetchedUser = documentSnapshot.toObject(User.class);
+                                if (fetchedUser != null && fetchedUser.getCurrentRole() != null) {
+                                    navigateToMain(fetchedUser);
+                                } else {
+                                    navigateToDefault();
+                                }
+                            } else {
+                                navigateToDefault();
+                            }
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(this, "Lỗi lấy thông tin người dùng: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            navigateToDefault();
+                        });
+            } else {
+                navigateToDefault();
+            }
+            return;
+        }
+
+        navigateToMain(user);
+    }
+
+    private void navigateToMain(User user) {
+        Intent intent;
+        switch (user.getCurrentRole().toLowerCase()) {
+            case "customer":
+                intent = new Intent(this, CustomerMainActivity.class);
+                if (!isFirstLogin) {
+                    intent.putExtra("navigate_to_fragment", "CustomerSettingFragment");
+                }
+                break;
+            case "owner":
+                intent = new Intent(this, OwnerMainActivity.class);
+                if (!isFirstLogin) {
+                    intent.putExtra("navigate_to_fragment", "OwnerSettingFragment");
+                }
+                break;
+            case "admin":
+                intent = new Intent(this, AdminMainActivity.class);
+                if (!isFirstLogin) {
+                    intent.putExtra("navigate_to_fragment", "AdminSettingFragment");
+                }
+                break;
+            default:
+                Toast.makeText(this, "Vai trò không xác định", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, LoginActivity.class); // Fallback
+                break;
+        }
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+        finish();
+    }
+
+    private void navigateToDefault() {
+        // Fallback điều hướng khi không lấy được thông tin người dùng
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+        finish();
+    }
+
+    private void navigateBackBasedOnRole() {
+        if (isFirstLogin) {
+            Toast.makeText(this, "Vui lòng cập nhật thông tin trước khi tiếp tục.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        navigateAfterUpdate();
     }
 
     private String getTodaysDate() {
@@ -158,7 +261,7 @@ public class ProfileManagement extends AppCompatActivity {
         return String.format("%02d/%02d/%d", day, month, year);
     }
 
-    public void openDatePicker(View view) {
+    private void openDatePicker(View view) {
         datePickerDialog.show();
     }
 
@@ -166,7 +269,7 @@ public class ProfileManagement extends AppCompatActivity {
         DatePickerDialog.OnDateSetListener dateSetListener = (datePicker, year, month, day) -> {
             month = month + 1;
             String date = makeDateString(day, month, year);
-            dateButton.setText(date);
+            btnDateOfBirth.setText(date);
         };
 
         Calendar cal = Calendar.getInstance();
@@ -178,115 +281,220 @@ public class ProfileManagement extends AppCompatActivity {
         datePickerDialog = new DatePickerDialog(this, style, dateSetListener, year, month, day);
     }
 
-    private void uploadImage(String type) {
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageReference = storage.getReference();
-
-        if (mImageURI != null) {
-            imageID = UUID.randomUUID().toString();
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("Uploading...");
+    private void uploadAvatar() {
+        if (avatarUri != null) {
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("Đang tải ảnh...");
+            progressDialog.setCancelable(false);
             progressDialog.show();
 
-            StorageReference ref = storageReference.child(type + "/" + imageID);
-            ref.putFile(mImageURI)
-                    .addOnSuccessListener(taskSnapshot -> {
-                        progressDialog.dismiss();
-                        ref.getDownloadUrl().addOnSuccessListener(uri -> {
-                            downloadUrl = uri.toString();
-                        });
-                    })
-                    .addOnFailureListener(e -> {
-                        progressDialog.dismiss();
-                        Toast.makeText(ProfileManagement.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    })
-                    .addOnProgressListener(taskSnapshot -> {
-                        double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
-                        progressDialog.setMessage("Uploaded " + (int) progress + "%");
-                    });
+            CloudinaryApi.uploadImage(this, avatarUri, new CloudinaryApi.UploadCallbackCustom() {
+                @Override
+                public void onSuccess(String url) {
+                    viewModel.setAvatarUrl(url);
+                    progressDialog.dismiss();
+                    Toast.makeText(ProfileManagement.this, "Tải ảnh đại diện thành công", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    progressDialog.dismiss();
+                    Toast.makeText(ProfileManagement.this, "Tải ảnh thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
-    private void updateinfo() {
-        user.setUsername(fullname.getText().toString());
-        user.setAddress(address.getText().toString());
-        user.setCity(city.getText().toString());
-        user.setBirthday(dateButton.getText().toString());
-        user.setAvatarURL(downloadUrl);
-        user.setEmail(email.getText().toString());
+    private void updateInfo() {
+        String username = etFullname.getText().toString().trim();
+        String address = etAddress.getText().toString().trim();
+        String city = etCity.getText().toString().trim();
+        String description = etDescription.getText().toString().trim();
+        String birthday = btnDateOfBirth.getText().toString().trim();
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("username", user.getUsername());
-        data.put("address", user.getAddress());
-        data.put("city", user.getCity());
-        data.put("birthday", user.getBirthday());
-        data.put("email", user.getEmail());
-
-        if (downloadUrl != null) {
-            data.put("avatarURL", user.getAvatarURL());
+        if (username.isEmpty()) {
+            etFullname.setError("Vui lòng nhập họ và tên");
+            etFullname.requestFocus();
+            return;
         }
-
-        if (dtb_user == null) {
-            Toast.makeText(this, "Lỗi Firebase Firestore, không thể cập nhật", Toast.LENGTH_LONG).show();
+        if (address.isEmpty()) {
+            etAddress.setError("Vui lòng nhập địa chỉ");
+            etAddress.requestFocus();
+            return;
+        }
+        if (city.isEmpty()) {
+            etCity.setError("Vui lòng nhập thành phố");
+            etCity.requestFocus();
+            return;
+        }
+        if (description.isEmpty()) {
+            etDescription.setError("Vui lòng nhập mô tả");
+            etDescription.requestFocus();
+            return;
+        }
+        if (birthday.isEmpty()) {
+            btnDateOfBirth.setError("Vui lòng chọn ngày sinh");
             return;
         }
 
-        new Thread(() -> {
-            dtb_user.collection("Users").document(user.getUser_id())
-                    .update(data)
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setTitle("Đang cập nhật thông tin...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+
+        User user = new User();
+        user.setUserId(FirebaseAuth.getInstance().getCurrentUser().getUid());
+        user.setUsername(username);
+        user.setAddress(address);
+        user.setCity(city);
+        user.setDescription(description);
+        user.setBirthday(birthday);
+        user.setEmail(etEmail.getText().toString());
+        user.setPhoneNumber(etPhone.getText().toString());
+        // Lấy currentRole và roles từ user hiện tại
+        User currentUser = viewModel.getUserLiveData().getValue();
+        if (currentUser != null) {
+            user.setCurrentRole(currentUser.getCurrentRole());
+            user.setRoles(currentUser.getRoles());
+        }
+
+        viewModel.updateUser(user);
+    }
+
+    private String getRoleDisplayText(String role) {
+        switch (role) {
+            case "customer":
+                return "Khách hàng";
+            case "owner":
+                return "Chủ xe";
+            case "admin":
+                return "Quản trị viên";
+            default:
+                return role;
+        }
+    }
+
+    private String getVerificationDisplayText(String verificationStatus) {
+        if (verificationStatus == null) return "Chưa xác minh";
+        switch (verificationStatus) {
+            case "verified":
+                return "Đã xác minh";
+            case "pending":
+                return "Đang chờ xác minh";
+            default:
+                return "Chưa xác minh";
+        }
+    }
+
+    private String getStatusDisplayText(String status) {
+        if (status == null) return "Hoạt động";
+        switch (status) {
+            case "active":
+                return "Hoạt động";
+            case "inactive":
+                return "Không hoạt động";
+            default:
+                return status;
+        }
+    }
+
+    public static class ProfileViewModel extends ViewModel {
+        private final FirebaseFirestore db;
+        private final FirebaseUser firebaseUser;
+        private final MutableLiveData<User> userLiveData;
+        private final MutableLiveData<String> errorLiveData;
+        private final MutableLiveData<Boolean> updateSuccessLiveData;
+        private String avatarUrl;
+
+        public ProfileViewModel() {
+            db = FirebaseFirestore.getInstance();
+            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            userLiveData = new MutableLiveData<>();
+            errorLiveData = new MutableLiveData<>();
+            updateSuccessLiveData = new MutableLiveData<>();
+        }
+
+        public LiveData<User> getUserLiveData() {
+            return userLiveData;
+        }
+
+        public LiveData<String> getErrorLiveData() {
+            return errorLiveData;
+        }
+
+        public LiveData<Boolean> getUpdateSuccessLiveData() {
+            return updateSuccessLiveData;
+        }
+
+        public void setAvatarUrl(String url) {
+            this.avatarUrl = url;
+        }
+
+        public void loadUserData() {
+            if (firebaseUser == null) {
+                errorLiveData.setValue("Người dùng chưa đăng nhập");
+                return;
+            }
+
+            DocumentReference userRef = db.collection("Users").document(firebaseUser.getUid());
+            userRef.addSnapshotListener((document, error) -> {
+                if (error != null) {
+                    errorLiveData.setValue("Lỗi tải thông tin: " + error.getMessage());
+                    return;
+                }
+                if (document != null && document.exists()) {
+                    User user = document.toObject(User.class);
+                    if (avatarUrl != null) {
+                        user.setAvatarUrl(avatarUrl);
+                    }
+                    userLiveData.setValue(user);
+                } else {
+                    User newUser = new User();
+                    newUser.setUserId(firebaseUser.getUid());
+                    newUser.setEmail(firebaseUser.getEmail() != null ? firebaseUser.getEmail() : "");
+                    newUser.setCurrentRole("customer"); // Mặc định vai trò customer
+                    Map<String, Boolean> roles = new HashMap<>();
+                    roles.put("customer", true);
+                    roles.put("owner", true);
+                    roles.put("admin", false);
+                    newUser.setRoles(roles);
+                    userRef.set(newUser)
+                            .addOnSuccessListener(aVoid -> userLiveData.setValue(newUser))
+                            .addOnFailureListener(e -> errorLiveData.setValue("Lỗi tạo người dùng mới: " + e.getMessage()));
+                }
+            });
+        }
+
+        public void updateUser(User user) {
+            if (avatarUrl != null) {
+                user.setAvatarUrl(avatarUrl);
+            }
+
+            Map<String, Object> data = new HashMap<>();
+            data.put("username", user.getUsername());
+            data.put("email", user.getEmail());
+            data.put("phoneNumber", user.getPhoneNumber());
+            data.put("address", user.getAddress());
+            data.put("city", user.getCity());
+            data.put("description", user.getDescription());
+            data.put("birthday", user.getBirthday());
+            if (user.getAvatarUrl() != null && !user.getAvatarUrl().isEmpty()) {
+                data.put("avatarUrl", user.getAvatarUrl());
+            }
+            if (user.getCurrentRole() != null) {
+                data.put("currentRole", user.getCurrentRole());
+            }
+            if (user.getRoles() != null) {
+                data.put("roles", user.getRoles());
+            }
+
+            db.collection("Users").document(user.getUserId())
+                    .set(data, SetOptions.merge())
                     .addOnSuccessListener(aVoid -> {
-                        runOnUiThread(() -> {
-                            Intent intent = new Intent(ProfileManagement.this, UserProfile.class);
-                            startActivity(intent);
-                            overridePendingTransition(0, 0);
-                            finish();
-                        });
+                        userLiveData.setValue(user); // Cập nhật LiveData để phản ánh thay đổi
+                        updateSuccessLiveData.setValue(true);
                     })
-                    .addOnFailureListener(e -> {
-                        runOnUiThread(() -> {
-                            Toast.makeText(ProfileManagement.this, "Error updating document", Toast.LENGTH_LONG).show();
-                        });
-                    });
-        }).start();
-    }
-
-    private void getinfo() {
-        if (dtb_user == null) {
-            Toast.makeText(this, "Lỗi Firebase Firestore, không thể lấy thông tin", Toast.LENGTH_LONG).show();
-            return;
+                    .addOnFailureListener(e -> errorLiveData.setValue("Lỗi cập nhật thông tin: " + e.getMessage()));
         }
-
-        new Thread(() -> {
-            dtb_user.collection("Users")
-                    .whereEqualTo("user_id", user.getUser_id())
-                    .get()
-                    .addOnCompleteListener(task -> {
-                        runOnUiThread(() -> {
-                            if (task.isSuccessful()) {
-                                for (QueryDocumentSnapshot document : task.getResult()) {
-                                    fullname.setText(document.getString("username"));
-                                    email.setText(document.getString("email"));
-                                    phonenumber.setText(document.getString("phoneNumber"));
-                                    address.setText(document.getString("address"));
-                                    city.setText(document.getString("city"));
-                                    dateButton.setText(document.getString("birthday"));
-                                    emailDisplay.setText(document.getString("email"));
-
-                                    user.setAvatarURL(document.getString("avatarURL"));
-                                    if (user.getAvatarURL() != null && !user.getAvatarURL().isEmpty()) {
-                                        Picasso.get().load(user.getAvatarURL()).into(imgAvatar);
-                                    } else {
-                                        user.setAvatarURL("");
-                                        Picasso.get().load(MOCK_AVATAR).into(imgAvatar);
-                                    }
-                                }
-                            } else {
-                                Toast.makeText(ProfileManagement.this, "Không thể lấy thông tin", Toast.LENGTH_LONG).show();
-                                Picasso.get().load(MOCK_AVATAR).into(imgAvatar);
-                            }
-                            if (email.getText().toString().isEmpty()) email.setEnabled(true);
-                        });
-                    });
-        }).start();
     }
 }

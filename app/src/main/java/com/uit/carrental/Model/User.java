@@ -2,48 +2,66 @@ package com.uit.carrental.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import java.util.HashMap;
 import java.util.Map;
 
 public class User implements Parcelable {
 
-    private String email;
-    private String user_id;
+    private String userId;
     private String username;
-    private String avatarURL;
-    private String birthday;
+    private String email;
     private String phoneNumber;
+    private String avatarUrl;
+    private String birthday;
     private String address;
     private String city;
     private String ciCardFront;
     private String ciCardBehind;
-    private String role;
+    private String description;
+    private String verificationStatus;
+    private String status;
     private Map<String, Boolean> roles;
     private String currentRole;
+    private String licenseUrl; // Trường mới cho ảnh bằng lái xe
 
     public User() {
-        address = "";
-        email = "";
-        user_id = "";
-        username = "";
-        avatarURL = "";
-        birthday = "";
-        phoneNumber = "";
-        city = "";
-        ciCardFront = "";
-        ciCardBehind = "";
+        this.userId = "";
+        this.username = "";
+        this.email = "";
+        this.phoneNumber = "";
+        this.avatarUrl = "";
+        this.birthday = "";
+        this.address = "";
+        this.city = "";
+        this.ciCardFront = "";
+        this.ciCardBehind = "";
+        this.description = "";
+        this.verificationStatus = null;
+        this.status = "active";
+        this.roles = new HashMap<>();
+        this.currentRole = "customer";
+        this.licenseUrl = "";
     }
 
     protected User(Parcel in) {
-        email = in.readString();
-        user_id = in.readString();
+        userId = in.readString();
         username = in.readString();
-        avatarURL = in.readString();
-        birthday = in.readString();
+        email = in.readString();
         phoneNumber = in.readString();
+        avatarUrl = in.readString();
+        birthday = in.readString();
         address = in.readString();
         city = in.readString();
         ciCardFront = in.readString();
         ciCardBehind = in.readString();
+        description = in.readString();
+        verificationStatus = in.readString();
+        status = in.readString();
+        roles = in.readHashMap(Boolean.class.getClassLoader());
+        currentRole = in.readString();
+        licenseUrl = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -58,61 +76,103 @@ public class User implements Parcelable {
         }
     };
 
-    // --- Getter và Setter ---
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    // Getters and Setters
+    @NonNull
+    public String getUserId() { return userId != null ? userId : ""; }
+    public void setUserId(@Nullable String userId) { this.userId = userId != null ? userId : ""; }
 
-    public String getUser_id() { return user_id; }
-    public void setUser_id(String user_id) { this.user_id = user_id; }
+    @NonNull
+    public String getUsername() { return username != null ? username : ""; }
+    public void setUsername(@Nullable String username) { this.username = username != null ? username : ""; }
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) { this.username = username; }
+    @NonNull
+    public String getEmail() { return email != null ? email : ""; }
+    public void setEmail(@Nullable String email) { this.email = email != null ? email : ""; }
 
-    public String getAvatarURL() { return avatarURL; }
-    public void setAvatarURL(String avatarURL) { this.avatarURL = avatarURL; }
+    @NonNull
+    public String getPhoneNumber() { return phoneNumber != null ? phoneNumber : ""; }
+    public void setPhoneNumber(@Nullable String phoneNumber) { this.phoneNumber = phoneNumber != null ? phoneNumber : ""; }
 
-    public String getBirthday() { return birthday; }
-    public void setBirthday(String birthday) { this.birthday = birthday; }
+    @NonNull
+    public String getAvatarUrl() { return avatarUrl != null ? avatarUrl : ""; }
+    public void setAvatarUrl(@Nullable String avatarUrl) { this.avatarUrl = avatarUrl != null ? avatarUrl : ""; }
 
-    public String getPhoneNumber() { return phoneNumber; }
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+    @NonNull
+    public String getBirthday() { return birthday != null ? birthday : ""; }
+    public void setBirthday(@Nullable String birthday) { this.birthday = birthday != null ? birthday : ""; }
 
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
+    @NonNull
+    public String getAddress() { return address != null ? address : ""; }
+    public void setAddress(@Nullable String address) { this.address = address != null ? address : ""; }
 
-    public String getCity() { return city; }
-    public void setCity(String city) { this.city = city; }
+    @NonNull
+    public String getCity() { return city != null ? city : ""; }
+    public void setCity(@Nullable String city) { this.city = city != null ? city : ""; }
 
-    public String getCiCardFront() { return ciCardFront; }
-    public void setCiCardFront(String ciCardFront) { this.ciCardFront = ciCardFront; }
+    @NonNull
+    public String getCiCardFront() { return ciCardFront != null ? ciCardFront : ""; }
+    public void setCiCardFront(@Nullable String ciCardFront) { this.ciCardFront = ciCardFront != null ? ciCardFront : ""; }
 
-    public String getCiCardBehind() { return ciCardBehind; }
-    public void setCiCardBehind(String ciCardBehind) { this.ciCardBehind = ciCardBehind; }
+    @NonNull
+    public String getCiCardBehind() { return ciCardBehind != null ? ciCardBehind : ""; }
+    public void setCiCardBehind(@Nullable String ciCardBehind) { this.ciCardBehind = ciCardBehind != null ? ciCardBehind : ""; }
 
-    public String getRole() { return role; }
-    public void setRole(String role) { this.role = role; }
+    @NonNull
+    public String getDescription() { return description != null ? description : ""; }
+    public void setDescription(@Nullable String description) { this.description = description != null ? description : ""; }
 
-    public Map<String, Boolean> getRoles() { return roles; }
-    public void setRoles(Map<String, Boolean> roles) { this.roles = roles; }
+    @Nullable
+    public String getVerificationStatus() { return verificationStatus; }
+    public void setVerificationStatus(@Nullable String verificationStatus) { this.verificationStatus = verificationStatus; }
 
-    public String getCurrentRole() { return currentRole; }
-    public void setCurrentRole(String currentRole) { this.currentRole = currentRole; }
+    @NonNull
+    public String getStatus() { return status != null ? status : "active"; }
+    public void setStatus(@Nullable String status) { this.status = status != null ? status : "active"; }
 
-    // --- Parcelable ---
+    @NonNull
+    public Map<String, Boolean> getRoles() { return roles != null ? roles : new HashMap<>(); }
+    public void setRoles(@Nullable Map<String, Boolean> roles) { this.roles = roles != null ? roles : new HashMap<>(); }
+
+    @NonNull
+    public String getCurrentRole() { return currentRole != null ? currentRole : "customer"; }
+    public void setCurrentRole(@Nullable String currentRole) { this.currentRole = currentRole != null ? currentRole : "customer"; }
+
+    @NonNull
+    public String getLicenseUrl() { return licenseUrl != null ? licenseUrl : ""; }
+    public void setLicenseUrl(@Nullable String licenseUrl) { this.licenseUrl = licenseUrl != null ? licenseUrl : ""; }
+
+    // Utility Methods
+    public boolean hasRole(@Nullable String role) {
+        return role != null && roles != null && roles.getOrDefault(role, false);
+    }
+
+    // Parcelable
     @Override
     public int describeContents() { return 0; }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(email);
-        dest.writeString(user_id);
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(userId);
         dest.writeString(username);
-        dest.writeString(avatarURL);
-        dest.writeString(birthday);
+        dest.writeString(email);
         dest.writeString(phoneNumber);
+        dest.writeString(avatarUrl);
+        dest.writeString(birthday);
         dest.writeString(address);
         dest.writeString(city);
         dest.writeString(ciCardFront);
         dest.writeString(ciCardBehind);
+        dest.writeString(description);
+        dest.writeString(verificationStatus);
+        dest.writeString(status);
+        dest.writeMap(roles);
+        dest.writeString(currentRole);
+        dest.writeString(licenseUrl);
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return "User{userId='" + userId + "', username='" + username + "', verificationStatus='" + verificationStatus + "', currentRole='" + currentRole + "'}";
     }
 }

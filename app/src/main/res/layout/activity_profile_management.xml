@@ -1,338 +1,288 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".Service.UserAuthentication.UserProfile">
+    android:background="@color/white">
 
-    <!-- Thanh điều hướng -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/bars"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:layout_marginTop="48dp"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <!-- Nút back -->
-        <ImageView
-            android:id="@+id/back_button"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_marginStart="16dp"
-            android:contentDescription="Back"
-            android:src="@drawable/vector_account"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-        <!-- Tiêu đề -->
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thông tin tài khoản"
-            android:textColor="@color/account_title"
-            android:textSize="22sp"
-            android:fontFamily="@font/relay_roboto_flex_regular"
-            android:lineHeight="18sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Avatar -->
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/img_avatar"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="13dp"
-        android:src="@drawable/ic_person"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Nút quay lại -->
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_arrow_left"
+        android:contentDescription="Back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Divider -->
-    <View
-        android:id="@+id/divider"
-        android:layout_width="290.75dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="13.5dp"
-        android:background="@drawable/line_8_stroke_account"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Tiêu đề -->
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Hồ sơ cá nhân"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_title"
+        android:fontFamily="@font/relay_roboto_flex_regular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/img_avatar" />
+        app:layout_constraintTop_toBottomOf="@id/back_button" />
 
-    <!-- ScrollView cho thông tin -->
+    <!-- ScrollView chứa thông tin -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@id/btn_update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/divider">
+        app:layout_constraintTop_toBottomOf="@id/tv_title">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingBottom="16dp">
+            android:padding="16dp">
 
-            <!-- Tên người dùng -->
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Ảnh đại diện -->
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_avatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_person"
+                app:civ_border_color="@color/sky"
+                app:civ_border_width="2dp" />
+
+            <!-- Họ và tên -->
+            <TextView
+                android:id="@+id/tv_fullname_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:layout_marginTop="16dp"
+                android:text="Họ và tên"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
 
-                <TextView
-                    android:layout_width="142dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:fontWeight="700"
-                    android:lineHeight="16dp"
-                    android:text="Tên người dùng:"
-                    android:textColor="@color/account_label"
-                    android:textSize="17.51sp" />
-
-                <TextView
-                    android:id="@+id/fullname"
-                    android:layout_width="218dp"
-                    android:layout_height="29dp"
-                    android:background="@drawable/field_account"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:lineHeight="16dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="Trương Đăng Khôi"
-                    android:textColor="@color/account_input_color"
-                    android:textSize="17.51sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            <!-- Email -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="142dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:fontWeight="700"
-                    android:lineHeight="16dp"
-                    android:text="Email:"
-                    android:textColor="@color/account_label"
-                    android:textSize="17.51sp" />
-
-                <TextView
-                    android:id="@+id/email"
-                    android:layout_width="218dp"
-                    android:layout_height="29dp"
-                    android:background="@drawable/field1_account"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:lineHeight="16dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="21521019@gm.uit.vn"
-                    android:textColor="@color/account_input_color"
-                    android:textSize="17.51sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            <!-- Địa chỉ -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="142dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:fontWeight="700"
-                    android:lineHeight="16dp"
-                    android:text="Địa chỉ:"
-                    android:textColor="@color/account_label"
-                    android:textSize="17.51sp" />
-
-                <TextView
-                    android:id="@+id/address"
-                    android:layout_width="218dp"
-                    android:layout_height="29dp"
-                    android:background="@drawable/field2_account"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:lineHeight="16dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="UIT"
-                    android:textColor="@color/account_input_color"
-                    android:textSize="17.51sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            <!-- Thành phố -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="142dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:fontWeight="700"
-                    android:lineHeight="16dp"
-                    android:text="Thành phố:"
-                    android:textColor="@color/account_label"
-                    android:textSize="17.51sp" />
-
-                <TextView
-                    android:id="@+id/city"
-                    android:layout_width="218dp"
-                    android:layout_height="29dp"
-                    android:background="@drawable/field3_account"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:lineHeight="16dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="Đồng Nai"
-                    android:textColor="@color/account_input_color"
-                    android:textSize="17.51sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            <!-- Ngày sinh -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="142dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:fontWeight="700"
-                    android:lineHeight="16dp"
-                    android:text="Ngày sinh:"
-                    android:textColor="@color/account_label"
-                    android:textSize="17.51sp" />
-
-                <TextView
-                    android:id="@+id/birthday"
-                    android:layout_width="218dp"
-                    android:layout_height="29dp"
-                    android:background="@drawable/field4_account"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:lineHeight="16dp"
-                    android:paddingHorizontal="16dp"
-                    android:text="13/11/2003"
-                    android:textColor="@color/account_input_color"
-                    android:textSize="17.51sp"
-                    tools:ignore="HardcodedText" />
-            </LinearLayout>
-
-            <!-- Số điện thoại -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="142dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:fontWeight="700"
-                    android:lineHeight="16dp"
-                    android:text="Số điện thoại:"
-                    android:textColor="@color/account_label"
-                    android:textSize="17.51sp" />
-
-                <TextView
-                    android:id="@+id/phone"
-                    android:layout_width="218dp"
-                    android:layout_height="29dp"
-                    android:background="@drawable/field_account"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:lineHeight="16dp"
-                    android:paddingHorizontal="16dp"
-                    android:text=""
-                    android:textColor="@color/account_input_color"
-                    android:textSize="17.51sp" />
-            </LinearLayout>
-
-            <!-- Hình CCCD -->
-            <LinearLayout
-                android:id="@+id/cccd_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:fontWeight="700"
-                    android:lineHeight="16dp"
-                    android:text="Mặt trước CCCD:"
-                    android:textColor="@color/account_label"
-                    android:textSize="17.51sp" />
-
-                <ImageView
-                    android:id="@+id/img_front_CCCD"
-                    android:layout_width="154dp"
-                    android:layout_height="103dp"
-                    android:layout_marginTop="8dp"
-                    android:contentDescription="Mặt trước CCCD"
-                    tools:ignore="HardcodedText"
-                    tools:src="https://lambangcapgia.info/wp-content/uploads/2021/03/lam-cccd-gia.jpg" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="@font/relay_roboto_flex_regular"
-                    android:fontWeight="700"
-                    android:lineHeight="16dp"
-                    android:text="Mặt sau CCCD:"
-                    android:textColor="@color/account_label"
-                    android:textSize="17.51sp" />
-
-                <ImageView
-                    android:id="@+id/img_behind_CCCD"
-                    android:layout_width="154dp"
-                    android:layout_height="103dp"
-                    android:layout_marginTop="8dp"
-                    android:contentDescription="Mặt sau CCCD"
-                    tools:ignore="HardcodedText"
-                    tools:src="https://media.vov.vn/sites/default/files/styles/large/public/2021-10/Can%20cuoc.jpg" />
-            </LinearLayout>
-
-            <!-- Nút chỉnh sửa thông tin -->
-            <Button
-                android:id="@+id/btn_update"
-                style="@style/AppButton"
+            <TextView
+                android:id="@+id/fullname"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_gradient_login"
+                android:background="@drawable/background1_car_details"
                 android:fontFamily="@font/relay_roboto_flex_regular"
-                android:fontWeight="700"
-                android:text="Chỉnh sửa thông tin"
-                android:textColor="@color/white"
-                android:textSize="22sp" />
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_title"
+                tools:text="Nguyễn Văn A" />
+
+            <!-- Email -->
+            <TextView
+                android:id="@+id/tv_email_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Email"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/background1_car_details"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_title"
+                tools:text="example@gmail.com" />
+
+            <!-- Số điện thoại -->
+            <TextView
+                android:id="@+id/tv_phone_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Số điện thoại"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <TextView
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/background1_car_details"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_title"
+                tools:text="0123456789" />
+
+            <!-- Địa chỉ -->
+            <TextView
+                android:id="@+id/tv_address_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Địa chỉ"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/background1_car_details"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_title"
+                tools:text="123 Đường ABC" />
+
+            <!-- Thành phố -->
+            <TextView
+                android:id="@+id/tv_city_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Thành phố"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <TextView
+                android:id="@+id/city"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/background1_car_details"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_title"
+                tools:text="Hồ Chí Minh" />
+
+            <!-- Ngày sinh -->
+            <TextView
+                android:id="@+id/tv_birthday_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Ngày sinh"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <TextView
+                android:id="@+id/birthday"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/background1_car_details"
+                android:fontFamily="@font/relay_roboto_flex_regular"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textSize="16sp"
+                android:textColor="@color/text_title"
+                tools:text="01/01/1990" />
+
+            <!-- CCCD mặt trước -->
+            <TextView
+                android:id="@+id/tv_front_cccd_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="CCCD mặt trước"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <ImageView
+                android:id="@+id/img_front_CCCD"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/rounded_corner"
+                android:clipToOutline="true"
+                android:contentDescription="CCCD Front"
+                android:src="@drawable/input_image" />
+
+            <!-- CCCD mặt sau -->
+            <TextView
+                android:id="@+id/tv_behind_cccd_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="CCCD mặt sau"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <ImageView
+                android:id="@+id/img_behind_CCCD"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/rounded_corner"
+                android:clipToOutline="true"
+                android:contentDescription="CCCD Behind"
+                android:src="@drawable/input_image" />
+
+            <!-- Bằng lái xe -->
+            <TextView
+                android:id="@+id/tv_license_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Bằng lái xe"
+                android:textSize="16sp"
+                android:textColor="@color/text_input_hint"
+                android:fontFamily="@font/relay_roboto_flex_regular" />
+
+            <ImageView
+                android:id="@+id/img_license"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                android:scaleType="centerCrop"
+                android:background="@drawable/rounded_corner"
+                android:clipToOutline="true"
+                android:contentDescription="Driver's License"
+                android:src="@drawable/input_image" />
+
         </LinearLayout>
     </ScrollView>
+
+    <!-- Nút cập nhật -->
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/blue_round_button"
+        android:text="Chỉnh sửa hồ sơ"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

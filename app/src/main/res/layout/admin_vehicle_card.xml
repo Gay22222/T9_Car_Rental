@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_vehicle_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="8dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- Ảnh xe -->
+        <ImageView
+            android:id="@+id/vehicle_image"
+            android:layout_width="100dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_corner"
+            android:clipToOutline="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@mipmap/ic_launcher" />
+
+        <!-- Thông tin xe -->
+        <LinearLayout
+            android:id="@+id/vehicle_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/vehicle_image"
+            app:layout_constraintTop_toTopOf="@id/vehicle_image">
+
+            <!-- Tên xe -->
+            <TextView
+                android:id="@+id/vehicle_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#202020"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Vinfast Lux A2.0" />
+
+            <!-- Thương hiệu -->
+            <TextView
+                android:id="@+id/vehicle_brand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#888888"
+                android:textSize="14sp"
+                tools:text="Vinfast" />
+
+            <!-- Biển số xe -->
+            <TextView
+                android:id="@+id/vehicle_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#888888"
+                android:textSize="14sp"
+                tools:text="51A-12345" />
+
+            <!-- Giá -->
+            <TextView
+                android:id="@+id/vehicle_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#202020"
+                android:textSize="14sp"
+                tools:text="899.000 VNĐ/Ngày" />
+
+            <!-- Trạng thái sẵn có -->
+            <TextView
+                android:id="@+id/vehicle_availability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#888888"
+                android:textSize="14sp"
+                tools:text="Có sẵn" />
+
+            <!-- Trạng thái duyệt -->
+            <TextView
+                android:id="@+id/verification_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#FF6200EE"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="Chưa duyệt" />
+
+            <!-- Đánh giá -->
+            <LinearLayout
+                android:id="@+id/rating_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/rating_icon"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/vector_main"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:id="@+id/vehicle_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:textColor="#888888"
+                    android:textSize="14sp"
+                    tools:text="4.9 (18 Đánh giá)" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

@@ -31,6 +31,9 @@
 
     <!-- Fragments Names -->
     <string name="fragment_user_list">User List</string>
+    <string name="manage_vehicles">Quản lý xe</string>
+    <string name="add_vehicle">Thêm xe</string>
+    <string name="no_vehicles">Không có xe nào</string>
 
     <!-- Other Strings -->
     <string name="action_leave_chatroom">Leave chatroom</string>
@@ -46,4 +49,66 @@
     <!-- Tab strings -->
     <string name="tab_home">Home</string>
     <string name="tab_chat">Chat</string>
+
+    <!-- Chuỗi cho ScheduleSelect -->
+    <string name="select_rental_time">Chọn thời gian thuê xe</string>
+    <string name="select_date">Chọn ngày</string>
+    <string name="select_start_time">Chọn giờ bắt đầu</string>
+    <string name="select_end_time">Chọn giờ kết thúc</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="reject">Từ chối</string>
+    <string name="no_date_selected">Chưa chọn ngày</string>
+    <string name="no_time_selected">Chưa chọn giờ</string>
+    <string name="time_overlap_error">Thời gian này đã được đặt hoặc trùng với lịch bảo trì. Vui lòng chọn thời gian khác.</string>
+    <string name="invalid_time_error">Thời gian kết thúc phải sau thời gian bắt đầu.</string>
+    <string name="missing_selection_error">Vui lòng chọn đầy đủ ngày và giờ.</string>
+    <string name="booking_success">Yêu cầu đặt xe đã được gửi.</string>
+    <string name="booking_failed">Lỗi gửi yêu cầu: %1$s</string>
+    <string name="estimated_price">Ước tính giá thuê: %1$s VNĐ</string>
+
+    <string name="no_vehicle_id">Không tìm thấy ID xe</string>
+    <string name="vehicle_not_found">Không tìm thấy xe</string>
+    <string name="load_vehicle_error">Lỗi tải dữ liệu xe</string>
+    <string name="load_schedule_error">Lỗi tải lịch đặt xe</string>
+    <string name="invalid_booking">Đặt xe không hợp lệ</string>
+
+
+    <string name="select_rental_period">Chọn thời gian thuê xe</string>
+    <string name="select_start_date">Chọn ngày bắt đầu</string>
+    <string name="select_end_date">Chọn ngày kết thúc</string>
+    <string name="total_days">Tổng số ngày: %d</string>
+    <string name="total_price">Tổng giá: %s</string>
+    <string name="invalid_date_range">Ngày kết thúc phải sau ngày bắt đầu</string>
+    <string name="invalid_time">Giờ trả xe phải sau giờ nhận xe</string>
+
+    <string name="filter_vehicles">Lọc xe</string>
+    <string name="brand">Thương hiệu</string>
+    <string name="availability">Trạng thái sẵn có</string>
+    <string name="verification_status">Trạng thái xác minh</string>
+    <string name="fuel_type">Loại nhiên liệu</string>
+    <string name="rating">Đánh giá</string>
+    <string name="price_range">Phạm vi giá</string>
+    <string name="clear_filter">Xóa bộ lọc</string>
+    <string name="apply_filter">Áp dụng</string>
+    <string name="cancel">Hủy</string>
+    <string name="all_brands">Tất cả thương hiệu</string>
+    <string name="all_availability">Tất cả trạng thái</string>
+    <string name="all_verification">Tất cả xác minh</string>
+    <string name="all_fuel_types">Tất cả loại nhiên liệu</string>
+    <string name="total_vehicles">Tổng số xe: %d</string>
+    <string name="search_vehicles">Tìm kiếm xe...</string>
+    <string name="search">Tìm kiếm</string>
+
+    <string name="notifications">Thông báo</string>
+    <string name="user_approved">Tài khoản đã được duyệt</string>
+    <string name="user_rejected">Tài khoản bị từ chối</string>
+    <string name="user_supplement">Yêu cầu bổ sung thông tin tài khoản</string>
+    <string name="vehicle_approved">Xe đã được duyệt</string>
+    <string name="vehicle_rejected">Xe bị từ chối</string>
+    <string name="vehicle_supplement">Yêu cầu bổ sung thông tin xe</string>
+    <string name="vehicle_hidden">Xe đã bị ẩn</string>
+    <string name="vehicle_violation">Cảnh báo vi phạm xe</string>
+    <string name="unread">Chưa đọc</string>
+    <string name="read">Đã đọc</string>
+
 </resources>

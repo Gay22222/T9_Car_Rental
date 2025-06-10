@@ -6,22 +6,37 @@
     android:layout_height="match_parent"
     android:padding="@dimen/_5sdp"
     tools:context=".Service.Vehicle.AddVehicleActivity">
+
+    <!-- Back Button -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_arrow_left"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/blue_line">
 
                 <TextView
@@ -38,6 +53,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="HardcodedText" />
 
+                <!-- Tên xe -->
                 <TextView
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
@@ -64,6 +80,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_name" />
 
+                <!-- Số chỗ -->
                 <TextView
                     android:id="@+id/tv_seats"
                     android:layout_width="wrap_content"
@@ -87,12 +104,13 @@
                     app:layout_constraintStart_toStartOf="@+id/et_name"
                     app:layout_constraintTop_toBottomOf="@+id/tv_seats" />
 
+                <!-- Giá -->
                 <TextView
                     android:id="@+id/tv_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Giá"
+                    android:text="Giá (VND/ngày)"
                     android:textColor="@color/sky"
                     app:layout_constraintStart_toStartOf="@+id/tv_name"
                     app:layout_constraintTop_toBottomOf="@+id/et_seats"
@@ -110,29 +128,7 @@
                     app:layout_constraintStart_toStartOf="@+id/et_name"
                     app:layout_constraintTop_toBottomOf="@+id/tv_price" />
 
-                <TextView
-                    android:id="@+id/tv_owner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Chủ xe"
-                    android:textColor="@color/sky"
-                    app:layout_constraintStart_toStartOf="@+id/tv_name"
-                    app:layout_constraintTop_toBottomOf="@+id/et_price"
-                    tools:ignore="HardcodedText" />
-
-                <EditText
-                    android:id="@+id/et_owner"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="@color/sky"
-                    android:ems="10"
-                    android:textColor="@color/sky"
-                    android:textSize="@dimen/_15ssp"
-                    app:layout_constraintEnd_toEndOf="@+id/et_price"
-                    app:layout_constraintStart_toStartOf="@+id/et_price"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_owner" />
-
+                <!-- Biển số xe -->
                 <TextView
                     android:id="@+id/tv_number"
                     android:layout_width="wrap_content"
@@ -140,8 +136,8 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="Biển số xe"
                     android:textColor="@color/sky"
-                    app:layout_constraintStart_toStartOf="@+id/tv_owner"
-                    app:layout_constraintTop_toBottomOf="@+id/et_owner"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_price"
                     tools:ignore="HardcodedText" />
 
                 <EditText
@@ -149,50 +145,213 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/sky"
-                    android:inputType="textPersonName"
+                    android:inputType="text"
                     android:textColor="@color/sky"
                     android:textSize="@dimen/_15ssp"
                     app:layout_constraintEnd_toEndOf="@+id/et_name"
                     app:layout_constraintStart_toStartOf="@+id/et_name"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_number"
-                    tools:ignore="TextFields" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_number" />
 
+                <!-- Thương hiệu -->
+                <TextView
+                    android:id="@+id/tv_brand"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Thương hiệu"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_number"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_brand"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:inputType="text"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_brand" />
+
+                <!-- Loại nhiên liệu -->
+                <TextView
+                    android:id="@+id/tv_fuel_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Loại nhiên liệu"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_brand"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_fuel_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:inputType="text"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_fuel_type" />
+
+                <!-- Tốc độ tối đa -->
+                <TextView
+                    android:id="@+id/tv_max_speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Tốc độ tối đa (km/h)"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_fuel_type"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_max_speed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:inputType="number"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_max_speed" />
+
+                <!-- Hộp số -->
+                <TextView
+                    android:id="@+id/tv_transmission"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Hộp số"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_max_speed"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_transmission"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:inputType="text"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_transmission" />
+
+                <!-- Cửa và ghế -->
+                <TextView
+                    android:id="@+id/tv_doors_and_seats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Số cửa và ghế"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_transmission"
+                    tools:ignore="HardcodedText" />
+
+                <EditText
+                    android:id="@+id/et_doors_and_seats"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/sky"
+                    android:inputType="text"
+                    android:textColor="@color/sky"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_doors_and_seats" />
+
+                <!-- Ảnh xe -->
+                <TextView
+                    android:id="@+id/tv_vehicle_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Ảnh xe"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/et_doors_and_seats"
+                    tools:ignore="HardcodedText" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/vehicle_img_card"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/yellow_line"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_vehicle_image">
+
+                    <ImageView
+                        android:id="@+id/vehicle_img_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/yellow_line"
+                        android:contentDescription="Chọn ảnh xe"
+                        android:scaleType="centerCrop" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- Ảnh giấy tờ xe -->
+                <TextView
+                    android:id="@+id/tv_document_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Giấy tờ xe"
+                    android:textColor="@color/sky"
+                    app:layout_constraintStart_toStartOf="@+id/tv_name"
+                    app:layout_constraintTop_toBottomOf="@+id/vehicle_img_card"
+                    tools:ignore="HardcodedText" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/document_img_card"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_120sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/yellow_line"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_document_image">
+
+                    <ImageView
+                        android:id="@+id/document_img_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_120sdp"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/yellow_line"
+                        android:contentDescription="Chọn ảnh giấy tờ xe"
+                        android:scaleType="centerCrop" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- Nút Thêm -->
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_add"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_35sdp"
                     android:layout_marginTop="@dimen/_25sdp"
+                    android:layout_marginBottom="@dimen/_25sdp"
+                    android:background="@drawable/red_round_button"
                     android:text="Thêm"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_14ssp"
-                    android:layout_marginBottom="@dimen/_25sdp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/et_number"
-                    android:background="@drawable/red_round_button"
-                    app:layout_constraintStart_toStartOf="@+id/et_number"
-                    app:layout_constraintTop_toBottomOf="@+id/img_card"
+                    app:layout_constraintEnd_toEndOf="@+id/et_name"
+                    app:layout_constraintStart_toStartOf="@+id/et_name"
+                    app:layout_constraintTop_toBottomOf="@+id/document_img_card"
                     tools:ignore="HardcodedText" />
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/img_card"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/_120sdp"
-                    android:background="@drawable/yellow_line"
-                    app:layout_constraintEnd_toEndOf="@+id/et_number"
-                    app:layout_constraintStart_toStartOf="@+id/et_number"
-                    app:layout_constraintTop_toBottomOf="@+id/et_number">
-                    <ImageView
-                        android:id="@+id/img_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_120sdp"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/yellow_line"
-                        android:contentDescription="Chọn ảnh xe"
-                        app:layout_constraintEnd_toEndOf="@+id/img_card"
-                        app:layout_constraintStart_toStartOf="@+id/img_card"
-                        app:layout_constraintTop_toTopOf="@+id/img_card" />
-                </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

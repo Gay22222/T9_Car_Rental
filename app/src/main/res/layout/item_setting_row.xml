@@ -29,7 +29,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="23dp"
         android:textColor="@color/setting_text_edit"
-        android:textSize="27sp"
+        android:textSize="21sp"
         android:fontFamily="@font/relay_roboto_flex_regular"
         android:lineHeight="24dp"
         app:layout_constraintStart_toEndOf="@id/setting_icon"

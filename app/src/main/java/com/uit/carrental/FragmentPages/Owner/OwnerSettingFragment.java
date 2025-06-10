@@ -69,7 +69,7 @@ public class OwnerSettingFragment extends Fragment {
         dtb_user = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         mAuth = FirebaseAuth.getInstance();
-        user.setUser_id(firebaseUser != null ? firebaseUser.getUid() : "");
+        user.setUserId(firebaseUser != null ? firebaseUser.getUid() : "");
 
         if (firebaseUser != null) {
             dtb_user.collection("Users")

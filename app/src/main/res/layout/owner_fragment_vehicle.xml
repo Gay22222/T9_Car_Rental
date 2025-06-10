@@ -1,52 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
     tools:context=".FragmentPages.Owner.OwnerVehicleFragment">
 
     <TextView
         android:id="@+id/tv_title"
-        android:text="QUẢN LÝ XE"
-        android:textStyle="bold"
-        android:textSize="@dimen/_24ssp"
-        android:textColor="@color/sunset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_20sdp"
-        tools:ignore="HardcodedText,MissingConstraints" />
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        android:text="@string/manage_vehicles"
+        android:textColor="@color/text_title"
+        android:textSize="@dimen/_24ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/blue_round_button"
         android:backgroundTint="@color/sky"
-        android:text="Thêm xe"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        android:text="@string/add_vehicle"
         android:textColor="@color/white"
         android:textSize="@dimen/_14ssp"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_title"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tv_title"
-        app:layout_constraintTop_toTopOf="@+id/tv_title"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:layout_width="match_parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/vehicle_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        tools:listitem="@layout/owner_vehicle_card" />
+
+    <TextView
+        android:id="@+id/text_empty"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        android:paddingBottom="@dimen/_75sdp">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/vehicle_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_15sdp"
-            tools:ignore="MissingConstraints">
-        </androidx.recyclerview.widget.RecyclerView>
-    </ScrollView>
-
+        android:layout_margin="16dp"
+        android:fontFamily="@font/relay_roboto_flex_regular"
+        android:padding="16dp"
+        android:text="@string/no_vehicles"
+        android:textColor="@color/text_input_hint"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title" />
 </androidx.constraintlayout.widget.ConstraintLayout>

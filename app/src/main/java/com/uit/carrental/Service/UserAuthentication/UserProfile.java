@@ -1,8 +1,5 @@
 package com.uit.carrental.Service.UserAuthentication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,40 +8,40 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 import com.uit.carrental.Model.User;
 import com.uit.carrental.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfile extends AppCompatActivity {
 
-    private Button btnUpdate;
-    private ImageView backButton, imgFrontCCCD, imgBehindCCCD;
-    private CircleImageView imgAvatar;
-    private TextView tvPhone, tvEmail, tvName, tvAddress, tvCity, tvBirthday;
-    private FirebaseFirestore dtb_user;
-    private FirebaseUser firebaseUser;
-    private User user = new User();
-
-    private static final String MOCK_CCCD_FRONT = "https://lambangcapgia.info/wp-content/uploads/2021/03/lam-cccd-gia.jpg";
-    private static final String MOCK_CCCD_BACK = "https://media.vov.vn/sites/default/files/styles/large/public/2021-10/Can%20cuoc.jpg";
     private static final String MOCK_AVATAR = "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyd2owNnAxcXR5YmJhMmh3ZDlvY3hoOXFhaWN2aXY3cm1tMXkwMnBlNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/FY8c5SKwiNf1EtZKGs/giphy_s.gif";
+
+    private Button btnUpdate;
+    private ImageView backButton, imgFrontCCCD, imgBehindCCCD, imgLicense;
+    private CircleImageView imgAvatar;
+    private TextView tvName, tvEmail, tvPhone, tvAddress, tvCity, tvBirthday;
+    private ProfileViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_management);
 
-        init();
-        getInfo();
+        initViews();
+        initViewModel();
+        observeLiveData();
 
         backButton.setOnClickListener(v -> {
             finish();
@@ -58,72 +55,113 @@ public class UserProfile extends AppCompatActivity {
         });
     }
 
-    private void init() {
+    private void initViews() {
         btnUpdate = findViewById(R.id.btn_update);
         backButton = findViewById(R.id.back_button);
         imgAvatar = findViewById(R.id.img_avatar);
         imgFrontCCCD = findViewById(R.id.img_front_CCCD);
         imgBehindCCCD = findViewById(R.id.img_behind_CCCD);
+        imgLicense = findViewById(R.id.img_license);
         tvName = findViewById(R.id.fullname);
         tvEmail = findViewById(R.id.email);
         tvPhone = findViewById(R.id.phone);
         tvAddress = findViewById(R.id.address);
         tvCity = findViewById(R.id.city);
         tvBirthday = findViewById(R.id.birthday);
-
-        dtb_user = FirebaseFirestore.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        user.setUser_id(firebaseUser != null ? firebaseUser.getUid() : "");
     }
 
-    private void getInfo() {
-        dtb_user.collection("Users")
-                .whereEqualTo("user_id", user.getUser_id())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                tvName.setText(document.getString("username"));
-                                tvEmail.setText(document.getString("email"));
-                                tvPhone.setText(document.getString("phoneNumber"));
-                                tvAddress.setText(document.getString("address"));
-                                tvCity.setText(document.getString("city"));
-                                tvBirthday.setText(document.getString("birthday"));
-                                user.setAvatarURL(document.getString("avatarURL"));
+    private void initViewModel() {
+        viewModel = new ViewModelProvider(this).get(ProfileViewModel.class);
+        viewModel.loadUserData();
+    }
 
-                                if (user.getAvatarURL() != null && !user.getAvatarURL().isEmpty()) {
-                                    Picasso.get().load(user.getAvatarURL()).into(imgAvatar);
-                                } else {
-                                    user.setAvatarURL("");
-                                    Picasso.get().load(MOCK_AVATAR).into(imgAvatar);
-                                }
+    private void observeLiveData() {
+        viewModel.getUserLiveData().observe(this, user -> {
+            if (user != null) {
+                tvName.setText(user.getUsername());
+                tvEmail.setText(user.getEmail());
+                tvPhone.setText(user.getPhoneNumber());
+                tvAddress.setText(user.getAddress());
+                tvCity.setText(user.getCity());
+                tvBirthday.setText(user.getBirthday());
 
-                                user.setCiCardFront(document.getString("ciCardFront"));
-                                if (user.getCiCardFront() != null && !user.getCiCardFront().isEmpty()) {
-                                    Picasso.get().load(user.getCiCardFront()).into(imgFrontCCCD);
-                                } else {
-                                    user.setCiCardFront("");
-                                    Picasso.get().load(MOCK_CCCD_FRONT).into(imgFrontCCCD);
-                                }
+                if (user.getAvatarUrl() != null && !user.getAvatarUrl().isEmpty()) {
+                    Picasso.get().load(user.getAvatarUrl()).into(imgAvatar);
+                } else {
+                    Picasso.get().load(MOCK_AVATAR).into(imgAvatar);
+                }
 
-                                user.setCiCardBehind(document.getString("ciCardBehind"));
-                                if (user.getCiCardBehind() != null && !user.getCiCardBehind().isEmpty()) {
-                                    Picasso.get().load(user.getCiCardBehind()).into(imgBehindCCCD);
-                                } else {
-                                    user.setCiCardBehind("");
-                                    Picasso.get().load(MOCK_CCCD_BACK).into(imgBehindCCCD);
-                                }
-                            }
-                        } else {
-                            Toast.makeText(UserProfile.this, "Không thể lấy thông tin", Toast.LENGTH_LONG).show();
-                            // Load mockdata khi Firestore thất bại
-                            Picasso.get().load(MOCK_AVATAR).into(imgAvatar);
-                            Picasso.get().load(MOCK_CCCD_FRONT).into(imgFrontCCCD);
-                            Picasso.get().load(MOCK_CCCD_BACK).into(imgBehindCCCD);
-                        }
-                    }
-                });
+                if (user.getCiCardFront() != null && !user.getCiCardFront().isEmpty()) {
+                    Picasso.get().load(user.getCiCardFront()).into(imgFrontCCCD);
+                } else {
+                    imgFrontCCCD.setImageDrawable(null); // Không hiển thị ảnh nếu không có dữ liệu
+                }
+
+                if (user.getCiCardBehind() != null && !user.getCiCardBehind().isEmpty()) {
+                    Picasso.get().load(user.getCiCardBehind()).into(imgBehindCCCD);
+                } else {
+                    imgBehindCCCD.setImageDrawable(null); // Không hiển thị ảnh nếu không có dữ liệu
+                }
+
+                if (user.getLicenseUrl() != null && !user.getLicenseUrl().isEmpty()) {
+                    Picasso.get().load(user.getLicenseUrl()).into(imgLicense);
+                } else {
+                    imgLicense.setImageDrawable(null); // Không hiển thị ảnh nếu không có dữ liệu
+                }
+            }
+        });
+
+        viewModel.getErrorLiveData().observe(this, error -> {
+            if (error != null) {
+                Toast.makeText(UserProfile.this, error, Toast.LENGTH_LONG).show();
+                Picasso.get().load(MOCK_AVATAR).into(imgAvatar);
+                imgFrontCCCD.setImageDrawable(null);
+                imgBehindCCCD.setImageDrawable(null);
+                imgLicense.setImageDrawable(null);
+            }
+        });
+    }
+
+    public static class ProfileViewModel extends ViewModel {
+        private final FirebaseFirestore db;
+        private final FirebaseUser firebaseUser;
+        private final MutableLiveData<User> userLiveData;
+        private final MutableLiveData<String> errorLiveData;
+
+        public ProfileViewModel() {
+            db = FirebaseFirestore.getInstance();
+            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            userLiveData = new MutableLiveData<>();
+            errorLiveData = new MutableLiveData<>();
+        }
+
+        public LiveData<User> getUserLiveData() {
+            return userLiveData;
+        }
+
+        public LiveData<String> getErrorLiveData() {
+            return errorLiveData;
+        }
+
+        public void loadUserData() {
+            if (firebaseUser == null) {
+                errorLiveData.setValue("Người dùng chưa đăng nhập");
+                return;
+            }
+
+            DocumentReference userRef = db.collection("Users").document(firebaseUser.getUid());
+            userRef.addSnapshotListener((document, error) -> {
+                if (error != null) {
+                    errorLiveData.setValue("Lỗi tải thông tin: " + error.getMessage());
+                    return;
+                }
+                if (document != null && document.exists()) {
+                    User user = document.toObject(User.class);
+                    userLiveData.setValue(user);
+                } else {
+                    errorLiveData.setValue("Không tìm thấy thông tin người dùng");
+                }
+            });
+        }
     }
 }

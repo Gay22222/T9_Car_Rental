@@ -1,117 +1,260 @@
 package com.uit.carrental.Service.Vehicle;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.squareup.picasso.Picasso;
+import com.uit.carrental.ActivityPages.CustomerMainActivity;
+import com.uit.carrental.Model.User;
 import com.uit.carrental.Model.Vehicle;
 import com.uit.carrental.R;
 import com.uit.carrental.Service.Booking.ScheduleSelect;
+import com.uit.carrental.Service.UserAuthentication.CCCDActivity;
 
 public class VehicleDetailActivity extends AppCompatActivity {
 
-    private ImageView vehicleImage, backButton;
-    private TextView vehicleName, vehiclePrice, fuelValue, speedValue, transmissionValue, seatsValue;
-    private TextView providerName, providerPhone, providerGmail, providerAddress, vehicleOwner, vehicleNumber;
+    private static final String TAG = "VehicleDetailActivity";
+    private ImageView imageViewVehicle, backButton;
+    private TextView textViewName, textViewPrice, textViewFuel, textViewSpeed, textViewTransmission, textViewSeats, textViewNumber;
+    private TextView textViewProviderName, textViewProviderPhone, textViewProviderEmail, textViewProviderAddress, textViewOwner;
     private Button btnBook;
-    private String vehicleID;
-    private FirebaseFirestore dtbVehicle;
-    private Vehicle vehicle = new Vehicle();
+    private String vehicleId;
+    private VehicleDetailViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_car);
 
-        Intent intent = getIntent();
-        vehicleID = intent.getStringExtra("vehicle_id");
-        vehicle.setVehicle_id(vehicleID);
+        vehicleId = getIntent().getStringExtra("vehicleId");
+        if (vehicleId == null) {
+            Toast.makeText(this, "Không tìm thấy xe", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
-        init();
+        initViews();
+        initViewModel();
+        observeLiveData();
 
-        getDetail();
+        btnBook.setOnClickListener(v -> checkCccdAndBook());
+    }
 
-        btnBook.setOnClickListener(v -> {
-            Intent i = new Intent(VehicleDetailActivity.this, ScheduleSelect.class);
-            i.putExtra("vehicle_id", vehicleID);
-            startActivity(i);
+    private void initViews() {
+        btnBook = findViewById(R.id.btn_book);
+        imageViewVehicle = findViewById(R.id.vehicle_img);
+        backButton = findViewById(R.id.back_button);
+        textViewName = findViewById(R.id.vehicle_name);
+        textViewPrice = findViewById(R.id.tv_vehicle_price);
+        textViewFuel = findViewById(R.id.fuel_value);
+        textViewSpeed = findViewById(R.id.speed_value);
+        textViewTransmission = findViewById(R.id.transmission_value);
+        textViewSeats = findViewById(R.id.seats_value);
+        textViewNumber = findViewById(R.id.tv_vehicle_number);
+        textViewProviderName = findViewById(R.id.tv_provider_name);
+        textViewProviderPhone = findViewById(R.id.tv_provider_phone);
+        textViewProviderEmail = findViewById(R.id.tv_provider_gmail);
+        textViewProviderAddress = findViewById(R.id.tv_provider_address);
+        textViewOwner = findViewById(R.id.tv_vehicle_owner);
+
+        backButton.setOnClickListener(v -> {
+            Log.d(TAG, "Nút Back giao diện được nhấn");
+            navigateBackToHome();
+        });
+    }
+
+    private void initViewModel() {
+        viewModel = new ViewModelProvider(this).get(VehicleDetailViewModel.class);
+        viewModel.loadVehicleData(vehicleId);
+    }
+
+    private void observeLiveData() {
+        viewModel.getVehicleLiveData().observe(this, vehicle -> {
+            if (vehicle != null) {
+                textViewName.setText(vehicle.getVehicleName() != null ? vehicle.getVehicleName() : "Mercedes C300 AMG");
+                textViewPrice.setText(vehicle.getVehiclePrice() != null ? vehicle.getVehiclePrice() : "999.000VNĐ/Ngày");
+                textViewFuel.setText(vehicle.getFuelType() != null ? vehicle.getFuelType() : "Xăng không chì 95+");
+                textViewSpeed.setText(vehicle.getMaxSpeed() != null ? vehicle.getMaxSpeed() : "250 km/h");
+                textViewTransmission.setText(vehicle.getTransmission() != null ? vehicle.getTransmission() : "Tự động 9 cấp");
+                textViewSeats.setText(vehicle.getDoorsAndSeats() != null ? vehicle.getDoorsAndSeats() : "2 Cửa và 4 Ghế");
+                textViewNumber.setText(vehicle.getVehicleNumber() != null ? vehicle.getVehicleNumber() : "60C2-88888");
+
+                if (vehicle.getVehicleImageUrl() != null && !vehicle.getVehicleImageUrl().isEmpty()) {
+                    Glide.with(this)
+                            .load(vehicle.getVehicleImageUrl())
+                            .placeholder(R.drawable.ic_car)
+                            .into(imageViewVehicle);
+                }
+
+                if (vehicle.getOwnerId() != null) {
+                    viewModel.loadOwnerData(vehicle.getOwnerId());
+                }
+            }
         });
 
-        backButton.setOnClickListener(v -> finish());
+        viewModel.getOwnerLiveData().observe(this, owner -> {
+            if (owner != null) {
+                textViewProviderName.setText(owner.getUsername() != null ? owner.getUsername() : "Công ty ABC");
+                textViewProviderPhone.setText(owner.getPhoneNumber() != null ? owner.getPhoneNumber() : "0123456789");
+                textViewProviderEmail.setText(owner.getEmail() != null ? owner.getEmail() : "abc@example.com");
+                textViewProviderAddress.setText(owner.getAddress() != null ? owner.getAddress() : "123 Đường ABC, Đồng Nai");
+                textViewOwner.setText(owner.getUsername() != null ? owner.getUsername() : "Nguyễn Văn A");
+            }
+        });
+
+        viewModel.getErrorLiveData().observe(this, error -> {
+            if (error != null) {
+                Toast.makeText(this, error, Toast.LENGTH_LONG).show();
+                finish();
+            }
+        });
+
+        viewModel.getUserLiveData().observe(this, user -> {
+            // Dữ liệu người dùng đã tải, sẵn sàng để kiểm tra CCCD
+        });
     }
 
-    private void init() {
-        btnBook = findViewById(R.id.btn_book);
-        vehicleImage = findViewById(R.id.vehicle_img);
-        backButton = findViewById(R.id.back_button);
-        vehicleName = findViewById(R.id.vehicle_name);
-        vehiclePrice = findViewById(R.id.tv_vehicle_price);
-        fuelValue = findViewById(R.id.fuel_value);
-        speedValue = findViewById(R.id.speed_value);
-        transmissionValue = findViewById(R.id.transmission_value);
-        seatsValue = findViewById(R.id.seats_value);
-        providerName = findViewById(R.id.tv_provider_name);
-        providerPhone = findViewById(R.id.tv_provider_phone);
-        providerGmail = findViewById(R.id.tv_provider_gmail);
-        providerAddress = findViewById(R.id.tv_provider_address);
-        vehicleOwner = findViewById(R.id.tv_vehicle_owner);
-        vehicleNumber = findViewById(R.id.tv_vehicle_number);
-        dtbVehicle = FirebaseFirestore.getInstance();
+    private void checkCccdAndBook() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser == null) {
+            Toast.makeText(this, "Vui lòng đăng nhập để đặt xe", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        User user = viewModel.getUserLiveData().getValue();
+        if (user == null ||
+                user.getCiCardFront() == null || user.getCiCardFront().isEmpty() ||
+                user.getCiCardBehind() == null || user.getCiCardBehind().isEmpty() ||
+                user.getLicenseUrl() == null || user.getLicenseUrl().isEmpty() ||
+                !"verified".equals(user.getVerificationStatus())) {
+            showVerificationRequiredDialog();
+        } else {
+            Intent intent = new Intent(VehicleDetailActivity.this, ScheduleSelect.class);
+            intent.putExtra("vehicleId", vehicleId);
+            startActivity(intent);
+        }
     }
 
-    private void getDetail() {
-        dtbVehicle.collection("Vehicles")
-                .whereEqualTo("vehicle_id", vehicle.getVehicle_id())
-                .get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            vehicle.setVehicle_id(document.getString("vehicle_id"));
-                            vehicle.setVehicle_name(document.getString("vehicle_name"));
-                            vehicle.setVehicle_price(document.getString("vehicle_price"));
-                            vehicle.setVehicle_imageURL(document.getString("vehicle_imageURL"));
-                            vehicle.setFuel_type(document.getString("fuel_type"));
-                            vehicle.setMax_speed(document.getString("max_speed"));
-                            vehicle.setTransmission(document.getString("transmission"));
-                            vehicle.setDoors_seats(document.getString("doors_seats"));
-                            vehicle.setProvider_name(document.getString("provider_name"));
-                            vehicle.setProvider_phone(document.getString("provider_phone"));
-                            vehicle.setProvider_gmail(document.getString("provider_gmail"));
-                            vehicle.setProvider_address(document.getString("provider_address"));
-                            vehicle.setOwner_name(document.getString("owner_name"));
-                            vehicle.setVehicle_number(document.getString("vehicle_number"));
+    private void showVerificationRequiredDialog() {
+        new AlertDialog.Builder(this)
+                .setTitle("Yêu cầu xác minh")
+                .setMessage("Bạn cần cập nhật căn cước công dân và bằng lái xe, đồng thời được admin duyệt để thuê xe. Bạn có muốn cập nhật ngay không?")
+                .setPositiveButton("Cập nhật", (dialog, which) -> {
+                    Intent intent = new Intent(VehicleDetailActivity.this, CCCDActivity.class);
+                    intent.putExtra("fromVehicleDetail", true); // Thêm extra để theo dõi
+                    startActivity(intent);
+                })
+                .setNegativeButton("Hủy", (dialog, which) -> dialog.dismiss())
+                .create()
+                .show();
+    }
 
-                            // Set UI
-                            vehicleName.setText(vehicle.getVehicle_name() != null ? vehicle.getVehicle_name() : "Mercedes C300 AMG");
-                            vehiclePrice.setText(vehicle.getVehicle_price() != null ? vehicle.getVehicle_price() : "999.000VNĐ/Ngày");
-                            fuelValue.setText(vehicle.getFuel_type() != null ? vehicle.getFuel_type() : "Xăng không chì 95+");
-                            speedValue.setText(vehicle.getMax_speed() != null ? vehicle.getMax_speed() : "250 km/h");
-                            transmissionValue.setText(vehicle.getTransmission() != null ? vehicle.getTransmission() : "Tự động 9 cấp");
-                            seatsValue.setText(vehicle.getDoors_seats() != null ? vehicle.getDoors_seats() : "2 Cửa & 4 Ghế");
-                            providerName.setText(vehicle.getProvider_name() != null ? vehicle.getProvider_name() : "Công ty ABC");
-                            providerPhone.setText(vehicle.getProvider_phone() != null ? vehicle.getProvider_phone() : "0123456789");
-                            providerGmail.setText(vehicle.getProvider_gmail() != null ? vehicle.getProvider_gmail() : "abc@example.com");
-                            providerAddress.setText(vehicle.getProvider_address() != null ? vehicle.getProvider_address() : "123 Đường ABC, Đồng Nai");
-                            vehicleOwner.setText(vehicle.getOwner_name() != null ? vehicle.getOwner_name() : "Nguyễn Văn A");
-                            vehicleNumber.setText(vehicle.getVehicle_number() != null ? vehicle.getVehicle_number() : "60C2-88888");
+    private void navigateBackToHome() {
+        Intent intent = new Intent(this, CustomerMainActivity.class);
+        intent.putExtra("fragment", "home");
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
+    }
 
-                            if (vehicle.getVehicle_imageURL() != null && !vehicle.getVehicle_imageURL().isEmpty()) {
-                                Picasso.get().load(vehicle.getVehicle_imageURL()).into(vehicleImage);
-                            }
-                        }
+    @Override
+    public void onBackPressed() {
+        Log.d(TAG, "Nút Back vật lý được nhấn");
+        navigateBackToHome();
+    }
+
+    public static class VehicleDetailViewModel extends ViewModel {
+        private final FirebaseFirestore db;
+        private final FirebaseUser firebaseUser;
+        private final MutableLiveData<Vehicle> vehicleLiveData;
+        private final MutableLiveData<User> userLiveData;
+        private final MutableLiveData<User> ownerLiveData;
+        private final MutableLiveData<String> errorLiveData;
+
+        public VehicleDetailViewModel() {
+            db = FirebaseFirestore.getInstance();
+            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            vehicleLiveData = new MutableLiveData<>();
+            userLiveData = new MutableLiveData<>();
+            ownerLiveData = new MutableLiveData<>();
+            errorLiveData = new MutableLiveData<>();
+        }
+
+        public LiveData<Vehicle> getVehicleLiveData() {
+            return vehicleLiveData;
+        }
+
+        public LiveData<User> getUserLiveData() {
+            return userLiveData;
+        }
+
+        public LiveData<User> getOwnerLiveData() {
+            return ownerLiveData;
+        }
+
+        public LiveData<String> getErrorLiveData() {
+            return errorLiveData;
+        }
+
+        public void loadVehicleData(String vehicleId) {
+            DocumentReference vehicleRef = db.collection("Vehicles").document(vehicleId);
+            vehicleRef.addSnapshotListener((document, error) -> {
+                if (error != null) {
+                    errorLiveData.setValue("Lỗi lấy chi tiết xe: " + error.getMessage());
+                    return;
+                }
+                if (document != null && document.exists()) {
+                    Vehicle vehicle = document.toObject(Vehicle.class);
+                    vehicleLiveData.setValue(vehicle);
+                } else {
+                    errorLiveData.setValue("Không tìm thấy xe");
+                }
+            });
+
+            if (firebaseUser != null) {
+                DocumentReference userRef = db.collection("Users").document(firebaseUser.getUid());
+                userRef.addSnapshotListener((document, error) -> {
+                    if (error != null) {
+                        errorLiveData.setValue("Lỗi tải thông tin người dùng: " + error.getMessage());
+                        return;
+                    }
+                    if (document != null && document.exists()) {
+                        User user = document.toObject(User.class);
+                        userLiveData.setValue(user);
                     }
                 });
+            }
+        }
+
+        public void loadOwnerData(String ownerId) {
+            DocumentReference ownerRef = db.collection("Users").document(ownerId);
+            ownerRef.addSnapshotListener((document, error) -> {
+                if (error != null) {
+                    errorLiveData.setValue("Lỗi tải thông tin chủ xe: " + error.getMessage());
+                    return;
+                }
+                if (document != null && document.exists()) {
+                    User owner = document.toObject(User.class);
+                    ownerLiveData.setValue(owner);
+                }
+            });
+        }
     }
 }

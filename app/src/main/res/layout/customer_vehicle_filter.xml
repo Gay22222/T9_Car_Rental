@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="#FFFFFF"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/rot0ocrqsqn"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/s003087sw1bffffff">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Tiêu đề và nút đóng -->
+                <LinearLayout
+                    android:id="@+id/r3lq3xaoi8n6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:background="#FFFFFF"
+                    android:paddingVertical="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:elevation="2dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/r4q7zkhz5wj9"
+                        android:textColor="#4D3A4D"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_weight="1"
+                        android:text="Bộ lọc tìm kiếm" />
+
+                    <ImageView
+                        android:id="@+id/rz3n8dabzscm"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/close_cicle"
+                        android:scaleType="fitXY" />
+                </LinearLayout>
+
+                <!-- Theo loại xe -->
+                <LinearLayout
+                    android:id="@+id/rw6fld1d1mte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/rvv1babw21a"
+                        android:textColor="#4D3A4D"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Theo loại xe" />
+
+                    <LinearLayout
+                        android:id="@+id/ru0titw95a6p"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/re5bkjyzw71a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/s4d3a4dsw1cr100"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/r5fi7w847cf4"
+                                android:textColor="#4D3A4D"
+                                android:textSize="14sp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="Vinfast" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/r29lmqq8qqka"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/s003087sw1cr100b0030871f"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/rtdzyabnxj9h"
+                                android:textColor="#003087"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="Honda" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/r5wpc3jutt9d"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/s4d3a4dsw1cr100"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/rk80q24qy51e"
+                                android:textColor="#4D3A4D"
+                                android:textSize="14sp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="Mercedes" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/rmclr5q8pf7f"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/r047t6es9ecg6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/s003087sw1cr100b0030871f"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/r1pubpl9glnt"
+                                android:textColor="#003087"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="BMW" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/rwviyruuyw0d"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/s4d3a4dsw1cr100"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/rkeblvd7zmp"
+                                android:textColor="#4D3A4D"
+                                android:textSize="14sp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="Ford" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/r2lvmia82fj5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/s4d3a4dsw1cr100"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/rbwpmmmhe8l"
+                                android:textColor="#4D3A4D"
+                                android:textSize="14sp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="Toyota" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Theo trạng thái -->
+                <LinearLayout
+                    android:id="@+id/rsuwpb6itn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/rfy9m05n4qyn"
+                        android:textColor="#4D3A4D"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Theo trạng thái" />
+
+                    <LinearLayout
+                        android:id="@+id/rtmf03jggzbh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:id="@+id/rzvu0zdr3b79"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/s003087sw1cr100b0030871f"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/r6tv6q6llfyh"
+                                android:textColor="#003087"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="Có sẵn" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Theo đánh giá -->
+                <LinearLayout
+                    android:id="@+id/re338tflgim"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/rtfu20we8h1"
+                        android:textColor="#4D3A4D"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="12dp"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="Theo đánh giá" />
+
+                    <LinearLayout
+                        android:id="@+id/r7r4owx90wkb"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/r2re9lvhfwqt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="6dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/rozw79prjrbs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/s4d3a4dsw1cr100"
+                                android:paddingVertical="4dp"
+                                android:paddingHorizontal="12dp"
+                                android:layout_marginEnd="8dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/r6vwmwwzhigk"
+                                    android:textColor="#4D3A4D"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:text="5 " />
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/r4y8nv6c7mpc"
+                                    app:shapeAppearanceOverlay="@style/cr100"
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:src="@drawable/vector_main"
+                                    android:scaleType="fitXY" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rx3ytiykf6v"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/s4d3a4dsw1cr100bffbc7d33"
+                                android:paddingVertical="4dp"
+                                android:paddingHorizontal="12dp"
+                                android:layout_marginEnd="8dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/rdjqxvxj343u"
+                                    android:textColor="#4D3A4D"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:text="5" />
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/rb6215hqc4bl"
+                                    app:shapeAppearanceOverlay="@style/cr100"
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:layout_marginEnd="2dp"
+                                    android:src="@drawable/vector_main"
+                                    android:scaleType="fitXY" />
+
+                                <TextView
+                                    android:id="@+id/ry0sjlz6t2q"
+                                    android:textColor="#4D3A4D"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="5dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:text="-" />
+
+                                <TextView
+                                    android:id="@+id/rzakpxmoxv1"
+                                    android:textColor="#4D3A4D"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:text="4" />
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/rtnetjohacza"
+                                    app:shapeAppearanceOverlay="@style/cr100"
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:src="@drawable/vector_main"
+                                    android:scaleType="fitXY" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/rsooed0x193"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:background="@drawable/s4d3a4dsw1cr100"
+                                android:paddingVertical="4dp"
+                                android:paddingHorizontal="12dp"
+                                android:layout_marginEnd="8dp"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/rl1q0hssiaif"
+                                    android:textColor="#4D3A4D"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginEnd="4dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:text="4" />
+
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/rw0l5x2vl8bi"
+                                    app:shapeAppearanceOverlay="@style/cr100"
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:src="@drawable/vector_main"
+                                    android:scaleType="fitXY" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/rusqd789cwjj"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/s4d3a4dsw1cr100"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:layout_marginEnd="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/rthh7z3rn2d"
+                                android:textColor="#4D3A4D"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_marginEnd="4dp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="3" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/rwwi7sxl6nz"
+                                app:shapeAppearanceOverlay="@style/cr100"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:src="@drawable/vector_main"
+                                android:scaleType="fitXY" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ru6lopcq6jh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/s4d3a4dsw1cr100"
+                            android:paddingVertical="4dp"
+                            android:paddingHorizontal="12dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/rabqwvwqco"
+                                android:textColor="#4D3A4D"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_marginEnd="4dp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="2" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/rayfaxchsqb8"
+                                app:shapeAppearanceOverlay="@style/cr100"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:layout_marginEnd="2dp"
+                                android:src="@drawable/vector_main"
+                                android:scaleType="fitXY" />
+
+                            <TextView
+                                android:id="@+id/rvzg2lkv0idk"
+                                android:textColor="#4D3A4D"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_marginEnd="5dp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="-" />
+
+                            <TextView
+                                android:id="@+id/r9tx64h8qbuu"
+                                android:textColor="#4D3A4D"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:layout_marginEnd="4dp"
+                                android:layout_height="wrap_content"
+                                android:layout_width="wrap_content"
+                                android:text="1" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/r46s7tlb9ka4"
+                                app:shapeAppearanceOverlay="@style/cr100"
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:src="@drawable/vector_main"
+                                android:scaleType="fitXY" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Đường phân cách -->
+                <LinearLayout
+                    android:id="@+id/r33ci7pmxdzl"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#4D3A4D"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:orientation="vertical" />
+
+                <!-- Nút thiết lập lại và xác nhận -->
+                <LinearLayout
+                    android:id="@+id/rljmd26t2q9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="72dp"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/rvai73xq5syc"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/s4d3a4dsw1cr12"
+                        android:paddingVertical="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/rhokc4oyc7cp"
+                            android:textColor="#4D3A4D"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginHorizontal="24dp"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Thiết lập lại" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/rt94tooyri0r"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/cr12b003087"
+                        android:paddingVertical="8dp"
+                        android:paddingHorizontal="24dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/rbr2mtec8ucf"
+                            android:textColor="#FFF6FC"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:text="Xác nhận" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

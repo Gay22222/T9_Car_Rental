@@ -7,7 +7,6 @@ import com.uit.carrental.Model.User;
 
 
 public class UserClient extends Application {
-
     private User user = null;
 
     public User getUser() {
@@ -17,5 +16,4 @@ public class UserClient extends Application {
     public void setUser(User user) {
         this.user = user;
     }
-
 }
