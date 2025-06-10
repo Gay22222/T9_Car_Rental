@@ -1255,7 +1255,7 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
         holder.itemView.setOnClickListener(view -> {
             if (vehicle.getVehicleId() != null) {
                 Intent intent = new Intent(context, UpdateVehicleActivity.class);
-                intent.putExtra("vehicle_id", vehicle.getVehicleId());
+                intent.putExtra("vehicleId", vehicle.getVehicleId()); // Sửa key thành vehicleId
                 context.startActivity(intent);
                 Log.d(TAG, "Nhấn vào xe: " + vehicle.getVehicleId());
             } else {
@@ -1296,6 +1296,7 @@ public class OwnerVehicleAdapter extends RecyclerView.Adapter<OwnerVehicleAdapte
         }
     }
 }
+
 ```
 
 ### Adapter\SplashPagerAdapter.java
@@ -2183,14 +2184,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.uit.carrental.Adapter.UserAdapter;
 import com.uit.carrental.Model.User;
 import com.uit.carrental.R;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AdminUserListFragment extends Fragment {
 
@@ -2200,16 +2201,16 @@ public class AdminUserListFragment extends Fragment {
     private ImageView imageViewFilter, imageViewSearch, imageViewPrevPage, imageViewNextPage;
     private EditText editTextSearch;
     private UserAdapter userAdapter;
-    private List<User> userList;
-    private List<User> filteredUserList;
+    private List<User> userList; // Danh sách tất cả người dùng từ Firestore
+    private List<User> filteredUserList; // Danh sách sau khi lọc và tìm kiếm
     private FirebaseFirestore db;
     private FirebaseAuth auth;
     private int currentPage = 1;
     private int totalPages = 1;
     private static final int ITEMS_PER_PAGE = 5;
-    private DocumentSnapshot lastVisible;
     private String currentQuery = "";
     private String currentVerificationStatus;
+    private ListenerRegistration usersListener;
 
     @Nullable
     @Override
@@ -2307,8 +2308,8 @@ public class AdminUserListFragment extends Fragment {
     }
 
     private void setupSearch() {
-        buttonSearch.setOnClickListener(v -> loadUsersRealTime());
-        imageViewSearch.setOnClickListener(v -> loadUsersRealTime());
+        buttonSearch.setOnClickListener(v -> updateFilteredList());
+        imageViewSearch.setOnClickListener(v -> updateFilteredList());
 
         editTextSearch.addTextChangedListener(new TextWatcher() {
             @Override
@@ -2321,8 +2322,7 @@ public class AdminUserListFragment extends Fragment {
             public void afterTextChanged(Editable s) {
                 currentQuery = s.toString().trim().toLowerCase();
                 currentPage = 1;
-                lastVisible = null;
-                loadUsersRealTime();
+                updateFilteredList();
             }
         });
     }
@@ -2338,8 +2338,7 @@ public class AdminUserListFragment extends Fragment {
                             default -> null;
                         };
                         currentPage = 1;
-                        lastVisible = null;
-                        loadUsersRealTime();
+                        updateFilteredList();
                     })
                     .setNegativeButton("Hủy", null)
                     .show();
@@ -2358,7 +2357,7 @@ public class AdminUserListFragment extends Fragment {
     private void setPage(int page) {
         if (page < 1 || page > totalPages) return;
         currentPage = page;
-        loadUsersRealTime();
+        updateRecyclerView();
     }
 
     private void updatePageButtons() {
@@ -2373,63 +2372,56 @@ public class AdminUserListFragment extends Fragment {
     }
 
     private void loadUsersRealTime() {
-        Query query = db.collection("Users")
-                .orderBy("username")
-                .limit(ITEMS_PER_PAGE);
-
-        // Apply filter
-        if (currentVerificationStatus != null) {
-            query = query.whereEqualTo("verificationStatus", currentVerificationStatus);
-        }
-
-        // Apply search query
-        if (!currentQuery.isEmpty()) {
-            query = query.whereGreaterThanOrEqualTo("username", currentQuery)
-                    .whereLessThanOrEqualTo("username", currentQuery + "\uf8ff");
-        }
-
-        // Apply pagination
-        if (lastVisible != null && currentPage > 1) {
-            query = query.startAfter(lastVisible);
-        } else if (currentPage > 1) {
-            query = query.startAt((currentPage - 1) * ITEMS_PER_PAGE);
-        }
-
-        query.get().addOnSuccessListener(querySnapshot -> {
-            userList.clear();
-            for (QueryDocumentSnapshot document : querySnapshot) {
-                User user = document.toObject(User.class);
-                if (user != null && user.getUserId() != null) {
-                    userList.add(user);
-                }
-            }
-
-            // Update filtered list
-            filteredUserList.clear();
-            for (User user : userList) {
-                if (currentQuery.isEmpty() ||
-                        (user.getUsername() != null && user.getUsername().toLowerCase().contains(currentQuery)) ||
-                        (user.getEmail() != null && user.getEmail().toLowerCase().contains(currentQuery))) {
-                    if (currentVerificationStatus == null || user.getVerificationStatus().equalsIgnoreCase(currentVerificationStatus)) {
-                        filteredUserList.add(user);
+        // Lắng nghe thay đổi thời gian thực trên collection Users
+        usersListener = db.collection("Users")
+                .addSnapshotListener((querySnapshot, error) -> {
+                    if (error != null) {
+                        Toast.makeText(getContext(), "Lỗi tải dữ liệu: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        loadMockData();
+                        return;
                     }
-                }
+
+                    if (querySnapshot != null) {
+                        userList.clear();
+                        for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                            User user = document.toObject(User.class);
+                            if (user != null && user.getUserId() != null) {
+                                userList.add(user);
+                            }
+                        }
+                        updateFilteredList();
+                    }
+                });
+    }
+
+    private void updateFilteredList() {
+        filteredUserList.clear();
+
+        // Lọc và tìm kiếm client-side
+        for (User user : userList) {
+            boolean matchesSearch = currentQuery.isEmpty() ||
+                    (user.getUsername() != null && user.getUsername().toLowerCase().contains(currentQuery)) ||
+                    (user.getEmail() != null && user.getEmail().toLowerCase().contains(currentQuery));
+            boolean matchesFilter = currentVerificationStatus == null ||
+                    (user.getVerificationStatus() != null && user.getVerificationStatus().equalsIgnoreCase(currentVerificationStatus));
+
+            if (matchesSearch && matchesFilter) {
+                filteredUserList.add(user);
             }
+        }
 
-            // Calculate total pages
-            db.collection("Users").get().addOnSuccessListener(countSnapshot -> {
-                int totalUsers = countSnapshot.size();
-                totalPages = (int) Math.ceil((double) totalUsers / ITEMS_PER_PAGE);
-                updatePageButtons();
-                textViewUserCount.setText("Tổng số người dùng: " + totalUsers);
-            });
-
-            lastVisible = querySnapshot.getDocuments().isEmpty() ? null : querySnapshot.getDocuments().get(querySnapshot.size() - 1);
-            updateRecyclerView();
-        }).addOnFailureListener(e -> {
-            Toast.makeText(getContext(), "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            loadMockData();
+        // Sắp xếp theo username client-side
+        filteredUserList.sort((u1, u2) -> {
+            String username1 = u1.getUsername() != null ? u1.getUsername().toLowerCase() : "";
+            String username2 = u2.getUsername() != null ? u2.getUsername().toLowerCase() : "";
+            return username1.compareTo(username2);
         });
+
+        // Cập nhật tổng số trang
+        totalPages = (int) Math.ceil((double) filteredUserList.size() / ITEMS_PER_PAGE);
+        textViewUserCount.setText("Tổng số người dùng: " + filteredUserList.size());
+        updatePageButtons();
+        updateRecyclerView();
     }
 
     private void loadMockData() {
@@ -2443,18 +2435,9 @@ public class AdminUserListFragment extends Fragment {
             mockUser.setEmail("user" + i + "@example.com");
             mockUser.setVerificationStatus(verificationStatuses[i % 2]);
             mockUser.setRoles(Map.of("customer", true));
-            if (currentQuery.isEmpty() ||
-                    mockUser.getUsername().toLowerCase().contains(currentQuery) ||
-                    mockUser.getEmail().toLowerCase().contains(currentQuery)) {
-                if (currentVerificationStatus == null || mockUser.getVerificationStatus().equalsIgnoreCase(currentVerificationStatus)) {
-                    userList.add(mockUser);
-                    filteredUserList.add(mockUser);
-                }
-            }
+            userList.add(mockUser);
         }
-        totalPages = (int) Math.ceil((double) filteredUserList.size() / ITEMS_PER_PAGE);
-        updatePageButtons();
-        updateRecyclerView();
+        updateFilteredList();
     }
 
     private void updateRecyclerView() {
@@ -2464,39 +2447,29 @@ public class AdminUserListFragment extends Fragment {
         if (start < filteredUserList.size()) {
             paginatedList.addAll(filteredUserList.subList(start, end));
         }
-        userAdapter = new UserAdapter(paginatedList, position -> {
-            UserStatsFragment fragment = new UserStatsFragment();
-            Bundle args = new Bundle();
-            args.putString("userId", paginatedList.get(position).getUserId());
-            fragment.setArguments(args);
-            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_layout_admin, fragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        }, position -> {
-            User user = paginatedList.get(position);
-            if (user.getUserId() != null) {
-                deleteUser(user.getUserId(), position);
-            } else {
-                Toast.makeText(getContext(), "Không tìm thấy ID người dùng", Toast.LENGTH_SHORT).show();
-            }
-        });
-        recyclerViewUsers.setAdapter(userAdapter);
-        textViewUserCount.setText("Tổng số người dùng: " + filteredUserList.size());
+        userAdapter.updateData(paginatedList);
+        recyclerViewUsers.scrollToPosition(0); // Cuộn lên đầu khi cập nhật
     }
 
     private void deleteUser(String userId, int position) {
         db.collection("Users").document(userId)
                 .delete()
                 .addOnSuccessListener(aVoid -> {
-                    filteredUserList.remove(position);
-                    userList.removeIf(user -> user.getUserId().equals(userId));
-                    updateRecyclerView();
+                    // Không cần xóa thủ công vì listener sẽ tự động cập nhật userList
                     Toast.makeText(getContext(), "Đã xóa người dùng", Toast.LENGTH_SHORT).show();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Lỗi xóa người dùng: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // Hủy listener để tránh rò rỉ bộ nhớ
+        if (usersListener != null) {
+            usersListener.remove();
+        }
     }
 }
 
@@ -3153,7 +3126,7 @@ public class UserStatsFragment extends Fragment {
     private String userId;
     private User user;
     private TextView tvUsername, tvUserInfo, tvCccdFrontLabel, tvCccdBackLabel, tvLicenseLabel;
-    private ImageView imgCccdFront, imgCccdBack, imgLicense, imgAvatar;
+    private ImageView imgCccdFront, imgCccdBack, imgLicense, imgAvatar, imgBack; // Thêm imgBack
     private LinearLayout btnApprove, btnReject, btnRequestSupplement;
 
     @Override
@@ -3186,6 +3159,13 @@ public class UserStatsFragment extends Fragment {
         btnApprove = view.findViewById(R.id.rygcfobvaozi);
         btnReject = view.findViewById(R.id.rgfc3wpe0gx);
         btnRequestSupplement = view.findViewById(R.id.ry07qbxzq9t);
+        imgBack = view.findViewById(R.id.rj72dc7rtuc); // Khởi tạo nút back
+
+        // Thêm sự kiện nhấn cho nút back
+        imgBack.setOnClickListener(v -> {
+            Log.d(TAG, "Nút back được nhấn");
+            getParentFragmentManager().popBackStack(); // Quay lại AdminUserListFragment
+        });
     }
 
     private void loadUserData() {
@@ -3211,6 +3191,10 @@ public class UserStatsFragment extends Fragment {
                             Glide.with(this)
                                     .load(user.getLicenseUrl() != null ? user.getLicenseUrl() : R.drawable.ic_car)
                                     .into(imgLicense);
+                            // Kiểm tra trạng thái xác minh để ẩn nút Duyệt nếu đã duyệt
+                            if ("verified".equals(user.getVerificationStatus())) {
+                                btnApprove.setVisibility(View.GONE);
+                            }
                         }
                     }
                 })
@@ -3231,7 +3215,8 @@ public class UserStatsFragment extends Fragment {
                 .addOnSuccessListener(aVoid -> {
                     sendNotification(userId, "Tài khoản đã được duyệt",
                             "Tài khoản của bạn đã được duyệt thành công.", "user_verification", null, "customer");
-                    getActivity().finish();
+                    btnApprove.setVisibility(View.GONE); // Ẩn nút Duyệt sau khi duyệt thành công
+                    Log.d(TAG, "Đã duyệt tài khoản và ẩn nút Duyệt");
                 })
                 .addOnFailureListener(e -> Log.e(TAG, "Lỗi duyệt user: " + e.getMessage()));
     }
@@ -3244,7 +3229,7 @@ public class UserStatsFragment extends Fragment {
                 .addOnSuccessListener(aVoid -> {
                     sendNotification(userId, "Tài khoản bị từ chối",
                             "Tài khoản của bạn đã bị từ chối.", "user_verification", null, "customer");
-                    getActivity().finish();
+                    getActivity().finish(); // Giữ nguyên logic gốc
                 })
                 .addOnFailureListener(e -> Log.e(TAG, "Lỗi từ chối user: " + e.getMessage()));
     }
@@ -3259,7 +3244,7 @@ public class UserStatsFragment extends Fragment {
                     .addOnSuccessListener(aVoid -> {
                         sendNotification(userId, "Yêu cầu bổ sung thông tin",
                                 "Tài khoản của bạn cần bổ sung: " + message, "supplement_request_user", null, "customer");
-                        getActivity().finish();
+                        getActivity().finish(); // Giữ nguyên logic gốc
                     })
                     .addOnFailureListener(e -> Log.e(TAG, "Lỗi gửi yêu cầu bổ sung: " + e.getMessage()));
         });
@@ -3289,6 +3274,7 @@ public class UserStatsFragment extends Fragment {
                 .addOnFailureListener(e -> Log.e(TAG, "Lỗi gửi thông báo: " + e.getMessage()));
     }
 }
+
 ```
 
 ### FragmentPages\Admin\VehicleFilterFragment.java
@@ -6939,7 +6925,8 @@ package com.uit.carrental.Service.Booking;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.StrictMode;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -6963,6 +6950,8 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import vn.zalopay.sdk.Environment;
 import vn.zalopay.sdk.ZaloPayError;
 import vn.zalopay.sdk.ZaloPaySDK;
@@ -6978,6 +6967,8 @@ public class CustomerBookingDetailActivity extends AppCompatActivity {
     private String bookingId;
     private Booking booking;
     private String orderId;
+    private final ExecutorService executorService = Executors.newSingleThreadExecutor();
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -6986,10 +6977,13 @@ public class CustomerBookingDetailActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         bookingId = getIntent().getStringExtra("bookingId");
+        if (bookingId == null || bookingId.isEmpty()) {
+            Toast.makeText(this, "Không tìm thấy bookingId", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
 
         // Khởi tạo ZaloPay SDK
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
         ZaloPaySDK.init(AppInfo.APP_ID, Environment.SANDBOX);
 
         initViews();
@@ -7026,6 +7020,10 @@ public class CustomerBookingDetailActivity extends AppCompatActivity {
                             if (document.contains("orderId")) {
                                 orderId = document.getString("orderId");
                                 Log.d(TAG, "orderId: " + orderId);
+                            } else {
+                                Toast.makeText(this, "Không tìm thấy orderId trong booking", Toast.LENGTH_SHORT).show();
+                                finish();
+                                return;
                             }
 
                             // Lấy thông tin xe
@@ -7042,7 +7040,8 @@ public class CustomerBookingDetailActivity extends AppCompatActivity {
                                                 }
                                             }
                                         }
-                                    });
+                                    })
+                                    .addOnFailureListener(e -> Log.e(TAG, "Lỗi lấy vehicle: " + e.getMessage()));
 
                             // Lấy thông tin owner
                             db.collection("Users").document(booking.getOwnerId())
@@ -7056,22 +7055,32 @@ public class CustomerBookingDetailActivity extends AppCompatActivity {
                                                 tvOwnerPhone.setText(owner.getPhoneNumber());
                                             }
                                         }
-                                    });
+                                    })
+                                    .addOnFailureListener(e -> Log.e(TAG, "Lỗi lấy owner: " + e.getMessage()));
 
                             tvPickupLocation.setText(booking.getPickupLocation());
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
-                            tvPickupTime.setText(sdf.format(booking.getStartTime().toDate()));
-                            tvDropoffTime.setText(sdf.format(booking.getEndTime().toDate()));
+                            tvPickupTime.setText(booking.getStartTime() != null ? sdf.format(booking.getStartTime().toDate()) : "");
+                            tvDropoffTime.setText(booking.getEndTime() != null ? sdf.format(booking.getEndTime().toDate()) : "");
                             DecimalFormat formatter = new DecimalFormat("#,### VNĐ");
                             tvTotalCost.setText(formatter.format(booking.getTotalAmount()));
                             tvStatus.setText(getStatusText(booking.getStatus()));
 
                             // Hiển thị nút thanh toán
                             btnPay.setVisibility(booking.getStatus().equals("confirmed") && booking.getPaymentStatus().equals("unpaid") ? View.VISIBLE : View.GONE);
+                        } else {
+                            Toast.makeText(this, "Không thể ánh xạ dữ liệu booking", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
+                    } else {
+                        Toast.makeText(this, "Không tìm thấy booking", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 })
-                .addOnFailureListener(e -> Toast.makeText(this, "Lỗi tải chi tiết: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Lỗi tải chi tiết: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
+                });
     }
 
     private String getStatusText(String status) {
@@ -7090,7 +7099,7 @@ public class CustomerBookingDetailActivity extends AppCompatActivity {
         imgBack.setOnClickListener(v -> finish());
 
         btnPay.setOnClickListener(v -> {
-            if (orderId != null) {
+            if (orderId != null && !orderId.isEmpty()) {
                 createOrderAndPay();
             } else {
                 Toast.makeText(this, "Không tìm thấy orderId!", Toast.LENGTH_SHORT).show();
@@ -7114,25 +7123,44 @@ public class CustomerBookingDetailActivity extends AppCompatActivity {
     }
 
     private void createOrderAndPay() {
-        try {
-            CreateOrder createOrder = new CreateOrder();
-            JSONObject data = createOrder.createOrder(String.valueOf((long) booking.getTotalAmount()));
-            if (data == null) {
-                Toast.makeText(this, "Không thể tạo đơn hàng!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            String code = data.getString("returncode");
-            if ("1".equals(code)) {
-                String token = data.getString("zptranstoken");
-                orderId = data.getString("apptransid"); // Lấy orderId từ ZaloPay
-                checkout(token);
-            } else {
-                Toast.makeText(this, "Lỗi tạo đơn hàng!", Toast.LENGTH_SHORT).show();
-            }
-        } catch (Exception e) {
-            Log.e(TAG, "ZaloPay Exception: " + e.getMessage());
-            Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        long amount = (long) booking.getTotalAmount();
+        if (amount <= 0) {
+            Toast.makeText(this, "Số tiền không hợp lệ!", Toast.LENGTH_SHORT).show();
+            return;
         }
+
+        executorService.execute(() -> {
+            try {
+                CreateOrder createOrder = new CreateOrder();
+                JSONObject data = createOrder.createOrder(String.valueOf(amount));
+                mainHandler.post(() -> {
+                    if (data == null) {
+                        Toast.makeText(this, "Không thể tạo đơn hàng!", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "ZaloPay response: null");
+                        return;
+                    }
+                    try {
+                        Log.d(TAG, "ZaloPay response: " + data.toString());
+                        String code = data.getString("returncode");
+                        if ("1".equals(code)) {
+                            String token = data.getString("zptranstoken");
+                            checkout(token);
+                        } else {
+                            Toast.makeText(this, "Lỗi tạo đơn hàng: returncode " + code, Toast.LENGTH_SHORT).show();
+                            Log.e(TAG, "ZaloPay returncode: " + code);
+                        }
+                    } catch (Exception e) {
+                        Toast.makeText(this, "Lỗi xử lý response: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "ZaloPay Exception: " + e.getMessage());
+                    }
+                });
+            } catch (Exception e) {
+                mainHandler.post(() -> {
+                    Toast.makeText(this, "Lỗi tạo đơn hàng: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "ZaloPay Exception: " + e.getMessage());
+                });
+            }
+        });
     }
 
     private void checkout(String token) {
@@ -7163,7 +7191,7 @@ public class CustomerBookingDetailActivity extends AppCompatActivity {
         updates.put("paymentId", transId);
         updates.put("status", "paid");
         updates.put("updatedAt", Timestamp.now());
-        updates.put("orderId", appTransId);
+        updates.put("orderId", orderId);
 
         db.collection("Bookings").document(bookingId)
                 .update(updates)
@@ -7230,7 +7258,14 @@ public class CustomerBookingDetailActivity extends AppCompatActivity {
         super.onNewIntent(intent);
         ZaloPaySDK.getInstance().onResult(intent);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        executorService.shutdown();
+    }
 }
+
 ```
 
 ### Service\Booking\OwnerBookingDetailActivity.java
@@ -10809,8 +10844,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.uit.carrental.Model.Vehicle;
 import com.uit.carrental.R;
@@ -10867,6 +10902,11 @@ public class UpdateVehicleActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         vehicleId = intent.getStringExtra("vehicleId");
+        if (vehicleId == null || vehicleId.isEmpty()) {
+            Toast.makeText(this, "Không tìm thấy ID xe", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
         vehicle.setVehicleId(vehicleId);
 
         init();
@@ -10898,55 +10938,57 @@ public class UpdateVehicleActivity extends AppCompatActivity {
     }
 
     private void getDetail() {
-        dbVehicle.collection("Vehicles")
-                .whereEqualTo("vehicleId", vehicle.getVehicleId())
-                .get()
-                .addOnSuccessListener(querySnapshot -> {
-                    for (QueryDocumentSnapshot document : querySnapshot) {
-                        vehicle.setVehicleId(document.getString("vehicleId"));
-                        vehicle.setVehicleName(document.getString("vehicleName"));
-                        vehicle.setVehiclePrice(document.getString("vehiclePrice"));
-                        vehicle.setVehicleSeats(document.getString("vehicleSeats"));
-                        vehicle.setVehicleNumber(document.getString("vehicleNumber"));
-                        vehicle.setVehicleBrand(document.getString("vehicleBrand"));
-                        vehicle.setFuelType(document.getString("fuelType"));
-                        vehicle.setMaxSpeed(document.getString("maxSpeed"));
-                        vehicle.setTransmission(document.getString("transmission"));
-                        vehicle.setDoorsAndSeats(document.getString("doorsAndSeats"));
-                        vehicle.setVehicleImageUrl(document.getString("vehicleImageUrl"));
-                        vehicle.setDocumentImageUrl(document.getString("documentImageUrl"));
-                        vehicle.setOwnerId(document.getString("ownerId"));
+        progressDialog = ProgressDialog.show(this, "Đang tải dữ liệu", "Vui lòng chờ...", true);
 
-                        // Set UI
-                        editTextVehicleName.setText(vehicle.getVehicleName() != null ? vehicle.getVehicleName() : "");
-                        editTextVehiclePrice.setText(vehicle.getVehiclePrice() != null ? vehicle.getVehiclePrice().replace(" VND", "") : "");
-                        editTextVehicleSeats.setText(vehicle.getVehicleSeats() != null ? vehicle.getVehicleSeats() : "");
-                        editTextVehicleNumber.setText(vehicle.getVehicleNumber() != null ? vehicle.getVehicleNumber() : "");
-                        editTextVehicleBrand.setText(vehicle.getVehicleBrand() != null ? vehicle.getVehicleBrand() : "");
-                        editTextFuelType.setText(vehicle.getFuelType() != null ? vehicle.getFuelType() : "");
-                        editTextMaxSpeed.setText(vehicle.getMaxSpeed() != null ? vehicle.getMaxSpeed() : "");
-                        editTextTransmission.setText(vehicle.getTransmission() != null ? vehicle.getTransmission() : "");
-                        editTextDoorsAndSeats.setText(vehicle.getDoorsAndSeats() != null ? vehicle.getDoorsAndSeats() : "");
-                        if (vehicle.getVehicleImageUrl() != null && !vehicle.getVehicleImageUrl().isEmpty()) {
-                            Glide.with(this)
-                                    .load(vehicle.getVehicleImageUrl())
-                                    .placeholder(R.drawable.ic_car)
-                                    .into(vehicleImage);
+        dbVehicle.collection("Vehicles").document(vehicleId)
+                .get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    progressDialog.dismiss();
+                    if (documentSnapshot.exists()) {
+                        vehicle = documentSnapshot.toObject(Vehicle.class);
+                        if (vehicle != null) {
+                            vehicle.setVehicleId(vehicleId); // Đảm bảo vehicleId được set
+                            // Set UI
+                            editTextVehicleName.setText(vehicle.getVehicleName() != null ? vehicle.getVehicleName() : "");
+                            editTextVehiclePrice.setText(vehicle.getVehiclePrice() != null ? vehicle.getVehiclePrice().replace(" VND", "") : "");
+                            editTextVehicleSeats.setText(vehicle.getVehicleSeats() != null ? vehicle.getVehicleSeats() : "");
+                            editTextVehicleNumber.setText(vehicle.getVehicleNumber() != null ? vehicle.getVehicleNumber() : "");
+                            editTextVehicleBrand.setText(vehicle.getVehicleBrand() != null ? vehicle.getVehicleBrand() : "");
+                            editTextFuelType.setText(vehicle.getFuelType() != null ? vehicle.getFuelType() : "");
+                            editTextMaxSpeed.setText(vehicle.getMaxSpeed() != null ? vehicle.getMaxSpeed() : "");
+                            editTextTransmission.setText(vehicle.getTransmission() != null ? vehicle.getTransmission() : "");
+                            editTextDoorsAndSeats.setText(vehicle.getDoorsAndSeats() != null ? vehicle.getDoorsAndSeats() : "");
+                            if (vehicle.getVehicleImageUrl() != null && !vehicle.getVehicleImageUrl().isEmpty()) {
+                                Glide.with(this)
+                                        .load(vehicle.getVehicleImageUrl())
+                                        .placeholder(R.drawable.ic_car)
+                                        .into(vehicleImage);
+                            } else {
+                                vehicleImage.setImageResource(R.drawable.ic_car);
+                            }
+                            if (vehicle.getDocumentImageUrl() != null && !vehicle.getDocumentImageUrl().isEmpty()) {
+                                Glide.with(this)
+                                        .load(vehicle.getDocumentImageUrl())
+                                        .placeholder(R.drawable.ic_car)
+                                        .into(documentImage);
+                            } else {
+                                documentImage.setImageResource(R.drawable.ic_car);
+                            }
+                            Log.d(TAG, "Tải chi tiết xe thành công: " + vehicle.toString());
                         } else {
-                            vehicleImage.setImageResource(R.drawable.ic_car);
+                            Toast.makeText(this, "Không thể ánh xạ dữ liệu xe", Toast.LENGTH_SHORT).show();
+                            finish();
                         }
-                        if (vehicle.getDocumentImageUrl() != null && !vehicle.getDocumentImageUrl().isEmpty()) {
-                            Glide.with(this)
-                                    .load(vehicle.getDocumentImageUrl())
-                                    .placeholder(R.drawable.ic_car)
-                                    .into(documentImage);
-                        } else {
-                            documentImage.setImageResource(R.drawable.ic_car);
-                        }
+                    } else {
+                        Toast.makeText(this, "Không tìm thấy xe", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 })
                 .addOnFailureListener(e -> {
+                    progressDialog.dismiss();
+                    Log.e(TAG, "Lỗi lấy chi tiết xe: " + e.getMessage());
                     Toast.makeText(this, "Lỗi lấy chi tiết xe: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    finish();
                 });
     }
 
@@ -10975,7 +11017,7 @@ public class UpdateVehicleActivity extends AppCompatActivity {
             data.put("vehicleSeats", seats);
             flag = true;
         }
-        if (!price.equals(vehicle.getVehiclePrice().replace(" VND", ""))) {
+        if (!price.equals(vehicle.getVehiclePrice() != null ? vehicle.getVehiclePrice().replace(" VND", "") : "")) {
             data.put("vehiclePrice", price + " VND");
             flag = true;
         }
