@@ -45,7 +45,7 @@ public class OwnerBookingDetailActivity extends AppCompatActivity {
         }
 
         bookingId = getIntent().getStringExtra("bookingId");
-        if (bookingId == null) {
+        if (bookingId == null || bookingId.isEmpty()) {
             Toast.makeText(this, "Không tìm thấy yêu cầu", Toast.LENGTH_SHORT).show();
             finish();
             return;
@@ -185,12 +185,21 @@ public class OwnerBookingDetailActivity extends AppCompatActivity {
 
     private void updateTimeAndPrice() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
-        tvPickup.setText(sdf.format(booking.getStartTime().toDate()));
-        tvDropoff.setText(sdf.format(booking.getEndTime().toDate()));
-        tvTotalCost.setText(String.format(Locale.getDefault(), "%,d VNĐ", booking.getTotalAmount()));
+        tvPickup.setText(booking.getStartTime() != null ? sdf.format(booking.getStartTime().toDate()) : "");
+        tvDropoff.setText(booking.getEndTime() != null ? sdf.format(booking.getEndTime().toDate()) : "");
+        tvTotalCost.setText(String.format(Locale.getDefault(), "%,d VNĐ", (long) booking.getTotalAmount()));
     }
 
     private void confirmBooking() {
+        if (booking == null) {
+            Toast.makeText(this, "Dữ liệu booking chưa tải, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (vehicle == null) {
+            Toast.makeText(this, "Dữ liệu xe chưa tải, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(booking.getEndTime().toDate());
         calendar.add(Calendar.DAY_OF_MONTH, 1);
@@ -204,18 +213,23 @@ public class OwnerBookingDetailActivity extends AppCompatActivity {
         db.collection("Bookings").document(bookingId)
                 .update(updates)
                 .addOnSuccessListener(aVoid -> {
+                    Log.d(TAG, "Cập nhật booking thành công: " + bookingId);
                     createNotification(booking.getCustomerId(), "Yêu cầu đặt xe #" + bookingId + " đã được xác nhận", "status_update");
-                    Toast.makeText(this, "Đã xác nhận yêu cầu", Toast.LENGTH_SHORT).show();
                     createOrder();
-                    finish();
                 })
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Lỗi xác nhận yêu cầu: " + e.getMessage());
                     Toast.makeText(this, "Lỗi xác nhận: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
                 });
     }
 
     private void rejectBooking() {
+        if (booking == null) {
+            Toast.makeText(this, "Dữ liệu booking chưa tải, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Map<String, Object> updates = new HashMap<>();
         updates.put("status", "rejected");
         updates.put("updatedAt", Timestamp.now());
@@ -223,6 +237,7 @@ public class OwnerBookingDetailActivity extends AppCompatActivity {
         db.collection("Bookings").document(bookingId)
                 .update(updates)
                 .addOnSuccessListener(aVoid -> {
+                    Log.d(TAG, "Từ chối booking thành công: " + bookingId);
                     createNotification(booking.getCustomerId(), "Yêu cầu đặt xe #" + bookingId + " đã bị từ chối", "status_update");
                     Toast.makeText(this, "Đã từ chối yêu cầu", Toast.LENGTH_SHORT).show();
                     finish();
@@ -230,10 +245,18 @@ public class OwnerBookingDetailActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Lỗi từ chối yêu cầu: " + e.getMessage());
                     Toast.makeText(this, "Lỗi từ chối: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
                 });
     }
 
     private void createOrder() {
+        if (booking == null || vehicle == null) {
+            Log.e(TAG, "Booking hoặc vehicle null, không thể tạo order");
+            Toast.makeText(this, "Lỗi: Dữ liệu không khả dụng", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+
         Map<String, Object> orderData = new HashMap<>();
         orderData.put("customer_id", booking.getCustomerId());
         orderData.put("provider_id", vehicle.getOwnerId());
@@ -247,12 +270,28 @@ public class OwnerBookingDetailActivity extends AppCompatActivity {
 
         db.collection("Orders").add(orderData)
                 .addOnSuccessListener(orderRef -> {
+                    String newOrderId = orderRef.getId();
+                    Log.d(TAG, "Tạo order thành công: " + newOrderId);
                     Map<String, Object> updateData = new HashMap<>();
-                    updateData.put("orderId", orderRef.getId());
+                    updateData.put("orderId", newOrderId);
                     db.collection("Bookings").document(bookingId)
-                            .update(updateData);
+                            .update(updateData)
+                            .addOnSuccessListener(aVoid -> {
+                                Log.d(TAG, "Cập nhật orderId vào booking thành công: " + newOrderId);
+                                Toast.makeText(this, "Đã xác nhận yêu cầu và tạo order", Toast.LENGTH_SHORT).show();
+                                finish();
+                            })
+                            .addOnFailureListener(e -> {
+                                Log.e(TAG, "Lỗi cập nhật orderId vào booking: " + e.getMessage());
+                                Toast.makeText(this, "Lỗi cập nhật orderId: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                finish();
+                            });
                 })
-                .addOnFailureListener(e -> Log.e(TAG, "Lỗi tạo order: " + e.getMessage()));
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Lỗi tạo order: " + e.getMessage());
+                    Toast.makeText(this, "Lỗi tạo order: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
+                });
     }
 
     private void createNotification(String userId, String message, String type) {
@@ -261,6 +300,15 @@ public class OwnerBookingDetailActivity extends AppCompatActivity {
         notification.setBookingId(bookingId);
         notification.setMessage(message);
         notification.setType(type);
-        db.collection("Notifications").add(notification);
+        notification.setCreatedAt(Timestamp.now());
+        notification.setIsRead(false);
+        db.collection("Notifications").add(notification)
+                .addOnSuccessListener(documentReference -> {
+                    String notificationId = documentReference.getId();
+                    db.collection("Notifications").document(notificationId)
+                            .update("notificationId", notificationId);
+                    Log.d(TAG, "Tạo thông báo thành công: " + notificationId);
+                })
+                .addOnFailureListener(e -> Log.e(TAG, "Lỗi tạo thông báo: " + e.getMessage()));
     }
 }
